@@ -43,7 +43,8 @@ bsd_cimage_dir: /export/images/FreeBSD/unsorted
 
 # mount image
 bsd_cimage_mount_dir: /export/images/FreeBSD/live
-bsd_cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
+bsd_cimage_mount_file: ''
+# bsd_cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
 bsd_cimage_mount_mode: '0755'
 bsd_cimage_mount_points:
   - partition: s2a
