@@ -1,0 +1,30 @@
+---
+
+- name: "customize: Debug"
+  vars:
+    msg: |
+      bsd_cimage_mount_path [{{ bsd_cimage_mount_path }}
+      bsd_cimage_loaderconf [{{ bsd_cimage_loaderconf }}]
+      bsd_cimage_rcconf [{{ bsd_cimage_rcconf }}]
+      bsd_cimage_wpasupconf [{{ bsd_cimage_wpasupconf }}]
+
+  debug:
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: bsd_cimage_debug|bool
+
+- include_tasks: fn/loaderconf.yml
+  when: bsd_cimage_loaderconf|bool
+  tags: bsd_cimage_loaderconf
+
+- include_tasks: fn/rcconf.yml
+  when: bsd_cimage_rcconf|bool
+  tags: bsd_cimage_rcconf
+
+- include_tasks: fn/wpasupconf.yml
+  when: bsd_cimage_wpasupconf|bool
+  tags: bsd_cimage_wpasupconf
+
+# TODO: firstboot, wpa_cli
+
+# EOF
+...

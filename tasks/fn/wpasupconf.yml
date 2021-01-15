@@ -1,0 +1,43 @@
+---
+
+- name: "wpasupconf: Debug"
+  vars:
+    msg: |
+      bsd_cimage_wpasupconf_backup [{{ bsd_cimage_wpasupconf_backup }}]
+      bsd_cimage_wpasupconf_file [{{ bsd_cimage_wpasupconf_file }}]
+      bsd_cimage_wpasupconf_owner [{{ bsd_cimage_wpasupconf_owner }}]
+      bsd_cimage_wpasupconf_group [{{ bsd_cimage_wpasupconf_group }}]
+      bsd_cimage_wpasupconf_mode [{{ bsd_cimage_wpasupconf_mode }}]
+      bsd_cimage_wpasupconf_global
+      {{ bsd_cimage_wpasupconf_global|to_yaml }}
+      {% if bsd_cimage_debug_classified %}
+      bsd_cimage_wpasupconf_data
+      {{ bsd_cimage_wpasupconf_data|to_yaml }}
+      {% endif %}
+      bsd_cimage_wpasupconf_link [{{ bsd_cimage_wpasupconf_link }}]
+      bsd_cimage_wpasupconf_link_dev [{{ bsd_cimage_wpasupconf_link_dev }}]
+
+  debug:
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: bsd_cimage_debug|bool
+
+- name: 'wpasupconf: Configure {{ bsd_cimage_mount_path }}/etc/wpasupplicant.conf'
+  template:
+    src: wpa_supplicant.conf.j2
+    dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}.{{ item.dev }}"
+    owner: "{{ bsd_cimage_wpasupconf_owner }}"
+    group: "{{ bsd_cimage_wpasupconf_group }}"
+    mode: "{{ bsd_cimage_wpasupconf_mode }}"
+    backup: "{{ bsd_cimage_wpasupconf_backup }}"
+  loop: "{{ bsd_cimage_wpasupconf_data }}"
+
+- name: 'customize: Link to {{ bsd_cimage_wpasupconf_file }}.{{ bsd_cimage_wpasupconf_link_dev }}'
+  when: bsd_cimage_wpasupconf_link|bool
+  file:
+    state: link
+    src: "wpa_supplicant.conf.{{ bsd_cimage_wpasupconf_link_dev }}"
+    dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}"
+    force: true
+
+# EOF
+...

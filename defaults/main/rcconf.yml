@@ -1,0 +1,11 @@
+---
+
+# /etc/rc.conf
+bsd_cimage_rcconf: false
+bsd_cimage_rcconf_backup: false
+bsd_cimage_rcconf_data: []
+# bsd_cimage_rcconf_data:
+#   - {key: wlans_rtwn0, value: wlan0}
+#   - {key: ifconfig_wlan0, value: WPA SYNCDHCP}
+
+# EOF

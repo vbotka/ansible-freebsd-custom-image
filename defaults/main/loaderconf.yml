@@ -1,0 +1,27 @@
+---
+
+# /boot/loader.conf
+bsd_cimage_loaderconf: false
+bsd_cimage_loaderconf_backup: false
+bsd_cimage_loaderconf_modules: []
+# bsd_cimage_loaderconf_modules:
+#   - pf
+#   - pflog
+#   - wlan
+#   - wlan_wep
+#   - wlan_tkip
+#   - wlan_ccmp
+#   - wlan_amrr
+#   - if_rtwn_usb
+bsd_cimage_loaderconf_data: []
+# bsd_cimage_loaderconf_data:
+#   - 'hw.usb.template=3'
+#   - 'umodem_load="YES"'
+#   - 'boot_multicons="YES"'
+#   - 'boot_serial="YES"'
+#   - 'beastie_disable="YES"'
+#   - 'loader_color="NO"'
+#   - 'legal.realtek.license_ack=1'
+bsd_cimage_loaderconf_sysctl: []
+
+# EOF

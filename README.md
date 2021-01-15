@@ -1,0 +1,33 @@
+# freebsd_custom_image
+
+[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-custom-image.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-custom-image)
+[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
+
+
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_custom_image/) FreeBSD. Download, mount, and customize system images.
+
+
+## Notes
+
+* By default, the role is not idempotent. At least 4 tasks will be
+  reported changed: 1) Create memory disk 2) Mount mdX partitions 3)
+  Unmount mount points 4) Detach memory disk.
+
+* Setting `bsd_cimage_umount=false` will keep the memory disk attached
+  and partitions mounted. This will make the role idempotent.
+
+
+## References
+
+[18.9. Memory Disks - FreeBSD Handbook](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-virtual.html)
+[32.3. Wireless Networking - FreeBSD Handbook](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/network-wireless.html)
+
+
+## License
+
+[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
+
+
+## Author Information
+
+[Vladimir Botka](https://botka.link)

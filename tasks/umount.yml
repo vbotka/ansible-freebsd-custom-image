@@ -1,0 +1,42 @@
+---
+
+- name: "umount: Unmount mount points"
+  mount:
+    path: "{{ item.mountpoint }}"
+    state: unmounted
+    fstab: /tmp/tmp.fstab  # Note 1.
+  loop: "{{ bsd_cimage_mount_points }}"
+  loop_control:
+    label: "{{ item.mountpoint }}"
+  register: result
+
+- name: "umount: Debug unmount results"
+  debug:
+    var: result
+  when: bsd_cimage_debug|bool
+
+- block:
+    - name: "umount: Detach memory disk"
+      command:
+        cmd: "mdconfig -d -u {{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}"
+        removes: "/dev/md{{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}"
+      register: result
+  rescue:
+    - name: "mount: Rescue failed memory disk"
+      fail:
+        msg: "[ERROR] Can't detach unit {{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}\n{{ result }}"
+  when: bsd_cimage_mdconfig_devs is defined
+
+- name: "umount: Debug memory disk detach results"
+  debug:
+    var: result
+  when: bsd_cimage_debug|bool
+
+# Notes
+#
+# Note 1: It's not possible to mount a device without touching fstab. Temporary fstab is a
+# workaround.
+# See https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
+
+# EOF
+...

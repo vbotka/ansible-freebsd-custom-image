@@ -1,0 +1,10 @@
+---
+
+- name: "sanity: Only FreeBSD family supported."
+  assert:
+    that:
+      - ansible_os_family == "FreeBSD"
+    fail_msg: "[ERROR] Only FreeBSD family supported."
+
+# EOF
+...
