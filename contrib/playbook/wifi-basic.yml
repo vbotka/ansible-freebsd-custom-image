@@ -25,6 +25,7 @@
 #     preinstalled user.
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/wifi-basic.yml
 
 - hosts: images.example.com
   connection: ssh

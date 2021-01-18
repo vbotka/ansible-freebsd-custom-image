@@ -15,7 +15,7 @@
   lineinfile:
     dest: "{{ bsd_cimage_mount_path }}/etc/rc.conf"
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
-    line: '{{ item.key }}="{{ item.value }}"'
+    line: '{{ item.key }}={{ item.value }}'
     owner: root
     group: wheel
     mode: "0644"

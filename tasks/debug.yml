@@ -38,7 +38,7 @@
          bsd_cimage_mount_points
          {{ bsd_cimage_mount_points|to_yaml }}
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-         bsd_cimage_mount_path [{{ bsd_cimage_mount_path }}
+         bsd_cimage_mount_path [{{ bsd_cimage_mount_path }}]
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_loaderconf [{{ bsd_cimage_loaderconf }}]
          bsd_cimage_loaderconf_backup [{{ bsd_cimage_loaderconf_backup }}]

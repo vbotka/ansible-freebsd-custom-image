@@ -186,7 +186,7 @@ under the same file-names in the directory *defaults/main*. Enable, configure an
 needed. Keep this arrangement when you add custom tasks.
 
 .. toctree::
-   :name: customization_toc
+   :name: ctasks_toc
 
    task_loaderconf
    task_rcconf
@@ -274,7 +274,7 @@ Customize images
 ****************
 
 .. toctree::
-   :name: cimages
+   :name: cimages_toc
 
    play-001
    play-002
