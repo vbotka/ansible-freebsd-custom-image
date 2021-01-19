@@ -1,4 +1,4 @@
-Ansible role freebsd_custom_image
+Ansible role FreeBSD Custom Image
 =================================
 
 This `role <https://galaxy.ansible.com/vbotka/freebsd_custom_image/>`_ and the
@@ -11,11 +11,12 @@ and report issues
 
 .. toctree::
    :maxdepth: 2
-   :caption: Table of Contents:
+   :caption: Table of Contents
 
    qsg
    guide
    annotation
+   collection-bsd
    copyright
    legalnotice
 
