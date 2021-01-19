@@ -3,13 +3,11 @@
 Quick start guide
 *****************
 
-Synopsis
-========
+For the users who want to try the role quickly, this guide provides an example of how to configure
+wireless network in `already downloaded image <https://www.freebsd.org/where.html>`_. Three files
+will be customized in the image
 
-For the users who want to try the role quickly, this guide provides an
-example of how to configure wireless network in `already downloaded image <https://www.freebsd.org/where.html>`_
-
-1) Configure /boot/loader.conf ::
+1) /boot/loader.conf ::
 
     # bsd_cimage_loaderconf_data
     hw.usb.template=3
@@ -31,12 +29,12 @@ example of how to configure wireless network in `already downloaded image <https
     rtwn_load="YES"
     if_rtwn_usb_load="YES"
 
-2) Configure /etc/rc.conf ::
+2) /etc/rc.conf ::
 
      wlans_rtwn0="wlan0"
      ifconfig_wlan0="WPA SYNCDHCP"
 
-3) Configure /etc/wpa_supplicant.conf ::
+3) /etc/wpa_supplicant.conf ::
 
      network={
              ssid="my_access_point"
@@ -44,11 +42,10 @@ example of how to configure wireless network in `already downloaded image <https
              disabled=0
              }
 
-After the configuration of the files, dump the image to a disk and
-boot the system. The wireless adapter should automatically connect to
-the network and obtain DHCP address. It should be possible to connect
-to the system ``ssh freebsd@<ip-address>`` (default passwords of
-FreeBSD images are ``freebsd: freebsd`` and ``root: root``).
+After the configuration of the files is ready dump the image to a disk and boot the system. The
+wireless adapter should automatically connect to the network and obtain DHCP address. It should be
+possible to connect to the system ``ssh freebsd@<ip-address>`` (default passwords of FreeBSD images
+are ``freebsd: freebsd`` and ``root: root``).
 
 The wireless adapter in this example is `USB Realtek RTL8188EU
 <https://www.freebsd.org/cgi/man.cgi?query=rtwn&apropos=0&sektion=0&manpath=FreeBSD+12.2-RELEASE+and+Ports&arch=default&format=html>`_
@@ -57,98 +54,43 @@ The wireless adapter in this example is `USB Realtek RTL8188EU
     rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
     rtwn0: MAC/BB RTL8188EU, RF 6052 1T1R
 
-See `man pages of supported wireless devices <https://wiki.freebsd.org/DeviceDrivers>`_.
-
 
 .. seealso::
    * `32.3. Wireless Networking - FreeBSD Handbook <https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/network-wireless.html>`_
    * `Wiki FreeBSD Wireless <https://wiki.freebsd.org/WiFi>`_
    * `FreeBSD Release Notes <https://www.freebsd.org/releases/index.html>`_
+   * `man pages of supported wireless devices <https://wiki.freebsd.org/DeviceDrivers>`_
 
-    
-Procedure
-=========
+
+Follow the steps below
+
 
 * Install the role ``vbotka.freebsd_custom_image`` ::
 
     shell> ansible-galaxy install vbotka.freebsd_custom_image
 
 
-* Create the playbook ``playbook.yml`` for single host
-  images.example.com (2). Configure connection (4-5) and privilege
-  escalation (6-8). Configure the path (14) to the image (15) and make
-  sure the image is writable by root. The default system partition is
-  *s2a* (17). Fit the mount-point (19-20) to your needs. The mount-point
-  doesn't have to exist and will be create, and deleted, by the Ansible
-  module *mount*. Review the modules (24) and loader's configuration
-  (25,32). Fit it to your needs if you use a different adapter. Fit also
-  configuration of *rc.conf* (38) if necessary. Change *SSID* (47) and
-  *password* (48) of the access point
+* Create the playbook ``pb-wifi-basic.yml`` for single host images.example.com (1). Configure
+  connection (3-4) and privilege escalation (5-7). Configure the path (15) to the image (16) and
+  make sure the image is writable by root. The default system partition is *s2a* (18). Configure the
+  mount-point(s) (20) and configure which partition will be customized (21). The mount-point doesn't
+  have to exist and will be create (and later deleted when unmounted) by the Ansible module
+  *mount*. Review the modules (25) and loader's configuration (27,34). Fit it to your needs if you
+  use a different adapter. hange also configuration of *rc.conf* (40-41) if necessary. Change
+  *SSID* (49) and *password* (50) of the access point
 
-.. code-block:: yaml
-  :emphasize-lines: 2,4-8,14-15,19-20,24-25,32,38,47-48
+.. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
+  :caption: [`contrib/playbook/pb-wifi-basic.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml>`_]
+  :lines: 32-87
+  :language: yaml
+  :emphasize-lines: 1,3-7,15-16,20-21,25,27,34,40-41,49-50
   :linenos:
 
-    shell> cat playbook.yml
-    - hosts: images.example.com
 
-      connection: ssh
-      remote_user: admin
-      become: true
-      become_user: root
-      become_method: sudo
+* Create the inventory. Change the IP adress (2) and fit the paths to Python (8) and Perl (9) if
+  necessary
 
-      vars:
-        bsd_cimage_debug: true
-        bsd_cimage_debug_classified: true
-    
-        bsd_cimage_mount_dir: /export/images/FreeBSD/live
-        bsd_cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
-        bsd_cimage_mount_points:
-          - partition: s2a
-            fstype: ufs
-            mountpoint: /mnt3
-        bsd_cimage_mount_path: /mnt3
-
-        bsd_cimage_loaderconf: true
-        bsd_cimage_loaderconf_backup: true
-        bsd_cimage_loaderconf_modules: [wlan,wlan_wep,wlan_ccmp,wlan_tkip,wlan_amrr,rtwn,if_rtwn_usb]
-        bsd_cimage_loaderconf_data:
-          - 'hw.usb.template=3'
-          - 'umodem_load="YES"'
-          - 'boot_multicons="YES"'
-          - 'boot_serial="YES"'
-          - 'beastie_disable="YES"'
-          - 'loader_color="NO"'
-          - 'legal.realtek.license_ack=1'
-        bsd_cimage_loaderconf_sysctl: []
-      
-        bsd_cimage_rcconf: true
-        bsd_cimage_rcconf_backup: true
-        bsd_cimage_rcconf_data:
-          - {key: wlans_rtwn0, value: wlan0}
-          - {key: ifconfig_wlan0, value: WPA SYNCDHCP}
-
-        bsd_cimage_wpasupconf: true
-        bsd_cimage_wpasupconf_backup: true
-        bsd_cimage_wpasupconf_data:
-          - dev: wlan0
-            network:
-              - conf:
-                  - {key: ssid, value: '"my_access_point"'}
-                  - {key: psk, value: '"my_password"'}
-                  - {key: disabled, value: '0'}
-        bsd_cimage_wpasupconf_link: true
-        bsd_cimage_wpasupconf_link_dev: wlan0
-    
-      roles:
-        - vbotka.freebsd_custom_image
-
-
-* Create inventory. Change the IP adress (2) and fit the paths to
-  Python (8) and Perl (9) if necessary
-
-.. code-block:: bash
+.. code-block:: sh
    :emphasize-lines: 2,8-9
    :linenos:
 
@@ -165,54 +107,50 @@ Procedure
 
 * Test syntax ::
 
-    shell> ansible-playbook playbook.yml --syntax-check
+    shell> ansible-playbook pb-wifi-basic.yml --syntax-check
 
 
 * See what variables will be included ::
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_debug
+    shell> ansible-playbook pb-wifi-basic.yml -t bsd_cimage_debug
 
 
 * Run the playbook ::
 
-    shell> ansible-playbook playbook.yml
+    shell> ansible-playbook pb-wifi-basic.yml
+
 
 .. note::
 
-    * By default, the role is not idempotent. At least 4 tasks will be
-      reported changed: 1) Create memory disk 2) Mount mdX partitions
-      3) Unmount mount points 4) Detach memory disk.
-                                                                                              
-    * Setting ``bsd_cimage_umount=false`` will keep the memory disk
-      attached and partitions mounted. This will make the role
-      idempotent.
+    * By default, the role is not idempotent. At least 4 tasks will be reported changed: 1) Create
+      memory disk 2) Mount mdX partitions 3) Unmount mount points 4) Detach memory disk.
+
+    * Setting ``bsd_cimage_umount=false`` will keep the memory disk attached and partitions
+      mounted. This will make the role idempotent.
 
     * The role doesn't support *check and diff* ``--check --diff``
 
 
 .. warning::
 
-  * Password of the access-point will be displayed. Set classified
-    debug to *false* ``bsd_cimage_debug_classified=false`` to prevent
-    it.
+  * Password of the access-point will be displayed. Set classified debug to *false*
+    ``bsd_cimage_debug_classified=false`` to prevent it.
   
-  * The image has not been secured by this playbook and should be used
-    for testing only.
+  * The image has not been secured by this playbook and should be used for testing only.
 
 
-* Write the customized image to a disk. For example ::
+* Make sure the partition is unmounted and write the customized image to a disk. For example ::
 
     dd if=FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img of=/dev/sdX bs=1m conv=sync status=progress
 
 .. seealso:: `2.3. Pre-Installation Tasks <https://www.freebsd.org/doc/handbook/bsdinstall-pre.html>`_
 
-.. warning:: Change the device of the disk. Double-check that this is
-             the correct device and make sure you don't overwrite
-             important data.
+.. warning:: Change the device of the disk. Double-check that this is the correct device and make
+             sure you don't overwrite important data.
 
 
-* Boot the system. Find the IP address either from the console or from
-  the DHCP server, if headless, and connect to the system ::
+* Boot the system. Find the IP address either from the console or from the DHCP server, if headless,
+  and connect to the system ::
 
     shell> ssh freebsd@10.1.0.16
     Password for freebsd@rpi-b:

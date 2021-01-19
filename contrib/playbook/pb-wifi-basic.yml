@@ -3,20 +3,22 @@
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Ansible playbook: wifi-basic.yml
+# Ansible playbook: pb-wifi-basic.yml
 #
 # Description:
 #
-#   This playbook mounts, and configures an system image.
+#   Downloads, mounts, and configures wireless network in the system image.
 #
 # Requirements:
-#   * mdconfig
+#
+#   * OS: FreeBSD
+#   * role: vbotka.freebsd_custom_image
 #
 # Example:
 #
-#   * Fit the variables in the playbook to your needs
+#   * Fit the variables to your needs
 #   * Run the playbook
-#     shell> ansible-playbook wifi-basic.yml
+#     shell> ansible-playbook pb-wifi-basic.yml
 #   * Dump the image to the media
 #     shell> dd FreeBSD-13.0-CURRENT-arm-armv6-RPI-B.img of=/dev/mmcsd0 \
 #            bs=1m conv=sync status=progress
@@ -25,16 +27,19 @@
 #     preinstalled user.
 #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/wifi-basic.yml
+# https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml
 
 - hosts: images.example.com
+
   connection: ssh
-  remote_user: asadmin
+  remote_user: admin
   become: true
   become_user: root
   become_method: sudo
 
   vars:
+    bsd_cimage_sanity: false
+    bsd_cimage_install: false
     bsd_cimage_debug: true
     bsd_cimage_debug_classified: true
 
@@ -48,7 +53,8 @@
 
     bsd_cimage_loaderconf: true
     bsd_cimage_loaderconf_backup: true
-    bsd_cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
+    bsd_cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn,
+                                    if_rtwn_usb]
     bsd_cimage_loaderconf_data:
       - 'hw.usb.template=3'
       - 'umodem_load="YES"'
@@ -62,8 +68,8 @@
     bsd_cimage_rcconf: true
     bsd_cimage_rcconf_backup: true
     bsd_cimage_rcconf_data:
-      - {key: wlans_rtwn0, value: wlan0}
-      - {key: ifconfig_wlan0, value: WPA SYNCDHCP}
+      - {key: wlans_rtwn0, value: '"wlan0"'}
+      - {key: ifconfig_wlan0, value: '"WPA SYNCDHCP"'}
 
     bsd_cimage_wpasupconf: true
     bsd_cimage_wpasupconf_backup: true

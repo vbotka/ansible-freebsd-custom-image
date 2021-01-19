@@ -1,3 +1,5 @@
+.. _ug_example_002:
+
 Example 2: Configure ...
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

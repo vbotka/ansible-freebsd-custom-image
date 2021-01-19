@@ -174,7 +174,10 @@ Examples
 Customization tasks
 *******************
 
-The description of the customization's tasks is not complete. The `role <https://galaxy.ansible.com/vbotka/freebsd_custom_image/>`_ and the documentation is work in progress. Feel free to `share your feedback and report issues <https://github.com/vbotka/ansible-freebsd-custom-image/issues>`_.
+The description of the customization's tasks is not complete. The `role
+<https://galaxy.ansible.com/vbotka/freebsd_custom_image/>`_ and the documentation is work in
+progress. Feel free to `share your feedback and report issues
+<https://github.com/vbotka/ansible-freebsd-custom-image/issues>`_.
 
 `Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_. 
 
@@ -192,7 +195,8 @@ needed. Keep this arrangement when you add custom tasks.
    task_rcconf
    task_wpasupconf
 
-.. note:: Instead of creating additional custom tasks, consider Ansible role `config_light <https://galaxy.ansible.com/vbotka/config_light>`_.
+.. note:: Instead of creating additional custom tasks, consider Ansible role `config_light
+          <https://galaxy.ansible.com/vbotka/config_light>`_. See :ref:`ug_example_001`
 
 
 .. _ug_vars:
@@ -267,14 +271,14 @@ Best practice
   a problem put the configuration of the memory disk into */etc/rc.conf* and configure the
   mountpoint in */etc/fstab*.
 
-.. _ug_cimages:
+.. _ug_examples:
 
-****************
-Customize images
-****************
+********
+Examples
+********
 
 .. toctree::
-   :name: cimages_toc
+   :name: examples_toc
 
-   play-001
-   play-002
+   example-wifi-basic-cl
+   example-002
