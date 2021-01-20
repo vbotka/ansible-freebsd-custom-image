@@ -46,6 +46,7 @@ partition.
     ├── packages.d
     ├── services.d
     └── states.d
+        └── wpasupconf.yml
 
 .. seealso:: How to configure `Files in vbotka.config_light <https://ansible-config-light.readthedocs.io/en/latest/guide.html#files>`_
 
@@ -71,8 +72,11 @@ partition.
 
 .. seealso:: `template wpa_supplicant.conf.wlan0.j2 <https://raw.githubusercontent.com/vbotka/ansible-config-light/master/templates/wpa_supplicant.conf.wlan0.j2>`_
 
-
-[TODO: conf-light/states.d/wpasupconf.yml Link wpa_supplicant.conf to wpa_supplicant.conf.wlan0]
+.. literalinclude:: ../../contrib/example-wifi-basic-cl/conf-light/states.d/wpasupconf.yml
+  :caption: [contrib/example-wifi-basic-cl/conf-light/states.d/wpasupconf.yml]
+  :language: yaml
+  :emphasize-lines: 2,4,5
+  :linenos:
 
 
 * Create the inventory. Change the IP adress (2) and fit the paths to Python (8) and Perl (9) if

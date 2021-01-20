@@ -77,7 +77,8 @@ Follow the steps below
   have to exist and will be create (and later deleted when unmounted) by the Ansible module
   *mount*. Review the modules (25) and loader's configuration (27,34). Fit it to your needs if you
   use a different adapter. hange also configuration of *rc.conf* (40-41) if necessary. Change
-  *SSID* (49) and *password* (50) of the access point
+  *SSID* (49) and *password* (50) of the access point. Enable symbolic link of
+  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (52,53).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
   :caption: [`contrib/playbook/pb-wifi-basic.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml>`_]
