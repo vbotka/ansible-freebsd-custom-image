@@ -1,0 +1,5 @@
+wpasupconf_wlan0:
+  state: link
+  force: true
+  path: '{{ bsd_cimage_mount_path }}/etc/wpa_supplicant.conf'
+  src: '{{ bsd_cimage_mount_path }}/etc/wpa_supplicant.conf.wlan0'
