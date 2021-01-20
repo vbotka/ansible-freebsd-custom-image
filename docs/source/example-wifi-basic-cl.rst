@@ -28,7 +28,7 @@ partition.
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic-cl.yml
   :caption: [`contrib/playbook/pb-wifi-basic-cl.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic-cl.yml>`_]
-  :lines: 27-78
+  :lines: 27-80
   :language: yaml
   :emphasize-lines: 1,3-7,10,12-17
   :linenos:

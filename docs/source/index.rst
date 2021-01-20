@@ -10,7 +10,7 @@ and report issues
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Table of Contents
 
    qsg

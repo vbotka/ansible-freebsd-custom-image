@@ -1,4 +1,3 @@
----
 wpasupconf_wlan0:
   path: '{{ bsd_cimage_mount_path }}/etc/wpa_supplicant.conf.wlan0'
   force: true

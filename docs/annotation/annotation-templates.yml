@@ -1,5 +1,5 @@
 ---
-mytemplates: 
+mytemplates:
 
   - file: loader.conf.j2
     link: template_loader.conf.j2

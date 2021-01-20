@@ -1,4 +1,3 @@
----
 loaderconf:
   path: '{{ bsd_cimage_mount_path }}/boot/loader.conf'
   force: true
