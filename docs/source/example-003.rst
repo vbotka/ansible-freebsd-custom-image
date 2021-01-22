@@ -1,6 +1,6 @@
-.. _ug_example_002:
+.. _ug_example_003:
 
-Example 2: Configure ...
+Example 3: Configure ...
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a playbook

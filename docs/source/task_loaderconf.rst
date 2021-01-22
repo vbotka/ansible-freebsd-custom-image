@@ -7,11 +7,9 @@ Customize the variables to your needs.
 
 [`defaults/main/loaderconf.yml <https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/defaults/main/loaderconf.yml>`_]
 
-.. highlight:: yaml
-    :linenothreshold: 5
 .. literalinclude:: ../../defaults/main/loaderconf.yml
     :language: yaml
-    :emphasize-lines: 2
+    :emphasize-lines: 3
     :linenos:
 
 .. seealso::

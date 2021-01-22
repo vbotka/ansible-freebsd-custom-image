@@ -4,7 +4,7 @@
 User's guide
 ############
 .. contents:: Table of Contents
-   :depth: 4
+   :depth: 3
 
 
 .. _ug_introduction:
@@ -189,7 +189,6 @@ under the same file-names in the directory *defaults/main*. Enable, configure an
 needed. Keep this arrangement when you add custom tasks.
 
 .. toctree::
-   :name: ctasks_toc
 
    task_loaderconf
    task_rcconf
@@ -208,7 +207,6 @@ Variables
 There are two categories of variables. The variables that control the workflow of the role (see
 *default/main/main.yml*) and variables of the customization tasks (see other files in
 *default/main*).
-
 
 .. seealso::
    * `Ansible variable precedence: Where should I put a variable?
@@ -234,9 +232,9 @@ Best practice
                                         -e bsd_cimage_debug=true \
 					-e bsd_cimage_debug_classified=true
 
-* Download images. Use *checksum* to avoid repeated downloads Unpack the images from the archives
+* Download images. Use *checksum* to avoid repeated downloads. Unpack the images from the archives
   manually, if needed, and keep the archives in place to avoid repeated downloads. To speedup the
-  playbook, set the variable to an empty list *bsd_cimage_download=[]* after the images are
+  playbook, set the variable to an empty list *bsd_cimage_download=[]* after the images were
   downloaded ::
 
    shell> ansible-playbook playbook.yml -t bsd_cimage_download
@@ -281,4 +279,5 @@ Examples
    :name: examples_toc
 
    example-wifi-basic-cl
-   example-002
+   example-wpacli-cl
+   example-003
