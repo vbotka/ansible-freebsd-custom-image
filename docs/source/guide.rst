@@ -20,9 +20,13 @@ tool to make small changes, e.g. the configuration of wireless network (see Quic
 would be an overkill. Instead, this role provides the users with the options to mount `released
 images and development snapshots <https://www.freebsd.org/where.html>`_, and customize them. The
 role can be easily configured and extended. The users are expected to write playbooks and additional
-customization tasks when needed. `Contributions are welcome
-<https://github.com/firstcontributions/first-contributions>`_. See the examples in the directory
-`contrib <https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/contrib/>`_.
+customization tasks when needed. When you decide to customize the functionality consider Ansible
+role `vbotka.config_light <https://galaxy.ansible.com/vbotka/config_light>`_ instead of creating
+additional custom tasks. The advantage would be unified configuration data in
+``config_light``. Create custom tasks if ``config_light`` is not able to do what you
+want. `Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_. See
+the examples in the directory `contrib
+<https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/contrib/>`_.
 
 Many of the tasks in the workflow are disabled by default and can be enabled and run one by one to
 accomplish standalone tasks (see *tasks/main.yml* and *defaults/main.yml*). By default, *sanity,
@@ -30,14 +34,16 @@ mount, customize, and umount* are enabled. All included customization tasks are 
 (see *tasks/customize*). See :ref:`ug_tags` Examples and :ref:`ug_bp` on how to enable and run tasks
 one by one.
 
-By default, the role is not idempotent, because, in the standard workflow, an image is always
-mounted when the roles starts and unmounted on the exit. To speedup repeating deployment it's
-possible to disable the unmounting of the image ``bsd_cimage_umount=false``. This would make the
-role idempotent. Unmount the image before dumping it to a disk.
+By default, the role is not idempotent. In the standard workflow, an image is always mounted when
+the role starts and unmounted when completes. To speedup repeating execution of a playbook, it's
+possible to disable the unmounting of the image by setting the variable
+``bsd_cimage_umount=false``. This would make the role idempotent. Unmount the image before dumping
+it to a disk.
 
-* Ansible role: `freebsd_custom_image <https://galaxy.ansible.com/vbotka/freebsd_custom_image/>`_
+
+* Ansible role: `vbotka.freebsd_custom_image <https://galaxy.ansible.com/vbotka/freebsd_custom_image/>`_
 * Supported systems: `FreeBSD <https://www.freebsd.org/releases/>`_
-* Requirements: None
+* Requirements: `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
 
 
 .. _ug_installation:
