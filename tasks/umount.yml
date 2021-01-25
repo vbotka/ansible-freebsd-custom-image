@@ -1,5 +1,14 @@
 ---
 
+- name: "umount: Debug"
+  vars:
+    msg: |
+      bsd_cimage_mount_points
+      {{ bsd_cimage_mount_points|to_yaml }}
+  debug:
+    msg: "{{ msg.split('\n')[:-1] }}"
+  when: bsd_cimage_debug|bool
+
 - name: "umount: Unmount"
   mount:
     path: "{{ item.mountpoint }}"
@@ -10,26 +19,22 @@
     label: "{{ item.mountpoint }}"
   register: result
 
-- name: "umount: Debug unmount"
+- name: "umount: Debug unmount results"
   debug:
     var: result
   when: bsd_cimage_debug|bool
 
-- block:
-    - name: "umount: Detach memory disk"
-      command:
-        cmd: "mdconfig -d -u {{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}"
-        removes: "/dev/md{{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}"
-      register: result
-  rescue:
-    - name: "mount: Rescue failed memory disk"
-      fail:
-        msg: "[ERROR] Can't detach unit {{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}\n{{ result }}"
-  when: bsd_cimage_mdconfig_devs is defined
+- name: "umount: Detach memory disk"
+  include_role:
+    name: vbotka.ansible_lib
+    tasks_from: al_mdconfig.yml
+  vars:
+    al_mdconfig_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
+    al_mdconfig_state: absent
 
 - name: "umount: Debug detach memory disk"
   debug:
-    var: result
+    var: al_mdconfig_devs
   when: bsd_cimage_debug|bool
 
 # Notes
