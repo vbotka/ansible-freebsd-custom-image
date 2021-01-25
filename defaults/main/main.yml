@@ -16,7 +16,9 @@ bsd_cimage_mount_points_create: false
 # Umount and delete mountpoints. Detach memory disk
 bsd_cimage_umount: true
 
+
 # Packages  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 freebsd_install_method: packages
 # freebsd_install_method: ports
 freebsd_use_packages: true
@@ -26,7 +28,9 @@ freebsd_install_delay: 5
 bsd_cimage_packages: []
 # - shells/bash
 
+
 # Images  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 bsd_cimage_download: []
 # bsd_cimage_download:
 #   - site: https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/13.0
@@ -51,7 +55,11 @@ bsd_cimage_mount_points:
     fstype: ufs
     mountpoint: /mnt3
 
+
 # Customize - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# This mountpoint is the root of the tree that shall be customized. There can be more partitions
+# mounted to different mountpoints from single image.
 bsd_cimage_mount_path: /mnt3
 
 # authorized keys

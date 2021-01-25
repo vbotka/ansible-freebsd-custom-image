@@ -1,6 +1,6 @@
 ---
 
-- name: "umount: Unmount mount points"
+- name: "umount: Unmount"
   mount:
     path: "{{ item.mountpoint }}"
     state: unmounted
@@ -10,7 +10,7 @@
     label: "{{ item.mountpoint }}"
   register: result
 
-- name: "umount: Debug unmount results"
+- name: "umount: Debug unmount"
   debug:
     var: result
   when: bsd_cimage_debug|bool
@@ -27,7 +27,7 @@
         msg: "[ERROR] Can't detach unit {{ bsd_cimage_mdconfig_devs[my_file]['unit'] }}\n{{ result }}"
   when: bsd_cimage_mdconfig_devs is defined
 
-- name: "umount: Debug memory disk detach results"
+- name: "umount: Debug detach memory disk"
   debug:
     var: result
   when: bsd_cimage_debug|bool
