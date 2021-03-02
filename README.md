@@ -1,15 +1,14 @@
 # freebsd_custom_image
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-custom-image.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-custom-image)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-custom-image.readthedocs.io/en/latest/)[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/config_light)[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-custom-image.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-custom-image)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-custom-image.readthedocs.io/en/latest/)[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_custom_image/) FreeBSD. Download, mount,
-and customize system images.
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_custom_image/) FreeBSD. Download, mount, and customize system images.
 
 [Documentation at readthedocs.io](https://ansible-freebsd-custom-image.readthedocs.io)
 
-Feel free to [share your feedback and report
-issues](https://github.com/vbotka/ansible-freebsd-custom-image/issues). [Contributions are
-welcome](https://github.com/firstcontributions/first-contributions).
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-custom-image/issues).
+
+[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
 ## Requirements
