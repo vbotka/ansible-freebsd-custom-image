@@ -67,8 +67,18 @@ Follow the steps below
 
 * Install the role ``vbotka.freebsd_custom_image`` ::
 
-    shell> ansible-galaxy install vbotka.freebsd_custom_image
+    shell> ansible-galaxy role install vbotka.freebsd_custom_image
 
+* Install the library ``vbotka.ansible_lib`` ::
+
+    shell> ansible-galaxy role install vbotka.ansible_lib
+
+* Install the collections
+  `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_
+  and `ansible.posix <https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix/>`_  ::
+
+    shell> ansible-galaxy collection install ansible.posix
+    shell> ansible-galaxy collection install community.general
 
 * Create the playbook ``pb-wifi-basic.yml`` for single host images.example.com (1). Configure
   connection (3-4) and privilege escalation (5-7). Configure the path (15) to the image (16) and
