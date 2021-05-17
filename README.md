@@ -13,7 +13,14 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
-* Ansible role [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
+### Roles
+
+* [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
+
+### Collections
+
+* ansible.posix
+* community.general
 
 
 ## Notes

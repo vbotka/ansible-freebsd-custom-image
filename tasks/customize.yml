@@ -2,14 +2,13 @@
 
 - name: "customize: Debug"
   vars:
-    msg: |
-      bsd_cimage_mount_path [{{ bsd_cimage_mount_path }}
+    msg: |-
+      bsd_cimage_mount_path [{{ bsd_cimage_mount_path }}]
       bsd_cimage_loaderconf [{{ bsd_cimage_loaderconf }}]
       bsd_cimage_rcconf [{{ bsd_cimage_rcconf }}]
       bsd_cimage_wpasupconf [{{ bsd_cimage_wpasupconf }}]
-
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - include_tasks: fn/loaderconf.yml

@@ -1,7 +1,7 @@
 ---
 
 - name: "package: Install packages."
-  pkgng:
+  community.general.pkgng:
     name: "{{ bsd_cimage_packages }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
@@ -10,7 +10,7 @@
   when: freebsd_install_method == "packages"
 
 - name: "packages: Install ports."
-  portinstall:
+  community.general.portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ bsd_cimage_packages }}"

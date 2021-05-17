@@ -2,7 +2,7 @@
 
 - name: "download: Debug"
   vars:
-    msg: |
+    msg: |-
       bsd_cimage_download
       {{ bsd_cimage_download|to_nice_yaml }}
       bsd_cimage_dir [{{ bsd_cimage_dir }}]
@@ -11,12 +11,12 @@
       bsd_cimage_mode [{{ bsd_cimage_mode|default('UNDEFINED') }}]
       bsd_cimage_get_checksums [{{ bsd_cimage_get_checksums|default(true) }}]
       bsd_cimage_get_images [{{ bsd_cimage_get_images|default(true) }}]
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - name: "download: Get checksums"
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ item.site ~ '/' ~ item.checksum }}"
     dest: "{{ bsd_cimage_dir }}/{{ item.checksum }}"
     owner: "{{ bsd_cimage_owner|default(omit) }}"
@@ -28,7 +28,9 @@
   when: bsd_cimage_get_checksums|default(true)|bool
 
 - name: "download: Read checksums"
-  command: "cat {{ bsd_cimage_dir }}/{{ item.checksum }}"
+  command:
+    cmd: >
+      cat {{ bsd_cimage_dir }}/{{ item.checksum }}
   register: cresult
   loop: "{{ bsd_cimage_download }}"
   loop_control:
@@ -36,7 +38,7 @@
   changed_when: false
 
 - name: "download: Debug checksums"
-  debug:
+  ansible.builtin.debug:
     msg: "{{ algorithm }}:{{ checksum }}"
   loop: "{{ bsd_cimage_download }}"
   loop_control:
@@ -45,10 +47,12 @@
   vars:
     algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split()|first|lower }}"
     checksum: "{{ cresult.results[ansible_loop.index0].stdout.split()|last }}"
-  when: bsd_cimage_debug|bool
+  when:
+    - bsd_cimage_debug|bool
+    - cresult.results[ansible_loop.index0].stdout is defined
 
 - name: "download: Get images"
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ item.site ~ '/' ~ item.image }}"
     checksum: "{{ algorithm }}:{{ checksum }}"
     dest: "{{ bsd_cimage_dir }}/{{ item.image }}"
@@ -63,11 +67,13 @@
   vars:
     algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split()|first|lower }}"
     checksum: "{{ cresult.results[ansible_loop.index0].stdout.split()|last }}"
-  when: bsd_cimage_get_images|default(true)|bool
+  when:
+    - bsd_cimage_get_images|default(true)|bool
+    - cresult.results[ansible_loop.index0].stdout is defined
 
 - name: "download: Debug images"
-  debug:
-    msg: "{{ gresult }}"
+  ansible.builtin.debug:
+    var: gresult
   when: bsd_cimage_debug|bool
 
 # TODO:
