@@ -6,7 +6,7 @@ bsd_cimage_wpasupconf_backup: false
 bsd_cimage_wpasupconf_file: /etc/wpa_supplicant.conf
 bsd_cimage_wpasupconf_owner: root
 bsd_cimage_wpasupconf_group: wheel
-bsd_cimage_wpasupconf_mode: 0640
+bsd_cimage_wpasupconf_mode: "0640"
 bsd_cimage_wpasupconf_global: []
 # bsd_cimage_wpasupconf_global:
 #   - {key: ctrl_interface, value: /var/run/wpa_supplicant}

@@ -2,7 +2,7 @@
 
 - name: "mount: Debug"
   vars:
-    msg: |
+    msg: |-
       bsd_cimage_mount_dir [{{ bsd_cimage_mount_dir }}]
       bsd_cimage_mount_file [{{ bsd_cimage_mount_file }}]
       bsd_cimage_mount_mode [{{ bsd_cimage_mount_mode }}]
@@ -10,11 +10,11 @@
       bsd_cimage_mount_points
       {{ bsd_cimage_mount_points|to_yaml }}
   debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - name: "mount: Create mount points"
-  file:
+  ansible.builtin.file:
     state: directory
     path: "{{ item.mountpoint }}"
     mode: "{{ bsd_cimage_mount_mode }}"
@@ -30,20 +30,20 @@
     al_mdconfig_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
 
 - name: "mount: Set variable bsd_cimage_mount_dev"
-  set_fact:
-    bsd_cimage_mount_dev: "md{{ al_mdconfig_devs[my_file]['unit'] }}"
+  ansible.builtin.set_fact:
+    bsd_cimage_mount_dev: "md{{ al_mdconfig_devs[my_file]['unit']|default('UNDEFINED') }}"
   vars:
     my_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
   tags: bsd_cimage_mdconfig
 
 - name: "mount: Debug [{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}]"
-  debug:
+  ansible.builtin.debug:
     msg: "Mounted at [{{ bsd_cimage_mount_dev }}]"
   when: bsd_cimage_debug|bool
   tags: bsd_cimage_mdconfig
 
 - name: "mount: Mount {{ bsd_cimage_mount_dev }} partitions"
-  mount:
+  ansible.posix.mount:
     src: "/dev/{{ bsd_cimage_mount_dev }}{{ item.partition }}"
     path: "{{ item.mountpoint }}"  # Note 2.
     fstype: "{{ item.fstype }}"
@@ -53,7 +53,7 @@
   register: result
 
 - name: "mount: Debug mount results"
-  debug:
+  ansible.builtin.debug:
     var: result
   when: bsd_cimage_debug|bool
 

@@ -2,7 +2,7 @@
 
 - name: "Debug"
   vars:
-    msg: |
+    msg: |-
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          ansible_architecture [{{ ansible_architecture }}]
          ansible_os_family [{{ ansible_os_family }}]
@@ -16,13 +16,12 @@
          freebsd_use_packages [{{ freebsd_use_packages }}]
          freebsd_install_retries [{{ freebsd_install_retries }}]
          freebsd_install_delay [{{ freebsd_install_delay }}]
-
-         bsd_cimage_sanity [{{ bsd_cimage_sanity }}]
-         bsd_cimage_mount [{{ bsd_cimage_mount }}]
-         bsd_cimage_umount [{{ bsd_cimage_umount }}]
          bsd_cimage_install [{{ bsd_cimage_install }}]
          bsd_cimage_packages
          {{ bsd_cimage_packages|to_nice_yaml }}
+         bsd_cimage_sanity [{{ bsd_cimage_sanity }}]
+         bsd_cimage_mount [{{ bsd_cimage_mount }}]
+         bsd_cimage_umount [{{ bsd_cimage_umount }}]
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_dir [{{ bsd_cimage_dir }}]
          bsd_cimage_owner [{{ bsd_cimage_owner|default('UNDEFINED') }}]
@@ -70,8 +69,8 @@
          bsd_cimage_wpasupconf_link_dev [{{ bsd_cimage_wpasupconf_link_dev }}]
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
 
 # EOF
 ...

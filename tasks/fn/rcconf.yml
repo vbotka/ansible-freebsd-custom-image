@@ -2,17 +2,16 @@
 
 - name: "rcconf: Debug"
   vars:
-    msg: |
+    msg: |-
       bsd_cimage_rcconf_backup [{{ bsd_cimage_rcconf_backup }}]
       bsd_cimage_rcconf_data
       {{ bsd_cimage_rcconf_data|to_yaml }}
-
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - name: "rcconf: Configure {{ bsd_cimage_mount_path }}/etc/rc.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ bsd_cimage_mount_path }}/etc/rc.conf"
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}={{ item.value }}'

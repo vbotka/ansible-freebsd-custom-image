@@ -2,7 +2,7 @@
 
 - name: "wpasupconf: Debug"
   vars:
-    msg: |
+    msg: |-
       bsd_cimage_wpasupconf_backup [{{ bsd_cimage_wpasupconf_backup }}]
       bsd_cimage_wpasupconf_file [{{ bsd_cimage_wpasupconf_file }}]
       bsd_cimage_wpasupconf_owner [{{ bsd_cimage_wpasupconf_owner }}]
@@ -16,13 +16,12 @@
       {% endif %}
       bsd_cimage_wpasupconf_link [{{ bsd_cimage_wpasupconf_link }}]
       bsd_cimage_wpasupconf_link_dev [{{ bsd_cimage_wpasupconf_link_dev }}]
-
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - name: 'wpasupconf: Configure {{ bsd_cimage_mount_path }}/etc/wpasupplicant.conf'
-  template:
+  ansible.builtin.template:
     src: wpa_supplicant.conf.j2
     dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}.{{ item.dev }}"
     owner: "{{ bsd_cimage_wpasupconf_owner }}"
@@ -31,13 +30,13 @@
     backup: "{{ bsd_cimage_wpasupconf_backup }}"
   loop: "{{ bsd_cimage_wpasupconf_data }}"
 
-- name: 'customize: Link to {{ bsd_cimage_wpasupconf_file }}.{{ bsd_cimage_wpasupconf_link_dev }}'
-  when: bsd_cimage_wpasupconf_link|bool
-  file:
+- name: 'wpasupconf: Link to {{ bsd_cimage_wpasupconf_file }}.{{ bsd_cimage_wpasupconf_link_dev }}'
+  ansible.builtin.file:
     state: link
     src: "wpa_supplicant.conf.{{ bsd_cimage_wpasupconf_link_dev }}"
     dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}"
     force: true
+  when: bsd_cimage_wpasupconf_link|bool
 
 # EOF
 ...

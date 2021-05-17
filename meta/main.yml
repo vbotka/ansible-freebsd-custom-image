@@ -16,4 +16,7 @@ galaxy_info:
     - freebsd
     - installation
 dependencies: []
+collections:
+  - ansible.posix
+  - community.general
 ...

@@ -2,15 +2,15 @@
 
 - name: "umount: Debug"
   vars:
-    msg: |
+    msg: |-
       bsd_cimage_mount_points
       {{ bsd_cimage_mount_points|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - name: "umount: Unmount"
-  mount:
+  ansible.posix.mount:
     path: "{{ item.mountpoint }}"
     state: unmounted
     fstab: /tmp/tmp.fstab  # Note 1.
@@ -20,7 +20,7 @@
   register: result
 
 - name: "umount: Debug unmount results"
-  debug:
+  ansible.builtin.debug:
     var: result
   when: bsd_cimage_debug|bool
 
@@ -33,7 +33,7 @@
     al_mdconfig_state: absent
 
 - name: "umount: Debug detach memory disk"
-  debug:
+  ansible.builtin.debug:
     var: al_mdconfig_devs
   when: bsd_cimage_debug|bool
 

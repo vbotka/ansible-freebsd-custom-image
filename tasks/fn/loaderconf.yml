@@ -2,22 +2,20 @@
 
 - name: "loaderconf: Debug"
   vars:
-    msg: |
+    msg: |-
       bsd_cimage_loaderconf_backup [{{ bsd_cimage_loaderconf_backup }}]
-      bsd_cimage_loaderconf [{{ bsd_cimage_loaderconf }}]
       bsd_cimage_loaderconf_modules
       {{ bsd_cimage_loaderconf_modules|to_yaml }}
       bsd_cimage_loaderconf_data
-      {{ bsd_cimage_loaderconf_data|to_nice_yaml }}"
+      {{ bsd_cimage_loaderconf_data|to_nice_yaml }}
       bsd_cimage_loaderconf_sysctl
-      {{ bsd_cimage_loaderconf_sysctl|to_nice_yaml }}"
-
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+      {{ bsd_cimage_loaderconf_sysctl|to_nice_yaml }}
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
 - name: "loaderconf: Configure {{ bsd_cimage_mount_path }}/boot/loader.conf"
-  template:
+  ansible.builtin.template:
     src: loader.conf.j2
     dest: "{{ bsd_cimage_mount_path }}/boot/loader.conf"
     owner: root
