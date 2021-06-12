@@ -11,15 +11,18 @@
     msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
-- include_tasks: fn/loaderconf.yml
+- name: Include fn/loaderconf.yml
+  ansible.builtin.include_tasks: fn/loaderconf.yml
   when: bsd_cimage_loaderconf|bool
   tags: bsd_cimage_loaderconf
 
-- include_tasks: fn/rcconf.yml
+- name: Include fn/rcconf.yml
+  ansible.builtin.include_tasks: fn/rcconf.yml
   when: bsd_cimage_rcconf|bool
   tags: bsd_cimage_rcconf
 
-- include_tasks: fn/wpasupconf.yml
+- name: Include fn/wpasupconf.yml
+  ansible.builtin.include_tasks: fn/wpasupconf.yml
   when: bsd_cimage_wpasupconf|bool
   tags: bsd_cimage_wpasupconf
 

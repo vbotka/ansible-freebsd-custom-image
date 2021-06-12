@@ -31,6 +31,8 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 * Setting `bsd_cimage_umount=false` will keep the memory disk attached and partitions mounted. This
   will make the role idempotent.
 
+* The role doesn’t support check and diff "--check --diff"
+
 
 ## References
 

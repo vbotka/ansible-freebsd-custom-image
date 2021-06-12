@@ -28,7 +28,7 @@
   when: bsd_cimage_get_checksums|default(true)|bool
 
 - name: "download: Read checksums"
-  command:
+  ansible.builtin.command:
     cmd: >
       cat {{ bsd_cimage_dir }}/{{ item.checksum }}
   register: cresult

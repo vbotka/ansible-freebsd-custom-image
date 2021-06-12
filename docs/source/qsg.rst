@@ -123,7 +123,7 @@ Follow the steps below
 
 * See what variables will be included ::
 
-    shell> ansible-playbook pb-wifi-basic.yml -t bsd_cimage_debug
+    shell> ansible-playbook pb-wifi-basic.yml -t bsd_cimage_debug -e bsd_cimage_debug=true
 
 
 * Run the playbook ::

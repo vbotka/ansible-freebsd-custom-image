@@ -3,7 +3,7 @@
 Templates
 =========
 
-.. _as_template_loader.conf.j2:
+.. _as_loader.conf.j2:
 
 loader.conf.j2
 --------------
@@ -23,7 +23,7 @@ Description of the template.
     :emphasize-lines: 1
     :linenos:
 
-.. _as_template_wpa_supplicant.conf.j2:
+.. _as_wpa_supplicant.conf.j2:
 
 wpa_supplicant.conf.j2
 ----------------------
