@@ -1,29 +1,36 @@
 ---
 # tasks for freebsd_custom_image
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: bsd_cimage_debug|bool
   tags: [bsd_cimage_debug, always]
 
-- import_tasks: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: bsd_cimage_install|bool
   tags: bsd_cimage_packages
 
-- import_tasks: sanity.yml
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
   when: bsd_cimage_sanity|bool
   tags: [bsd_cimage_sanity, always]
 
-- import_tasks: download.yml
+- name: Import download.yml
+  ansible.builtin.import_tasks: download.yml
   tags: bsd_cimage_download
 
-- import_tasks: mount.yml
+- name: Import mount.yml
+  ansible.builtin.import_tasks: mount.yml
   when: bsd_cimage_mount|bool
   tags: bsd_cimage_mount
 
-- import_tasks: customize.yml
+- name: Import customize.yml
+  ansible.builtin.import_tasks: customize.yml
   tags: bsd_cimage_customize
 
-- import_tasks: umount.yml
+- name: Import umount.yml
+  ansible.builtin.import_tasks: umount.yml
   when: bsd_cimage_umount|bool
   tags: bsd_cimage_umount
 

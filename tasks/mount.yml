@@ -9,7 +9,7 @@
       bsd_cimage_mount_points_create [{{ bsd_cimage_mount_points_create }}]
       bsd_cimage_mount_points
       {{ bsd_cimage_mount_points|to_yaml }}
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
   when: bsd_cimage_debug|bool
 
@@ -23,7 +23,7 @@
   tags: bsd_cimage_mount_points
 
 - name: "mount: Attach memory disk"
-  include_role:
+  ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_mdconfig.yml
   vars:
@@ -62,8 +62,7 @@
 # Note 1: It's not possible to mount a device without touching fstab. Temporary fstab is a
 # workaround.
 # See https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
-
-# Note 2: Ansible module *mount* will create/remove non-existent mountpoint
+## Note 2: Ansible module *mount* will create/remove non-existent mountpoint
 
 # EOF
 ...
