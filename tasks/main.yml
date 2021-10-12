@@ -4,7 +4,7 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: bsd_cimage_debug|bool
-  tags: [bsd_cimage_debug, always]
+  tags: bsd_cimage_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml

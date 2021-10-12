@@ -6,7 +6,7 @@
       bsd_cimage_mount_points
       {{ bsd_cimage_mount_points|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
 
 - name: "umount: Unmount"

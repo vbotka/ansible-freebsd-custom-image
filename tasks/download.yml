@@ -12,7 +12,7 @@
       bsd_cimage_get_checksums [{{ bsd_cimage_get_checksums|default(true) }}]
       bsd_cimage_get_images [{{ bsd_cimage_get_images|default(true) }}]
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
 
 - name: "download: Get checksums"

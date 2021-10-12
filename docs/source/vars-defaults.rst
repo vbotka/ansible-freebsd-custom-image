@@ -16,12 +16,12 @@ update of the role.
 
 .. seealso::
 
-   * The examples of the customization ``vars/main/main.yml.sample``
+   * The examples of the customization ``vars/main.yml.sample``
 
 .. warning::
 
    * Don't make any changes to the files in *defaults/main*. The changes will be overwritten by the
-     update of the role. Customize the default values in the files in *vars/main*.
+     update of the role. Customize the default values in the files in *vars/main.yml*.
 
    * Default value of *bsd_cimage_debug_classified* is **false**. Passwords will be displayed if this
      variable is enabled.
