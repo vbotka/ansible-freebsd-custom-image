@@ -7,7 +7,7 @@
       bsd_cimage_rcconf_data
       {{ bsd_cimage_rcconf_data|to_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
 
 - name: "rcconf: Configure {{ bsd_cimage_mount_path }}/etc/rc.conf"

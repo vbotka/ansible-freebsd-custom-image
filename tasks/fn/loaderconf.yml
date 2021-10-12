@@ -11,7 +11,7 @@
       bsd_cimage_loaderconf_sysctl
       {{ bsd_cimage_loaderconf_sysctl|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
 
 - name: "loaderconf: Configure {{ bsd_cimage_mount_path }}/boot/loader.conf"

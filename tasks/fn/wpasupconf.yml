@@ -17,7 +17,7 @@
       bsd_cimage_wpasupconf_link [{{ bsd_cimage_wpasupconf_link }}]
       bsd_cimage_wpasupconf_link_dev [{{ bsd_cimage_wpasupconf_link_dev }}]
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
 
 - name: 'wpasupconf: Configure {{ bsd_cimage_mount_path }}/etc/wpasupplicant.conf'
