@@ -47,8 +47,7 @@ wireless adapter should automatically connect to the network and obtain DHCP add
 possible to connect to the system ``ssh freebsd@<ip-address>`` (default passwords of FreeBSD images
 are ``freebsd: freebsd`` and ``root: root``).
 
-The wireless adapter in this example is `USB Realtek RTL8188EU
-<https://www.freebsd.org/cgi/man.cgi?query=rtwn&apropos=0&sektion=0&manpath=FreeBSD+12.2-RELEASE+and+Ports&arch=default&format=html>`_
+The wireless adapter in this example is `USB Realtek RTL8188EU <https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html>`_
 (idVendor = 0x0bda idProduct = 0x8179) ::
 
     rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
@@ -56,7 +55,7 @@ The wireless adapter in this example is `USB Realtek RTL8188EU
 
 
 .. seealso::
-   * `32.3. Wireless Networking - FreeBSD Handbook <https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/network-wireless.html>`_
+   * `32.3. Wireless Networking - FreeBSD Handbook <https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-advanced-wireless>`_
    * `Wiki FreeBSD Wireless <https://wiki.freebsd.org/WiFi>`_
    * `FreeBSD Release Notes <https://www.freebsd.org/releases/index.html>`_
    * `man pages of supported wireless devices <https://wiki.freebsd.org/DeviceDrivers>`_
