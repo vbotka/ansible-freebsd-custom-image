@@ -152,16 +152,15 @@ role with the command
 .. include:: tags-list.rst
 
 
-Examples
-========
+Basics
+======
 
-* Display the list of the variables and their values with the tag
-  ``bsd_cimage_debug`` (when the :index:`debug` is enabled ``bsd_cimage_debug: true``)
+* Display the variables. Use the tag ``bsd_cimage_debug``. Enable :index:`debug` (``bsd_cimage_debug: true``)
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_debug
+    shell> ansible-playbook playbook.yml -t bsd_cimage_debug -e bsd_cimage_debug=true
 
 * Download images
 
@@ -170,12 +169,40 @@ Examples
 
     shell> ansible-playbook playbook.yml -t bsd_cimage_download
 
+* Unpack images
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+    shell> ansible-playbook playbook.yml -t bsd_cimage_unpack
+
 * Create memory disk and mount the image
 
 .. code-block:: sh
    :emphasize-lines: 1
 
     shell> ansible-playbook playbook.yml -t bsd_cimage_mount
+
+* Run sanity tests. Enable :index:`sanity` (``bsd_cimage_sanity: true``)
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+    shell> ansible-playbook playbook.yml -t bsd_cimage_mount
+
+* Customize the image
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+    shell> ansible-playbook playbook.yml -t bsd_cimage_customize
+
+* Umount the image
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+    shell> ansible-playbook playbook.yml -t bsd_cimage_umount
 
 
 .. _ug_tasks:
@@ -242,12 +269,13 @@ Best practice
                                         -e bsd_cimage_debug=true \
 					-e bsd_cimage_debug_classified=true
 
-* Download images. Use *checksum* to avoid repeated downloads. Unpack the images from the archives
-  manually, if needed, and keep the archives in place to avoid repeated downloads. To speedup the
-  playbook, set the variable to an empty list *bsd_cimage_download=[]* after the images were
-  downloaded ::
+* Download images. To make the task idempotent use the attribute *checksum* in the items of the list *bsd_cimage_download*. See :ref:`ug_vars_defaults` ::
 
    shell> ansible-playbook playbook.yml -t bsd_cimage_download
+
+* Unpack the images ::
+
+   shell> ansible-playbook playbook.yml -t bsd_cimage_unpack
    
 * Create memory disk and mount image ::
 
