@@ -2,7 +2,7 @@
 # default vars for freebsd_custom_image
 
 # Test sanity
-bsd_cimage_sanity: true
+bsd_cimage_sanity: false
 # Display debug output
 bsd_cimage_debug: false
 # Display classified debug output
