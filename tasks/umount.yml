@@ -3,8 +3,8 @@
 - name: "umount: Debug"
   vars:
     msg: |-
-      bsd_cimage_mount_points
-      {{ bsd_cimage_mount_points|to_yaml }}
+      bsd_cimage_mount_points:
+      {{ bsd_cimage_mount_points|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool

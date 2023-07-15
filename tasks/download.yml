@@ -3,14 +3,14 @@
 - name: "download: Debug"
   vars:
     msg: |-
-      bsd_cimage_download
-      {{ bsd_cimage_download|to_nice_yaml }}
-      bsd_cimage_dir [{{ bsd_cimage_dir }}]
-      bsd_cimage_owner [{{ bsd_cimage_owner|default('UNDEFINED') }}]
-      bsd_cimage_group [{{ bsd_cimage_group|default('UNDEFINED') }}]
-      bsd_cimage_mode [{{ bsd_cimage_mode|default('UNDEFINED') }}]
-      bsd_cimage_get_checksums [{{ bsd_cimage_get_checksums|default(true) }}]
-      bsd_cimage_get_images [{{ bsd_cimage_get_images|default(true) }}]
+      bsd_cimage_download:
+        {{ bsd_cimage_download|to_nice_yaml(indent=2)|indent(2) }}
+      bsd_cimage_dir: {{ bsd_cimage_dir }}
+      bsd_cimage_owner: {{ bsd_cimage_owner|default('UNDEFINED') }}
+      bsd_cimage_group: {{ bsd_cimage_group|default('UNDEFINED') }}
+      bsd_cimage_mode: {{ bsd_cimage_mode|default('UNDEFINED') }}
+      bsd_cimage_get_checksums: {{ bsd_cimage_get_checksums|default(true) }}
+      bsd_cimage_get_images: {{ bsd_cimage_get_images|default(true) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
