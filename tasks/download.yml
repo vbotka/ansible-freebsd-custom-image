@@ -17,7 +17,7 @@
 
 - name: "download: Get checksums"
   ansible.builtin.get_url:
-    url: "{{ item.site ~ '/' ~ item.checksum }}"
+    url: "{{ [item.site, item.checksum]|community.general.path_join }}"
     dest: "{{ bsd_cimage_dir }}/{{ item.checksum }}"
     owner: "{{ bsd_cimage_owner|default(omit) }}"
     group: "{{ bsd_cimage_group|default(omit) }}"
@@ -36,6 +36,7 @@
   loop_control:
     label: "{{ item.checksum }}"
   changed_when: false
+  check_mode: false
 
 - name: "download: Debug checksums"
   ansible.builtin.debug:
@@ -53,7 +54,7 @@
 
 - name: "download: Get images"
   ansible.builtin.get_url:
-    url: "{{ item.site ~ '/' ~ item.image }}"
+    url: "{{ [item.site, item.image]|community.general.path_join }}"
     checksum: "{{ algorithm }}:{{ checksum }}"
     dest: "{{ bsd_cimage_dir }}/{{ item.image }}"
     owner: "{{ bsd_cimage_owner|default(omit) }}"
