@@ -77,11 +77,5 @@
     var: gresult
   when: bsd_cimage_debug|bool
 
-# TODO:
-# 1) Extract item.image; keep the input file (-k)
-#    xz -d -k FreeBSD-12.2-STABLE-arm-armv6-RPI-B-20210107-r368787.img.xz
-# 2) Link to sorted dirs
-# 3) Copy to live
-
 # EOF
 ...
