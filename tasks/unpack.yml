@@ -1,0 +1,29 @@
+---
+
+- name: "unpack: Unpack images"
+  ansible.builtin.command:
+    cmd: "{{ bsd_cimage_unpack_cmd[extension] }} {{ item.image }}"
+    creates: "{{ dest }}"
+    chdir: "{{ bsd_cimage_dir }}"
+  register: uresult
+  loop: "{{ bsd_cimage_download }}"
+  loop_control:
+    label: "{{ item.image }}"
+  when: extension in bsd_cimage_unpack_ext
+  vars:
+    dest: "{{ item.image|splitext|first }}"
+    extension: "{{ item.image|splitext|last }}"
+
+- name: "unpack: Debug unpack"
+  ansible.builtin.debug:
+    var: uresult
+  when: bsd_cimage_debug|bool
+
+# TODO:
+# 1) Extract item.image; keep the input file (-k)
+#    xz -d -k FreeBSD-12.2-STABLE-arm-armv6-RPI-B-20210107-r368787.img.xz
+# 2) Link to sorted dirs
+# 3) Copy to live
+
+# EOF
+...

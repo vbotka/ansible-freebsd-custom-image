@@ -20,6 +20,10 @@
   ansible.builtin.import_tasks: download.yml
   tags: bsd_cimage_download
 
+- name: Import unpack.yml
+  ansible.builtin.import_tasks: unpack.yml
+  tags: bsd_cimage_unpack
+
 - name: Import mount.yml
   ansible.builtin.import_tasks: mount.yml
   when: bsd_cimage_mount|bool

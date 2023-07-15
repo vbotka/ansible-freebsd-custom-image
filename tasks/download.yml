@@ -3,22 +3,22 @@
 - name: "download: Debug"
   vars:
     msg: |-
-      bsd_cimage_download
-      {{ bsd_cimage_download|to_nice_yaml }}
-      bsd_cimage_dir [{{ bsd_cimage_dir }}]
-      bsd_cimage_owner [{{ bsd_cimage_owner|default('UNDEFINED') }}]
-      bsd_cimage_group [{{ bsd_cimage_group|default('UNDEFINED') }}]
-      bsd_cimage_mode [{{ bsd_cimage_mode|default('UNDEFINED') }}]
-      bsd_cimage_get_checksums [{{ bsd_cimage_get_checksums|default(true) }}]
-      bsd_cimage_get_images [{{ bsd_cimage_get_images|default(true) }}]
+      bsd_cimage_download:
+        {{ bsd_cimage_download|to_nice_yaml(indent=2)|indent(2) }}
+      bsd_cimage_dir: {{ bsd_cimage_dir }}
+      bsd_cimage_owner: {{ bsd_cimage_owner|default('UNDEFINED') }}
+      bsd_cimage_group: {{ bsd_cimage_group|default('UNDEFINED') }}
+      bsd_cimage_mode: {{ bsd_cimage_mode|default('UNDEFINED') }}
+      bsd_cimage_get_checksums: {{ bsd_cimage_get_checksums|default(true) }}
+      bsd_cimage_get_images: {{ bsd_cimage_get_images|default(true) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
 
 - name: "download: Get checksums"
   ansible.builtin.get_url:
-    url: "{{ item.site ~ '/' ~ item.checksum }}"
-    dest: "{{ bsd_cimage_dir }}/{{ item.checksum }}"
+    url: "{{ [item.site, item.checksum]|community.general.path_join }}"
+    dest: "{{ [bsd_cimage_dir, item.checksum]|community.general.path_join }}"
     owner: "{{ bsd_cimage_owner|default(omit) }}"
     group: "{{ bsd_cimage_group|default(omit) }}"
     mode: "{{ bsd_cimage_mode|default(omit) }}"
@@ -30,12 +30,13 @@
 - name: "download: Read checksums"
   ansible.builtin.command:
     cmd: >
-      cat {{ bsd_cimage_dir }}/{{ item.checksum }}
+      cat {{ [bsd_cimage_dir, item.checksum]|community.general.path_join }}
   register: cresult
   loop: "{{ bsd_cimage_download }}"
   loop_control:
     label: "{{ item.checksum }}"
   changed_when: false
+  check_mode: false
 
 - name: "download: Debug checksums"
   ansible.builtin.debug:
@@ -53,9 +54,9 @@
 
 - name: "download: Get images"
   ansible.builtin.get_url:
-    url: "{{ item.site ~ '/' ~ item.image }}"
+    url: "{{ [item.site, item.image]|community.general.path_join }}"
     checksum: "{{ algorithm }}:{{ checksum }}"
-    dest: "{{ bsd_cimage_dir }}/{{ item.image }}"
+    dest: "{{ [bsd_cimage_dir, item.image]|community.general.path_join }}"
     owner: "{{ bsd_cimage_owner|default(omit) }}"
     group: "{{ bsd_cimage_group|default(omit) }}"
     mode: "{{ bsd_cimage_mode|default(omit) }}"
@@ -75,12 +76,6 @@
   ansible.builtin.debug:
     var: gresult
   when: bsd_cimage_debug|bool
-
-# TODO:
-# 1) Extract item.image; keep the input file (-k)
-#    xz -d -k FreeBSD-12.2-STABLE-arm-armv6-RPI-B-20210107-r368787.img.xz
-# 2) Link to sorted dirs
-# 3) Copy to live
 
 # EOF
 ...

@@ -2,7 +2,7 @@
 
 - name: "sanity: Only FreeBSD family supported"
   ansible.builtin.assert:
-    that: ansible_os_family == "FreeBSD"
+    that: ansible_os_family == 'FreeBSD'
     fail_msg: "[ERROR] Only FreeBSD family supported."
 
 - name: "sanity: Stat image"

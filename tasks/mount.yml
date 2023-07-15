@@ -3,12 +3,12 @@
 - name: "mount: Debug"
   vars:
     msg: |-
-      bsd_cimage_mount_dir [{{ bsd_cimage_mount_dir }}]
-      bsd_cimage_mount_file [{{ bsd_cimage_mount_file }}]
-      bsd_cimage_mount_mode [{{ bsd_cimage_mount_mode }}]
-      bsd_cimage_mount_points_create [{{ bsd_cimage_mount_points_create }}]
-      bsd_cimage_mount_points
-      {{ bsd_cimage_mount_points|to_yaml }}
+      bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
+      bsd_cimage_mount_file: {{ bsd_cimage_mount_file }}
+      bsd_cimage_mount_mode: {{ bsd_cimage_mount_mode }}
+      bsd_cimage_mount_points_create: {{ bsd_cimage_mount_points_create }}
+      bsd_cimage_mount_points:
+        {{ bsd_cimage_mount_points|to_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: bsd_cimage_debug|bool
@@ -38,7 +38,7 @@
 
 - name: "mount: Debug [{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}]"
   ansible.builtin.debug:
-    msg: "Mounted at [{{ bsd_cimage_mount_dev }}]"
+    msg: "Mounted at: {{ bsd_cimage_mount_dev }}"
   when: bsd_cimage_debug|bool
   tags: bsd_cimage_mdconfig
 

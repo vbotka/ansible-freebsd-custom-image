@@ -18,7 +18,7 @@
          freebsd_install_delay: {{ freebsd_install_delay }}
          bsd_cimage_install: {{ bsd_cimage_install }}
          bsd_cimage_packages:
-         {{ bsd_cimage_packages|to_nice_yaml }}
+           {{ bsd_cimage_packages|to_nice_yaml(indent=2)|indent(2) }}
          bsd_cimage_sanity: {{ bsd_cimage_sanity }}
          bsd_cimage_mount: {{ bsd_cimage_mount }}
          bsd_cimage_umount: {{ bsd_cimage_umount }}
@@ -28,30 +28,30 @@
          bsd_cimage_group: {{ bsd_cimage_group|default('UNDEFINED') }}
          bsd_cimage_mode: {{ bsd_cimage_mode|default('UNDEFINED') }}
          bsd_cimage_download:
-         {{ bsd_cimage_download|to_nice_yaml }}
+           {{ bsd_cimage_download|to_nice_yaml(indent=2)|indent(2) }}
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
          bsd_cimage_mount_file: {{ bsd_cimage_mount_file }}
          bsd_cimage_mount_mode: {{ bsd_cimage_mount_mode }}
          bsd_cimage_mount_points_create: {{ bsd_cimage_mount_points_create }}
          bsd_cimage_mount_points:
-         {{ bsd_cimage_mount_points|to_yaml }}
+           {{ bsd_cimage_mount_points|to_yaml(indent=2)|indent(2) }}
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_mount_path: {{ bsd_cimage_mount_path }}
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_loaderconf: {{ bsd_cimage_loaderconf }}
          bsd_cimage_loaderconf_backup: {{ bsd_cimage_loaderconf_backup }}
          bsd_cimage_loaderconf_modules:
-         {{ bsd_cimage_loaderconf_modules|to_yaml }}
+           {{ bsd_cimage_loaderconf_modules|to_yaml(indent=2)|indent(2) }}
          bsd_cimage_loaderconf_data:
-         {{ bsd_cimage_loaderconf_data|to_nice_yaml }}
+           {{ bsd_cimage_loaderconf_data|to_nice_yaml(indent=2)|indent(2) }}
          bsd_cimage_loaderconf_sysctl:
-         {{ bsd_cimage_loaderconf_sysctl|to_nice_yaml }}
+           {{ bsd_cimage_loaderconf_sysctl|to_nice_yaml(indent=2)|indent(2) }}
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_rcconf: {{ bsd_cimage_rcconf }}
          bsd_cimage_rcconf_backup: {{ bsd_cimage_rcconf_backup }}
          bsd_cimage_rcconf_data:
-         {{ bsd_cimage_rcconf_data|to_yaml }}
+           {{ bsd_cimage_rcconf_data|to_yaml(indent=2)|indent(2) }}
          - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
          bsd_cimage_wpasupconf: {{ bsd_cimage_wpasupconf }}
          bsd_cimage_wpasupconf_backup: {{ bsd_cimage_wpasupconf_backup }}
@@ -60,10 +60,10 @@
          bsd_cimage_wpasupconf_group: {{ bsd_cimage_wpasupconf_group }}
          bsd_cimage_wpasupconf_mode: {{ bsd_cimage_wpasupconf_mode }}
          bsd_cimage_wpasupconf_global:
-         {{ bsd_cimage_wpasupconf_global|to_nice_yaml }}
+           {{ bsd_cimage_wpasupconf_global|to_nice_yaml(indent=2)|indent(2) }}
          {% if bsd_cimage_debug_classified %}
-         bsd_cimage_wpasupconf_data
-         {{ bsd_cimage_wpasupconf_data|to_nice_yaml }}
+         bsd_cimage_wpasupconf_data:
+           {{ bsd_cimage_wpasupconf_data|to_nice_yaml(indent=2)|indent(2) }}
          {% endif %}
          bsd_cimage_wpasupconf_link: {{ bsd_cimage_wpasupconf_link }}
          bsd_cimage_wpasupconf_link_dev: {{ bsd_cimage_wpasupconf_link_dev }}
