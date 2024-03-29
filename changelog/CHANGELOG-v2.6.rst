@@ -24,6 +24,7 @@ Minor Changes
 
 Bugfixes
 --------
+* Fix lint.
 
 Breaking Changes / Porting Guide
 --------------------------------

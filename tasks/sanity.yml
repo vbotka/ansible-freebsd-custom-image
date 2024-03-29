@@ -1,29 +1,27 @@
 ---
-
-- name: "sanity: Only FreeBSD family supported"
+- name: "Sanity: Only FreeBSD family supported"
   ansible.builtin.assert:
     that: ansible_os_family == 'FreeBSD'
-    fail_msg: "[ERROR] Only FreeBSD family supported."
+    fail_msg: "[ERR] Only FreeBSD family supported."
 
-- name: "sanity: Stat image"
+- name: "Sanity: Stat image"
   ansible.builtin.stat:
     path: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
   register: st
 
-- name: "sanity: Image exists"
+- name: "Sanity: Image exists"
   ansible.builtin.assert:
     that: st.stat.exists
-    fail_msg: "[ERROR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} does not exist."
+    fail_msg: "[ERR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} does not exist."
 
-- name: "sanity: Image is regular file or link"
+- name: "Sanity: Image is regular file or link"
   ansible.builtin.assert:
     that: st.stat.isreg or st.stat.islnk
-    fail_msg: "[ERROR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} is neither a file nor symbolic link."
+    fail_msg: "[ERR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} is neither a file nor symbolic link."
 
-- name: "sanity: Image is not writable"
+- name: "Sanity: Image is not writable"
   ansible.builtin.assert:
     that: st.stat.writeable
-    fail_msg: "[ERROR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} is not writable."
+    fail_msg: "[ERR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} is not writable."
 
 # EOF
-...

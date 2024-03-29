@@ -1,20 +1,19 @@
 ---
-
-- name: "loaderconf: Debug"
+- name: "Loaderconf: Debug"
   vars:
     msg: |-
       bsd_cimage_loaderconf_backup: {{ bsd_cimage_loaderconf_backup }}
       bsd_cimage_loaderconf_modules:
-        {{ bsd_cimage_loaderconf_modules|to_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_loaderconf_modules | to_yaml(indent=2) | indent(2) }}
       bsd_cimage_loaderconf_data:
-        {{ bsd_cimage_loaderconf_data|to_nice_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_loaderconf_data | to_nice_yaml(indent=2) | indent(2) }}
       bsd_cimage_loaderconf_sysctl:
-        {{ bsd_cimage_loaderconf_sysctl|to_nice_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_loaderconf_sysctl | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
-- name: "loaderconf: Configure {{ bsd_cimage_mount_path }}/boot/loader.conf"
+- name: "Loaderconf: Configure {{ bsd_cimage_mount_path ~ '/boot/loader.conf' }}"
   ansible.builtin.template:
     src: loader.conf.j2
     dest: "{{ bsd_cimage_mount_path }}/boot/loader.conf"
@@ -24,4 +23,3 @@
     backup: "{{ bsd_cimage_loaderconf_backup }}"
 
 # EOF
-...

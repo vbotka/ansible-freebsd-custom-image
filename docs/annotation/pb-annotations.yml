@@ -1,12 +1,10 @@
 ---
-
 - name: Create annotation-[tasks,handlers,templates].yml
   hosts: localhost
   gather_facts: false
   debugger: on_failed
 
   tasks:
-
     - name: Read vars
       ansible.builtin.include_vars:
         dir: vars
@@ -18,7 +16,6 @@
     - name: Tasks
       tags: tasks
       block:
-
         - name: Set empty list my_files
           ansible.builtin.set_fact:
             my_files: []
@@ -44,7 +41,6 @@
     - name: Handlers
       tags: handlers
       block:
-
         - name: Set empty list my_files
           ansible.builtin.set_fact:
             my_files: []
@@ -73,7 +69,6 @@
     - name: Templates
       tags: templates
       block:
-
         - name: Set empty list my_files
           ansible.builtin.set_fact:
             my_files: []
@@ -97,4 +92,3 @@
             mode: "0644"
 
 # EOF
-...

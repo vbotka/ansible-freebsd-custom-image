@@ -16,7 +16,6 @@ bsd_cimage_mount_points_create: false
 # Umount and delete mountpoints. Detach memory disk
 bsd_cimage_umount: true
 
-
 # Packages  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 freebsd_install_method: packages
@@ -27,8 +26,6 @@ freebsd_install_delay: 5
 
 bsd_cimage_packages: []
 # - shells/bash
-
-
 # Images  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 bsd_cimage_download: []
@@ -47,21 +44,19 @@ bsd_cimage_dir: /export/images/FreeBSD/unsorted
 
 # mount image
 bsd_cimage_mount_dir: /export/images/FreeBSD/live
-bsd_cimage_mount_file: ''
+bsd_cimage_mount_file: ""
 # bsd_cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
-bsd_cimage_mount_mode: '0755'
+bsd_cimage_mount_mode: "0755"
 bsd_cimage_mount_points:
   - partition: s2a
     fstype: ufs
     mountpoint: /mnt3
 
-
 # Unpack - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 bsd_cimage_unpack_cmd:
   .xz: unxz --keep
-bsd_cimage_unpack_ext: "{{ bsd_cimage_unpack_cmd.keys()|list }}"
-
+bsd_cimage_unpack_ext: "{{ bsd_cimage_unpack_cmd.keys() | list }}"
 
 # Customize - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -77,4 +72,3 @@ bsd_cimage_mount_path: /mnt3
 #     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar2/id_rsa.pub') }}"
 
 # EOF
-...

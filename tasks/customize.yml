@@ -1,6 +1,5 @@
 ---
-
-- name: "customize: Debug"
+- name: "Customize: Debug"
   vars:
     msg: |-
       bsd_cimage_mount_path: {{ bsd_cimage_mount_path }}
@@ -9,24 +8,23 @@
       bsd_cimage_wpasupconf: {{ bsd_cimage_wpasupconf }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
 - name: Include fn/loaderconf.yml
   ansible.builtin.include_tasks: fn/loaderconf.yml
-  when: bsd_cimage_loaderconf|bool
+  when: bsd_cimage_loaderconf | bool
   tags: bsd_cimage_loaderconf
 
 - name: Include fn/rcconf.yml
   ansible.builtin.include_tasks: fn/rcconf.yml
-  when: bsd_cimage_rcconf|bool
+  when: bsd_cimage_rcconf | bool
   tags: bsd_cimage_rcconf
 
 - name: Include fn/wpasupconf.yml
   ansible.builtin.include_tasks: fn/wpasupconf.yml
-  when: bsd_cimage_wpasupconf|bool
+  when: bsd_cimage_wpasupconf | bool
   tags: bsd_cimage_wpasupconf
 
 # TODO: firstboot, wpa_cli
 
 # EOF
-...

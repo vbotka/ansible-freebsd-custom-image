@@ -1,30 +1,29 @@
 ---
-
-- name: "umount: Debug"
+- name: "Umount: Debug"
   vars:
     msg: |-
       bsd_cimage_mount_points:
-      {{ bsd_cimage_mount_points|to_yaml(indent=2)|indent(2) }}
+      {{ bsd_cimage_mount_points | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
-- name: "umount: Unmount"
+- name: "Umount: Unmount"
   ansible.posix.mount:
     path: "{{ item.mountpoint }}"
     state: unmounted
-    fstab: /tmp/tmp.fstab  # Note 1.
+    fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ bsd_cimage_mount_points }}"
   loop_control:
     label: "{{ item.mountpoint }}"
   register: result
 
-- name: "umount: Debug unmount results"
+- name: "Umount: Debug unmount results"
   ansible.builtin.debug:
     var: result
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
-- name: "umount: Detach memory disk"
+- name: "Umount: Detach memory disk" # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_mdconfig.yml
@@ -32,10 +31,10 @@
     al_mdconfig_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
     al_mdconfig_state: absent
 
-- name: "umount: Debug detach memory disk"
+- name: "Umount: Debug detach memory disk"
   ansible.builtin.debug:
     var: al_mdconfig_devs
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
 # Notes
 #
@@ -44,4 +43,3 @@
 # See https://github.com/ansible-collections/ansible.posix/issues/84#issuecomment-742420345
 
 # EOF
-...

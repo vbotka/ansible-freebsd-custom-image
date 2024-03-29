@@ -3,17 +3,17 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
   tags: bsd_cimage_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: bsd_cimage_install|bool
+  when: bsd_cimage_install | bool
   tags: bsd_cimage_packages
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
-  when: bsd_cimage_sanity|bool
+  when: bsd_cimage_sanity | bool
   tags: [bsd_cimage_sanity, always]
 
 - name: Import download.yml
@@ -26,7 +26,7 @@
 
 - name: Import mount.yml
   ansible.builtin.import_tasks: mount.yml
-  when: bsd_cimage_mount|bool
+  when: bsd_cimage_mount | bool
   tags: bsd_cimage_mount
 
 - name: Import customize.yml
@@ -35,8 +35,7 @@
 
 - name: Import umount.yml
   ansible.builtin.import_tasks: umount.yml
-  when: bsd_cimage_umount|bool
+  when: bsd_cimage_umount | bool
   tags: bsd_cimage_umount
 
 # EOF
-...

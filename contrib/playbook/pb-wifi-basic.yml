@@ -29,7 +29,8 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml
 
-- hosts: images.example.com
+- name: Download, mount, and configure wireless network in the system image
+  hosts: images.example.com
 
   connection: ssh
   remote_user: admin
@@ -53,23 +54,21 @@
 
     bsd_cimage_loaderconf: true
     bsd_cimage_loaderconf_backup: true
-    bsd_cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn,
-                                    if_rtwn_usb]
+    bsd_cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
     bsd_cimage_loaderconf_data:
-      - 'hw.usb.template=3'
-      - 'umodem_load="YES"'
-      - 'boot_multicons="YES"'
-      - 'boot_serial="YES"'
-      - 'beastie_disable="YES"'
-      - 'loader_color="NO"'
-      - 'legal.realtek.license_ack=1'
+      - hw.usb.template=3
+      - umodem_load="YES"
+      - boot_multicons="YES"
+      - boot_serial="YES"
+      - beastie_disable="YES"
+      - loader_color="NO"
+      - legal.realtek.license_ack=1
     bsd_cimage_loaderconf_sysctl: []
-
     bsd_cimage_rcconf: true
     bsd_cimage_rcconf_backup: true
     bsd_cimage_rcconf_data:
-      - {key: wlans_rtwn0, value: '"wlan0"'}
-      - {key: ifconfig_wlan0, value: '"WPA SYNCDHCP"'}
+      - { key: wlans_rtwn0, value: '"wlan0"' }
+      - { key: ifconfig_wlan0, value: '"WPA SYNCDHCP"' }
 
     bsd_cimage_wpasupconf: true
     bsd_cimage_wpasupconf_backup: true
@@ -77,9 +76,9 @@
       - dev: wlan0
         network:
           - conf:
-              - {key: ssid, value: '"my_access_point"'}
-              - {key: psk, value: '"my_password"'}
-              - {key: disabled, value: '0'}
+              - { key: ssid, value: '"my_access_point"' }
+              - { key: psk, value: '"my_password"' }
+              - { key: disabled, value: "0" }
     bsd_cimage_wpasupconf_link: true
     bsd_cimage_wpasupconf_link_dev: wlan0
 
@@ -87,4 +86,3 @@
     - vbotka.freebsd_custom_image
 
 # EOF
-...
