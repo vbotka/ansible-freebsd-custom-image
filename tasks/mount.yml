@@ -1,6 +1,5 @@
 ---
-
-- name: "mount: Debug"
+- name: "Mount: Debug"
   vars:
     msg: |-
       bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
@@ -8,54 +7,54 @@
       bsd_cimage_mount_mode: {{ bsd_cimage_mount_mode }}
       bsd_cimage_mount_points_create: {{ bsd_cimage_mount_points_create }}
       bsd_cimage_mount_points:
-        {{ bsd_cimage_mount_points|to_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_mount_points | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
-- name: "mount: Create mount points"
+- name: "Mount: Create mount points"
   ansible.builtin.file:
     state: directory
     path: "{{ item.mountpoint }}"
     mode: "{{ bsd_cimage_mount_mode }}"
   loop: "{{ bsd_cimage_mount_points }}"
-  when: bsd_cimage_mount_points_create|bool  # Note 2.
+  when: bsd_cimage_mount_points_create | bool # Note 2.
   tags: bsd_cimage_mount_points
 
-- name: "mount: Attach memory disk"
+- name: "Mount: Attach memory disk" # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_mdconfig.yml
   vars:
     al_mdconfig_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
 
-- name: "mount: Set variable bsd_cimage_mount_dev"
+- name: "Mount: Set variable bsd_cimage_mount_dev"
   ansible.builtin.set_fact:
-    bsd_cimage_mount_dev: "md{{ al_mdconfig_devs[my_file]['unit']|default('UNDEFINED') }}"
+    bsd_cimage_mount_dev: md{{ al_mdconfig_devs[my_file]['unit'] | d('UNDEFINED') }}
   vars:
     my_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
   tags: bsd_cimage_mdconfig
 
-- name: "mount: Debug [{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}]"
+- name: "Mount: Debug {{ bsd_cimage_mount_dir ~ '/' ~ bsd_cimage_mount_file }}"
   ansible.builtin.debug:
     msg: "Mounted at: {{ bsd_cimage_mount_dev }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
   tags: bsd_cimage_mdconfig
 
-- name: "mount: Mount {{ bsd_cimage_mount_dev }} partitions"
+- name: "Mount: Mount partitions {{ bsd_cimage_mount_dev }}"
   ansible.posix.mount:
-    src: "/dev/{{ bsd_cimage_mount_dev }}{{ item.partition }}"
-    path: "{{ item.mountpoint }}"  # Note 2.
+    src: /dev/{{ bsd_cimage_mount_dev }}{{ item.partition }}
+    path: "{{ item.mountpoint }}" # Note 2.
     fstype: "{{ item.fstype }}"
     state: mounted
-    fstab: /tmp/tmp.fstab  # Note 1.
+    fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ bsd_cimage_mount_points }}"
   register: result
 
-- name: "mount: Debug mount results"
+- name: "Mount: Debug mount results"
   ansible.builtin.debug:
     var: result
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
 # Notes
 #
@@ -65,4 +64,3 @@
 ## Note 2: Ansible module *mount* will create/remove non-existent mountpoint
 
 # EOF
-...

@@ -1,6 +1,5 @@
 ---
-
-- name: "wpasupconf: Debug"
+- name: "Wpasupconf: Debug"
   vars:
     msg: |-
       bsd_cimage_wpasupconf_backup: {{ bsd_cimage_wpasupconf_backup }}
@@ -9,18 +8,18 @@
       bsd_cimage_wpasupconf_group: {{ bsd_cimage_wpasupconf_group }}
       bsd_cimage_wpasupconf_mode: {{ bsd_cimage_wpasupconf_mode }}
       bsd_cimage_wpasupconf_global:
-        {{ bsd_cimage_wpasupconf_global|to_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_wpasupconf_global | to_yaml(indent=2) | indent(2) }}
       {% if bsd_cimage_debug_classified %}
       bsd_cimage_wpasupconf_data:
-        {{ bsd_cimage_wpasupconf_data|to_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_wpasupconf_data | to_yaml(indent=2) | indent(2) }}
       {% endif %}
       bsd_cimage_wpasupconf_link: {{ bsd_cimage_wpasupconf_link }}
       bsd_cimage_wpasupconf_link_dev: {{ bsd_cimage_wpasupconf_link_dev }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
-- name: 'wpasupconf: Configure {{ bsd_cimage_mount_path }}/etc/wpasupplicant.conf'
+- name: "Wpasupconf: Configure {{ bsd_cimage_mount_path ~ '/etc/wpasupplicant.conf' }}"
   ansible.builtin.template:
     src: wpa_supplicant.conf.j2
     dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}.{{ item.dev }}"
@@ -30,13 +29,12 @@
     backup: "{{ bsd_cimage_wpasupconf_backup }}"
   loop: "{{ bsd_cimage_wpasupconf_data }}"
 
-- name: 'wpasupconf: Link to {{ bsd_cimage_wpasupconf_file }}.{{ bsd_cimage_wpasupconf_link_dev }}'
+- name: "Wpasupconf: Link to {{ bsd_cimage_wpasupconf_file ~ '.' ~ bsd_cimage_wpasupconf_link_dev }}"
   ansible.builtin.file:
     state: link
-    src: "wpa_supplicant.conf.{{ bsd_cimage_wpasupconf_link_dev }}"
+    src: wpa_supplicant.conf.{{ bsd_cimage_wpasupconf_link_dev }}
     dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}"
     force: true
-  when: bsd_cimage_wpasupconf_link|bool
+  when: bsd_cimage_wpasupconf_link | bool
 
 # EOF
-...

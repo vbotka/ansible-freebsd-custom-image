@@ -1,36 +1,35 @@
 ---
-
-- name: "download: Debug"
+- name: "Download: Debug"
   vars:
     msg: |-
       bsd_cimage_download:
-        {{ bsd_cimage_download|to_nice_yaml(indent=2)|indent(2) }}
+        {{ bsd_cimage_download | to_nice_yaml(indent=2) | indent(2) }}
       bsd_cimage_dir: {{ bsd_cimage_dir }}
-      bsd_cimage_owner: {{ bsd_cimage_owner|default('UNDEFINED') }}
-      bsd_cimage_group: {{ bsd_cimage_group|default('UNDEFINED') }}
-      bsd_cimage_mode: {{ bsd_cimage_mode|default('UNDEFINED') }}
-      bsd_cimage_get_checksums: {{ bsd_cimage_get_checksums|default(true) }}
-      bsd_cimage_get_images: {{ bsd_cimage_get_images|default(true) }}
+      bsd_cimage_owner: {{ bsd_cimage_owner | default('UNDEFINED') }}
+      bsd_cimage_group: {{ bsd_cimage_group | default('UNDEFINED') }}
+      bsd_cimage_mode: {{ bsd_cimage_mode | default('UNDEFINED') }}
+      bsd_cimage_get_checksums: {{ bsd_cimage_get_checksums | default(true) }}
+      bsd_cimage_get_images: {{ bsd_cimage_get_images | default(true) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
-- name: "download: Get checksums"
+- name: "Download: Get checksums"
   ansible.builtin.get_url:
-    url: "{{ [item.site, item.checksum]|community.general.path_join }}"
-    dest: "{{ [bsd_cimage_dir, item.checksum]|community.general.path_join }}"
-    owner: "{{ bsd_cimage_owner|default(omit) }}"
-    group: "{{ bsd_cimage_group|default(omit) }}"
-    mode: "{{ bsd_cimage_mode|default(omit) }}"
+    url: "{{ [item.site, item.checksum] | community.general.path_join }}"
+    dest: "{{ [bsd_cimage_dir, item.checksum] | community.general.path_join }}"
+    owner: "{{ bsd_cimage_owner | d(omit) }}"
+    group: "{{ bsd_cimage_group | d(omit) }}"
+    mode: "{{ bsd_cimage_mode | d(omit) }}"
   loop: "{{ bsd_cimage_download }}"
   loop_control:
     label: "{{ item.checksum }}"
-  when: bsd_cimage_get_checksums|default(true)|bool
+  when: bsd_cimage_get_checksums | d(true) | bool
 
-- name: "download: Read checksums"
+- name: "Download: Read checksums"
   ansible.builtin.command:
     cmd: >
-      cat {{ [bsd_cimage_dir, item.checksum]|community.general.path_join }}
+      cat {{ [bsd_cimage_dir, item.checksum] | community.general.path_join }}
   register: cresult
   loop: "{{ bsd_cimage_download }}"
   loop_control:
@@ -38,7 +37,7 @@
   changed_when: false
   check_mode: false
 
-- name: "download: Debug checksums"
+- name: "Download: Debug checksums"
   ansible.builtin.debug:
     msg: "{{ algorithm }}:{{ checksum }}"
   loop: "{{ bsd_cimage_download }}"
@@ -46,36 +45,35 @@
     label: "{{ item.image }}"
     extended: true
   vars:
-    algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split()|first|lower }}"
-    checksum: "{{ cresult.results[ansible_loop.index0].stdout.split()|last }}"
+    algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split() | first | lower }}"
+    checksum: "{{ cresult.results[ansible_loop.index0].stdout.split() | last }}"
   when:
-    - bsd_cimage_debug|bool
+    - bsd_cimage_debug | bool
     - cresult.results[ansible_loop.index0].stdout is defined
 
-- name: "download: Get images"
+- name: "Download: Get images"
   ansible.builtin.get_url:
-    url: "{{ [item.site, item.image]|community.general.path_join }}"
+    url: "{{ [item.site, item.image] | community.general.path_join }}"
     checksum: "{{ algorithm }}:{{ checksum }}"
-    dest: "{{ [bsd_cimage_dir, item.image]|community.general.path_join }}"
-    owner: "{{ bsd_cimage_owner|default(omit) }}"
-    group: "{{ bsd_cimage_group|default(omit) }}"
-    mode: "{{ bsd_cimage_mode|default(omit) }}"
+    dest: "{{ [bsd_cimage_dir, item.image] | community.general.path_join }}"
+    owner: "{{ bsd_cimage_owner | d(omit) }}"
+    group: "{{ bsd_cimage_group | d(omit) }}"
+    mode: "{{ bsd_cimage_mode | d(omit) }}"
   register: gresult
   loop: "{{ bsd_cimage_download }}"
   loop_control:
     label: "{{ item.image }}"
     extended: true
   vars:
-    algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split()|first|lower }}"
-    checksum: "{{ cresult.results[ansible_loop.index0].stdout.split()|last }}"
+    algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split() | first | lower }}"
+    checksum: "{{ cresult.results[ansible_loop.index0].stdout.split() | last }}"
   when:
-    - bsd_cimage_get_images|default(true)|bool
+    - bsd_cimage_get_images | d(true) | bool
     - cresult.results[ansible_loop.index0].stdout is defined
 
-- name: "download: Debug images"
+- name: "Download: Debug images"
   ansible.builtin.debug:
     var: gresult
-  when: bsd_cimage_debug|bool
+  when: bsd_cimage_debug | bool
 
 # EOF
-...

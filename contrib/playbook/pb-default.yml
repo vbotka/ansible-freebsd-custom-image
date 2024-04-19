@@ -23,7 +23,8 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-default.yml
 
-- hosts: images.example.com
+- name: Download, mount, and configure the system image
+  hosts: images.example.com
 
   connection: ssh
   remote_user: admin
@@ -49,4 +50,3 @@
     - vbotka.freebsd_custom_image
 
 # EOF
-...

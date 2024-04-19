@@ -55,7 +55,8 @@ The wireless adapter in this example is `USB Realtek RTL8188EU <https://man.free
 
 
 .. seealso::
-   * `32.3. Wireless Networking - FreeBSD Handbook <https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-advanced-wireless>`_
+   * `7.4. Wireless Networks - FreeBSD Handbook <https://docs.freebsd.org/en/books/handbook/network/#network-wireless>`_
+   * `34.4. Wireless Advanced Authentication - FreeBSD Handbook <https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-advanced-wireless>`_
    * `Wiki FreeBSD Wireless <https://wiki.freebsd.org/WiFi>`_
    * `FreeBSD Release Notes <https://www.freebsd.org/releases/index.html>`_
    * `man pages of supported wireless devices <https://wiki.freebsd.org/DeviceDrivers>`_
@@ -74,26 +75,26 @@ Follow the steps below
 
 * Install the collections
   `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_
-  and `ansible.posix <https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix/>`_  ::
+  and `ansible.posix <https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix/>`_  if necessary ::
 
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general
 
-* Create the playbook ``pb-wifi-basic.yml`` for single host images.example.com (1). Configure
-  connection (3-4) and privilege escalation (5-7). Configure the path (15) to the image (16) and
-  make sure the image is writable by root. The default system partition is *s2a* (18). Configure the
-  mount-point(s) (20) and configure which partition will be customized (21). The mount-point doesn't
+* Create the playbook ``pb-wifi-basic.yml`` for single host images.example.com (2). Configure
+  connection (4-5) and privilege escalation (6-8). Configure the path (16) to the image (17) and
+  make sure the image is writable by root. The default system partition is *s2a* (19). Configure the
+  mount-point(s) (21) and configure which partition will be customized (22). The mount-point doesn't
   have to exist and will be create (and later deleted when unmounted) by the Ansible module
-  *mount*. Review the modules (25) and loader's configuration (27,34). Fit it to your needs if you
-  use a different adapter. hange also configuration of *rc.conf* (40-41) if necessary. Change
-  *SSID* (49) and *password* (50) of the access point. Enable symbolic link of
-  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (52,53).
+  *mount*. Review the modules (26) and loader's configuration (28,35). Fit it to your needs if you
+  use a different adapter. hange also configuration of *rc.conf* (41-42) if necessary. Change
+  *SSID* (50) and *password* (51) of the access point. Enable symbolic link of
+  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (53,54).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
   :caption: [`contrib/playbook/pb-wifi-basic.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml>`_]
   :lines: 32-87
   :language: yaml
-  :emphasize-lines: 1,3-7,15-16,20-21,25,27,34,40-41,49-50
+  :emphasize-lines: 2,4-8,16-17,19,21-22,26,28,35,41-42,50-51
   :linenos:
 
 
@@ -111,7 +112,7 @@ Follow the steps below
     images.example.com
 
     [images:vars]
-    ansible_python_interpreter=/usr/local/bin/python3.7
+    ansible_python_interpreter=/usr/local/bin/python3.9
     ansible_perl_interpreter=/usr/local/bin/perl
 
 
