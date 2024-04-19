@@ -1,6 +1,6 @@
 # freebsd_custom_image
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_custom_image)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-custom-image.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-custom-image)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-custom-image.readthedocs.io/en/latest/)[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)[![GitHub tag](https://img.shields.io/github/tag/vbotka/ansible-freebsd-custom-image.svg)](https://github.com/vbotka/ansible-freebsd-custom-image/tags)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_custom_image)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-custom-image.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-custom-image)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-freebsd-custom-image.readthedocs.io/en/latest/)[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-custom-image)](https://github.com/vbotka/ansible-freebsd-custom-image/tags)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_custom_image/) FreeBSD. Download, mount, and customize system images.
 

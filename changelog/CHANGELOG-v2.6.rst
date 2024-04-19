@@ -15,12 +15,13 @@ Ansible 2.16 update
 
 Major Changes
 -------------
-* Support versions 12.4, 13.3, 14.0
+* Support versions 13.3, 14.0
 
 Minor Changes
 -------------
 * Update README, 
 * Update docs, tests, lint
+* Fix README tag badge.
 
 Bugfixes
 --------

@@ -1,5 +1,5 @@
 ---
-# All rights reserved (c) 2021, Vladimir Botka <vbotka@gmail.com>
+# All rights reserved (c) 2021-2024, Vladimir Botka <vbotka@gmail.com>
 # Simplified BSD License, https://opensource.org/licenses/BSD-2-Clause
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -20,7 +20,7 @@
 #   * Run the playbook
 #     shell> ansible-playbook pb-wifi-basic.yml
 #   * Dump the image to the media
-#     shell> dd FreeBSD-13.0-CURRENT-arm-armv6-RPI-B.img of=/dev/mmcsd0 \
+#     shell> dd FreeBSD-13.3-RELEASE-arm-armv6-RPI-B.img of=/dev/mmcsd0 \
 #            bs=1m conv=sync status=progress
 #   * The system should automaticaly connect to the preconfigured AP and
 #     configure IP adress. It should be possible to ssh to the
@@ -45,7 +45,7 @@
     bsd_cimage_debug_classified: true
 
     bsd_cimage_mount_dir: /export/images/FreeBSD/live
-    bsd_cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
+    bsd_cimage_mount_file: FreeBSD-13.3-RELEASE-arm-armv6-RPI-B.img
     bsd_cimage_mount_points:
       - partition: s2a
         fstype: ufs
