@@ -34,6 +34,17 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 * The role doesn’t support check and diff "--check --diff"
 
 
+### Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
+```
+
+
 ## References
 
 - [18.9. Memory Disks - FreeBSD Handbook](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/disks-virtual.html)
