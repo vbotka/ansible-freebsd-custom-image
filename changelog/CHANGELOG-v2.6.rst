@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Bump docs version.
+* Exclude docs from local ansible-lint
 
 
 2.6.0
