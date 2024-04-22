@@ -10,13 +10,14 @@ vbotka.freebsd_custom_image 2.6 Release Notes
 
 Release Summary
 ---------------
-BUgfix release.
+Bugfix release.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Bump docs version.
 
 
 2.6.0
