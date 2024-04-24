@@ -21,6 +21,7 @@ Minor Changes
 * Exclude docs from local ansible-lint
 * Use default rules in local ansible-lint config.
 * Update skip_list in local ansible-lint config.
+* Fix Ansible lint become_method in contrib playbooks.
 
 
 2.6.0
