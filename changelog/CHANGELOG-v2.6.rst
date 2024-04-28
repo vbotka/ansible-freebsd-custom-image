@@ -5,6 +5,22 @@ vbotka.freebsd_custom_image 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.2
+=====
+
+Release Summary
+---------------
+Bugfix release.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Bump docs version.
+* Update docs.
+
+
 2.6.1
 =====
 
