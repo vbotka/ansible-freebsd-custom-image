@@ -30,7 +30,7 @@
   remote_user: admin
   become: true
   become_user: root
-  become_method: sudo
+  become_method: ansible.builtin.sudo
 
   vars:
     bsd_cimage_sanity: false

@@ -31,7 +31,7 @@
   remote_user: admin
   become: true
   become_user: root
-  become_method: sudo
+  become_method: ansible.builtin.sudo
 
   vars:
     cl_dird: "{{ playbook_dir }}/conf-light"

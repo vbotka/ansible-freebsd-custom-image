@@ -3,11 +3,7 @@
 Configure wifi by config_light
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To configure the image, it's possible to use Ansible role `vbotka.config_light
-<https://galaxy.ansible.com/vbotka/config_light>`_, instead of the :ref:`ug_tasks`. This example
-configures exactly the same parameters of the wireless network as the :ref:`qg`. The playbook
-``pb-wifi-basic.yml`` created in the :ref:`qg` will be used to attach a memory disk and mount the
-partition.
+Instead of the :ref:`ug_tasks`, it's possible to use Ansible role `vbotka.config_light <https://galaxy.ansible.com/vbotka/config_light>`_to configure the image. This example configures exactly the same parameters of the wireless network as the :ref:`qg`. The playbook ``pb-wifi-basic.yml`` created in the :ref:`qg` will be used to attach a memory disk and mount the partition.
 
 * Current directory ::
 
@@ -21,15 +17,15 @@ partition.
 
     shell> ansible-galaxy install vbotka.freebsd_config_light
 
-* Create the playbook ``pb-wifi-basic-cl.yml`` for single host images.example.com (1). Configure connection
-  (3-4) and privilege escalation (5-7). Configure the directory (10) with the configuration files
-  and reuse the configuration (12-17) already prepared in :ref:`qg` (19-50).
+* Create the playbook ``pb-wifi-basic-cl.yml`` for single host images.example.com (2). Configure connection
+  (4-5) and privilege escalation (6-8). Configure the directory (11) with the configuration files
+  and reuse the configuration (13-17) already prepared in :ref:`qg` (19-50).
 
 .. literalinclude:: ../../contrib/example-wifi-basic-cl/pb-wifi-basic-cl.yml
   :caption: [`contrib/example-wifi-basic-cl/pb-wifi-basic-cl.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/example-wifi-basic-cl/pb-wifi-basic-cl.yml>`_]
-  :lines: 27-80
+  :lines: 27-77
   :language: yaml
-  :emphasize-lines: 1,3-7,10,12-17
+  :emphasize-lines: 2,4-8,11,13-17
   :linenos:
 
 * Create the configuration files in the directory ``cl_dird`` ::
