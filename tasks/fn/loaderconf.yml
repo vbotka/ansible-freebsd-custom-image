@@ -1,5 +1,5 @@
 ---
-- name: "Loaderconf: Debug"
+- name: "Loaderconf: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
   vars:
     msg: |-
       bsd_cimage_loaderconf_backup: {{ bsd_cimage_loaderconf_backup }}

@@ -22,6 +22,7 @@
 
 - name: Import unpack.yml
   ansible.builtin.import_tasks: unpack.yml
+  when: bsd_cimage_unpack | bool
   tags: bsd_cimage_unpack
 
 - name: Import mount.yml

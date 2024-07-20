@@ -13,7 +13,7 @@
     dest: "{{ item.image | splitext | first }}"
     extension: "{{ item.image | splitext | last }}"
 
-- name: "Unpack: Debug unpack"
+- name: "Unpack: Debug unpack bsd_cimage_debug={{ bsd_cimage_debug }}"
   ansible.builtin.debug:
     var: uresult
   when: bsd_cimage_debug | bool

@@ -30,10 +30,10 @@ mount the partition.
 
     shell> ansible-galaxy install vbotka.freebsd_config_light
 
-* Create the playbook ``pb-wpacli-cl.yml`` for single host images.example.com (1). Configure
-  connection (3-4) and privilege escalation (5-7). Configure the directory (12) with the
-  configuration files and reuse the configuration (14-17) already prepared in :ref:`qg`
-  (28-55). Configure only wlan0 (18) in wpa_supplicant. The configuration of *wpa_cli* (58-78) is
+* Create the playbook ``pb-wpacli-cl.yml`` for single host images.example.com (2). Configure
+  connection (4-5) and privilege escalation (6-8). Configure the directory (13) with the
+  configuration files and reuse the configuration (15-18) already prepared in :ref:`qg`
+  (28-52). Configure only wlan0 (19) in wpa_supplicant. The configuration of *wpa_cli* (58-78) is
   described in Ansible role `vbotka.freebsd_wpa_cli
   <https://galaxy.ansible.com/vbotka/freebsd_wpa_cli>`_. The configuration of *ntp* (81-94) is
   described in Ansible role `vbotka.freebsd_postinstall
@@ -41,9 +41,9 @@ mount the partition.
 
 .. literalinclude:: ../../contrib/example-wpacli-cl/pb-wpacli-cl.yml
   :caption: [`contrib/example-wpacli-cl/pb-wpacli-cl.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/example-wpacli-cl/pb-wpacli-cl.yml>`_]
-  :lines: 27-
+  :lines: 27-123
   :language: yaml
-  :emphasize-lines: 1,3-7,12,14-17,18,28-55,58-78,81-94
+  :emphasize-lines: 2,4-8,13,15-18,19,58-78,81-94
   :linenos:
 
 * Create the configuration files in the directory ``cl_dird`` ::

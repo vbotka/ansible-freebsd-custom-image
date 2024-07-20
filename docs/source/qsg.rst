@@ -85,20 +85,20 @@ Follow the steps below
   make sure the image is writable by root. The default system partition is *s2a* (19). Configure the
   mount-point(s) (21) and configure which partition will be customized (22). The mount-point doesn't
   have to exist and will be create (and later deleted when unmounted) by the Ansible module
-  *mount*. Review the modules (26) and loader's configuration (28,35). Fit it to your needs if you
-  use a different adapter. hange also configuration of *rc.conf* (41-42) if necessary. Change
-  *SSID* (50) and *password* (51) of the access point. Enable symbolic link of
-  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (53,54).
+  *mount*. Review the modules (26) and loader's configuration (27-34). Fit it to your needs if you
+  use a different adapter. Change also configuration of *rc.conf* (38-40) if necessary. Change
+  *SSID* (48) and *password* (49) of the access point. Enable symbolic link of
+  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51,52).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
   :caption: [`contrib/playbook/pb-wifi-basic.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml>`_]
   :lines: 32-87
   :language: yaml
-  :emphasize-lines: 2,4-8,16-17,19,21-22,26,28,35,41-42,50-51
+  :emphasize-lines: 2,4-8,16,17,19,21,22,26,27-34,38-40,48,49,51,52
   :linenos:
 
 
-* Create the inventory. Change the IP adress (2) and fit the paths to Python (8) and Perl (9) if
+* Create the inventory. Change the IP address (2) and fit the paths to Python (8) and Perl (9) if
   necessary
 
 .. code-block:: sh
@@ -138,8 +138,6 @@ Follow the steps below
 
     * Setting ``bsd_cimage_umount=false`` will keep the memory disk attached and partitions
       mounted. This will make the role idempotent.
-
-    * The role doesn't support *check and diff* ``--check --diff``
 
 
 .. warning::

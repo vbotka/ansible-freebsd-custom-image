@@ -22,12 +22,18 @@
       bsd_cimage_mount: {{ bsd_cimage_mount }}
       bsd_cimage_umount: {{ bsd_cimage_umount }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      bsd_cimage_get_images: {{ bsd_cimage_get_images }}
+      bsd_cimage_get_checksums: {{ bsd_cimage_get_checksums }}
       bsd_cimage_dir: {{ bsd_cimage_dir }}
-      bsd_cimage_owner: {{ bsd_cimage_owner | default('UNDEFINED') }}
-      bsd_cimage_group: {{ bsd_cimage_group | default('UNDEFINED') }}
-      bsd_cimage_mode: {{ bsd_cimage_mode | default('UNDEFINED') }}
+      bsd_cimage_owner: {{ bsd_cimage_owner | d('UNDEFINED') }}
+      bsd_cimage_group: {{ bsd_cimage_group | d('UNDEFINED') }}
+      bsd_cimage_mode: {{ bsd_cimage_mode | d('UNDEFINED') }}
       bsd_cimage_download:
         {{ bsd_cimage_download | to_nice_yaml(indent=2) | indent(2) }}
+      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      bsd_cimage_unpack: {{ bsd_cimage_unpack }}
+      bsd_cimage_unpack_cmd:
+        {{ bsd_cimage_unpack_cmd | to_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
       bsd_cimage_mount_file: {{ bsd_cimage_mount_file }}
@@ -35,7 +41,6 @@
       bsd_cimage_mount_points_create: {{ bsd_cimage_mount_points_create }}
       bsd_cimage_mount_points:
         {{ bsd_cimage_mount_points | to_yaml(indent=2) | indent(2) }}
-      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       bsd_cimage_mount_path: {{ bsd_cimage_mount_path }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       bsd_cimage_loaderconf: {{ bsd_cimage_loaderconf }}

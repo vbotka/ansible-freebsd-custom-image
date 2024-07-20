@@ -1,5 +1,5 @@
 ---
-- name: "Customize: Debug"
+- name: "Customize: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
   vars:
     msg: |-
       bsd_cimage_mount_path: {{ bsd_cimage_mount_path }}

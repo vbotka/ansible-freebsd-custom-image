@@ -1,5 +1,5 @@
 ---
-- name: "Wpasupconf: Debug"
+- name: "Wpasupconf: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
   vars:
     msg: |-
       bsd_cimage_wpasupconf_backup: {{ bsd_cimage_wpasupconf_backup }}
