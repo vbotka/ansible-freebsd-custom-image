@@ -10,15 +10,22 @@ vbotka.freebsd_custom_image 2.6 Release Notes
 
 Release Summary
 ---------------
-Bugfix release.
+ansible 2.17 maintenance and feature update.
 
 Major Changes
 -------------
+* Add Supported 14.1
 
 Minor Changes
 -------------
+* Update README
 * Bump docs version.
 * Update docs.
+* Update debug.
+* Add var bsd_cimage_role_version
+* Add var bsd_cimage_get_images default true
+* Add var bsd_cimage_get_checksums default true
+* Add var bsd_cimage_unpack default true
 
 
 2.6.1

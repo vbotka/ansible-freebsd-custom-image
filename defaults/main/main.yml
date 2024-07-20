@@ -1,14 +1,15 @@
 ---
 # default vars for freebsd_custom_image
+bsd_cimage_role_version: 2.6.2
 
-# Test sanity
-bsd_cimage_sanity: false
 # Display debug output
 bsd_cimage_debug: false
 # Display classified debug output
 bsd_cimage_debug_classified: false
 # Install packages or ports
 bsd_cimage_install: false
+# Test sanity
+bsd_cimage_sanity: false
 # Create memory disks and mount partitions. Module mount creates mountpoints.
 bsd_cimage_mount: true
 # Create mountpoints by module file
@@ -26,8 +27,11 @@ freebsd_install_delay: 5
 
 bsd_cimage_packages: []
 # - shells/bash
+
 # Images  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+bsd_cimage_get_images: true
+bsd_cimage_get_checksums: true
 bsd_cimage_download: []
 # bsd_cimage_download:
 #   - site: https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/13.0
@@ -42,6 +46,15 @@ bsd_cimage_dir: /export/images/FreeBSD/unsorted
 # bsd_cimage_group:
 # bsd_cimage_mode:
 
+# Unpack - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+bsd_cimage_unpack: true
+bsd_cimage_unpack_cmd:
+  .xz: unxz --keep
+bsd_cimage_unpack_ext: "{{ bsd_cimage_unpack_cmd.keys() | list }}"
+
+# Mount - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # mount image
 bsd_cimage_mount_dir: /export/images/FreeBSD/live
 bsd_cimage_mount_file: ""
@@ -51,12 +64,6 @@ bsd_cimage_mount_points:
   - partition: s2a
     fstype: ufs
     mountpoint: /mnt3
-
-# Unpack - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-bsd_cimage_unpack_cmd:
-  .xz: unxz --keep
-bsd_cimage_unpack_ext: "{{ bsd_cimage_unpack_cmd.keys() | list }}"
 
 # Customize - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -1,5 +1,5 @@
 ---
-- name: "Umount: Debug"
+- name: "Umount: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
   vars:
     msg: |-
       bsd_cimage_mount_points:
@@ -18,7 +18,7 @@
     label: "{{ item.mountpoint }}"
   register: result
 
-- name: "Umount: Debug unmount results"
+- name: "Umount: Debug unmount results bsd_cimage_debug={{ bsd_cimage_debug }}"
   ansible.builtin.debug:
     var: result
   when: bsd_cimage_debug | bool
@@ -31,7 +31,7 @@
     al_mdconfig_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
     al_mdconfig_state: absent
 
-- name: "Umount: Debug detach memory disk"
+- name: "Umount: Debug detach memory disk bsd_cimage_debug={{ bsd_cimage_debug }}"
   ansible.builtin.debug:
     var: al_mdconfig_devs
   when: bsd_cimage_debug | bool

@@ -1,5 +1,5 @@
 ---
-- name: "Mount: Debug"
+- name: "Mount: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
   vars:
     msg: |-
       bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
