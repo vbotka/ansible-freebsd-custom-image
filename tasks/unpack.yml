@@ -1,5 +1,9 @@
 ---
 - name: "Unpack: Unpack images"
+  when: extension in bsd_cimage_unpack_ext
+  vars:
+    dest: "{{ item.image | splitext | first }}"
+    extension: "{{ item.image | splitext | last }}"
   ansible.builtin.command:
     cmd: "{{ bsd_cimage_unpack_cmd[extension] }} {{ item.image }}"
     creates: "{{ dest }}"
@@ -8,14 +12,10 @@
   loop: "{{ bsd_cimage_download }}"
   loop_control:
     label: "{{ item.image }}"
-  when: extension in bsd_cimage_unpack_ext
-  vars:
-    dest: "{{ item.image | splitext | first }}"
-    extension: "{{ item.image | splitext | last }}"
 
 - name: "Unpack: Debug unpack bsd_cimage_debug={{ bsd_cimage_debug }}"
+  when: bsd_cimage_debug | bool
   ansible.builtin.debug:
     var: uresult
-  when: bsd_cimage_debug | bool
 
 # EOF

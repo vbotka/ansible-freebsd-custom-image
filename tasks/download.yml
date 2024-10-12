@@ -1,5 +1,6 @@
 ---
 - name: "Download: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
+  when: bsd_cimage_debug | bool
   vars:
     msg: |-
       bsd_cimage_download:
@@ -12,13 +13,14 @@
       bsd_cimage_get_images: {{ bsd_cimage_get_images }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug | bool
 
 - name: Checksums
   when: bsd_cimage_get_checksums | bool
   block:
 
     - name: "Download: Get checksums"
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
       ansible.builtin.get_url:
         url: "{{ [item.site, item.checksum] | community.general.path_join }}"
         dest: "{{ [bsd_cimage_dir, item.checksum] | community.general.path_join }}"
@@ -41,24 +43,26 @@
       check_mode: false
 
     - name: "Download: Debug checksums bsd_cimage_debug={{ bsd_cimage_debug }}"
+      when:
+        - bsd_cimage_debug | bool
+        - cresult.results[ansible_loop.index0].stdout is defined
+      vars:
+        algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split() | first | lower }}"
+        checksum: "{{ cresult.results[ansible_loop.index0].stdout.split() | last }}"
       ansible.builtin.debug:
         msg: "{{ algorithm }}:{{ checksum }}"
       loop: "{{ bsd_cimage_download }}"
       loop_control:
         label: "{{ item.image }}"
         extended: true
-      vars:
-        algorithm: "{{ cresult.results[ansible_loop.index0].stdout.split() | first | lower }}"
-        checksum: "{{ cresult.results[ansible_loop.index0].stdout.split() | last }}"
-      when:
-        - bsd_cimage_debug | bool
-        - cresult.results[ansible_loop.index0].stdout is defined
 
 - name: Images
   when: bsd_cimage_get_images | bool
   block:
 
     - name: "Download: Get images"
+      environment:
+        CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
       ansible.builtin.get_url:
         url: "{{ [item.site, item.image] | community.general.path_join }}"
         checksum: "{{ algorithm }}:{{ checksum }}"
@@ -77,8 +81,8 @@
       when: cresult.results[ansible_loop.index0].stdout is defined
 
     - name: "Download: Debug images bsd_cimage_debug={{ bsd_cimage_debug }}"
+      when: bsd_cimage_debug | bool
       ansible.builtin.debug:
         var: gresult
-      when: bsd_cimage_debug | bool
 
 # EOF

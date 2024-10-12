@@ -1,22 +1,22 @@
 ---
 - name: "Package: Install packages."
+  when: freebsd_install_method == "packages"
+  register: result
   community.general.pkgng:
     name: "{{ bsd_cimage_packages }}"
-  register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "packages"
 
 - name: "Packages: Install ports."
+  when: freebsd_install_method == "ports"
+  register: result
   community.general.portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ bsd_cimage_packages }}"
-  register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "ports"
 
 # EOF

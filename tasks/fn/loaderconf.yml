@@ -1,5 +1,6 @@
 ---
 - name: "Loaderconf: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
+  when: bsd_cimage_debug | bool
   vars:
     msg: |-
       bsd_cimage_loaderconf_backup: {{ bsd_cimage_loaderconf_backup }}
@@ -11,7 +12,6 @@
         {{ bsd_cimage_loaderconf_sysctl | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug | bool
 
 - name: "Loaderconf: Configure {{ bsd_cimage_mount_path ~ '/boot/loader.conf' }}"
   ansible.builtin.template:

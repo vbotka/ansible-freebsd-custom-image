@@ -5,6 +5,22 @@ vbotka.freebsd_custom_image 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.5
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Tasks formatting improved
+* Fix environment: CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+
+
 2.6.4
 =====
 
