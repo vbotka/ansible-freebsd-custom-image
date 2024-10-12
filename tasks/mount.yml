@@ -1,5 +1,6 @@
 ---
 - name: "Mount: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
+  when: bsd_cimage_debug | bool
   vars:
     msg: |-
       bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
@@ -10,16 +11,15 @@
         {{ bsd_cimage_mount_points | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug | bool
 
 - name: "Mount: Create mount points"
+  when: bsd_cimage_mount_points_create | bool # Note 2.
+  tags: bsd_cimage_mount_points
   ansible.builtin.file:
     state: directory
     path: "{{ item.mountpoint }}"
     mode: "{{ bsd_cimage_mount_mode }}"
   loop: "{{ bsd_cimage_mount_points }}"
-  when: bsd_cimage_mount_points_create | bool # Note 2.
-  tags: bsd_cimage_mount_points
 
 - name: "Mount: Attach memory disk" # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
@@ -29,19 +29,20 @@
     al_mdconfig_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
 
 - name: "Mount: Set variable bsd_cimage_mount_dev"
+  tags: bsd_cimage_mdconfig
   ansible.builtin.set_fact:
     bsd_cimage_mount_dev: md{{ al_mdconfig_devs[my_file]['unit'] | d('UNDEFINED') }}
   vars:
     my_file: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
-  tags: bsd_cimage_mdconfig
 
 - name: "Mount: Debug {{ bsd_cimage_mount_dir ~ '/' ~ bsd_cimage_mount_file }}"
-  ansible.builtin.debug:
-    msg: "Mounted at: {{ bsd_cimage_mount_dev }}"
   when: bsd_cimage_debug | bool
   tags: bsd_cimage_mdconfig
+  ansible.builtin.debug:
+    msg: "Mounted at: {{ bsd_cimage_mount_dev }}"
 
 - name: "Mount: Mount partitions {{ bsd_cimage_mount_dev }}"
+  register: result
   ansible.posix.mount:
     src: /dev/{{ bsd_cimage_mount_dev }}{{ item.partition }}
     path: "{{ item.mountpoint }}" # Note 2.
@@ -49,12 +50,11 @@
     state: mounted
     fstab: /tmp/tmp.fstab # Note 1.
   loop: "{{ bsd_cimage_mount_points }}"
-  register: result
 
-- name: "Mount: Debug mount results"
+- name: "Mount: Debug mount results bsd_cimage_debug={{ bsd_cimage_debug }}"
+  when: bsd_cimage_debug | bool
   ansible.builtin.debug:
     var: result
-  when: bsd_cimage_debug | bool
 
 # Notes
 #

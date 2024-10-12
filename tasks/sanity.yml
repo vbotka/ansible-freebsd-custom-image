@@ -5,9 +5,9 @@
     fail_msg: "[ERR] Only FreeBSD family supported."
 
 - name: "Sanity: Stat image"
+  register: st
   ansible.builtin.stat:
     path: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
-  register: st
 
 - name: "Sanity: Image exists"
   ansible.builtin.assert:

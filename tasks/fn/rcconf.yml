@@ -1,5 +1,6 @@
 ---
 - name: "Rcconf: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
+  when: bsd_cimage_debug | bool
   vars:
     msg: |-
       bsd_cimage_rcconf_backup: {{ bsd_cimage_rcconf_backup }}
@@ -7,7 +8,6 @@
         {{ bsd_cimage_rcconf_data | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
-  when: bsd_cimage_debug | bool
 
 - name: "Rcconf: Configure {{ bsd_cimage_mount_path ~ '/etc/rc.conf' }}"
   ansible.builtin.lineinfile:

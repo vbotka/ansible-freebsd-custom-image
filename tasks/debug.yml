@@ -1,5 +1,5 @@
 ---
-- name: Debug
+- name: "Debug bsd_cimage_debug={ bsd_cimage_debug }}"
   vars:
     msg: |-
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
