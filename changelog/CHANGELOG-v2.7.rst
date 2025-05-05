@@ -18,6 +18,7 @@ Major Changes
 
 Minor Changes
 -------------
+* Update docs index.rst
 
 Bugfixes
 --------
