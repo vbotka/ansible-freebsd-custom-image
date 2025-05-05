@@ -25,7 +25,6 @@ This `role`_ and the documentation is work in progess.
    qsg
    guide
    annotation
-   collection-bsd
    copyright
    legalnotice
 
