@@ -2,6 +2,7 @@
 - name: "Debug bsd_cimage_debug={ bsd_cimage_debug }}"
   vars:
     msg: |-
+      bsd_cimage_role_version: {{ bsd_cimage_role_version }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}

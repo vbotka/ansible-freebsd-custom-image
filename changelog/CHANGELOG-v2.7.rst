@@ -21,6 +21,8 @@ Major Changes
 Minor Changes
 -------------
 * Update docs index.rst
+* Update tasks/debug.yml
+
 
 Bugfixes
 --------
