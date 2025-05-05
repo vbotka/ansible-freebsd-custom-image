@@ -4,7 +4,7 @@ Ansible role FreeBSD Custom Image
 
 **vbotka.freebsd_custom_image**
 
-Role version 2.6.6
+Role version 2.7.0
 
 
 This `role <https://galaxy.ansible.com/vbotka/freebsd_custom_image/>`_ and the documentation is work in progess.

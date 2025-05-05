@@ -1,6 +1,6 @@
 ---
 # default vars for freebsd_custom_image
-bsd_cimage_role_version: 2.6.6
+bsd_cimage_role_version: 2.7.0
 
 # Display debug output
 bsd_cimage_debug: false
