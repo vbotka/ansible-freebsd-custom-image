@@ -22,6 +22,7 @@ Minor Changes
 -------------
 * Update docs index.rst
 * Update tasks/debug.yml
+* Update defaults/main. Move configuration into separate files.
 
 
 Bugfixes

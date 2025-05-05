@@ -1,0 +1,11 @@
+---
+# This mountpoint is the root of the tree that shall be customized. There can be more partitions
+# mounted to different mountpoints from single image.
+bsd_cimage_mount_path: /mnt3
+
+# authorized keys
+# bsd_cimage_authorized_key:
+#   - user: "freebsd"
+#     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar1/id_rsa.pub') }}"
+#   - user: "freebsd"
+#     key: "{{ lookup('file', 'copy/ssh-pub-keys/admin-ar2/id_rsa.pub') }}"
