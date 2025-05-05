@@ -15,6 +15,8 @@ Major release.
 Major Changes
 -------------
 * Update meta. Support versions 13.4, 13.5, 14.2. Ansible 2.18.
+* Do not run sanity always.
+
 
 Minor Changes
 -------------

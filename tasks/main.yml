@@ -14,7 +14,7 @@
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
   when: bsd_cimage_sanity | bool
-  tags: [bsd_cimage_sanity, always]
+  tags: bsd_cimage_sanity
 
 - name: Import download.yml
   ansible.builtin.import_tasks: download.yml
