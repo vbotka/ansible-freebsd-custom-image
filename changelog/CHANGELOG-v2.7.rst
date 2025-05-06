@@ -18,6 +18,9 @@ Major Changes
 * Renamed all variables bsd_cimage_* to cimage_*
 * Do not run sanity always.
 
+* Updated tasks/packages.yml. Removed postinstall. Rmoved vars
+  freebsd_install_method and freebsd_use_packages. Added vars
+  cimage_pkgng_rootdir and cimage_pkgng_use_globs.
 
 Minor Changes
 -------------

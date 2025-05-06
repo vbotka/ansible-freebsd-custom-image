@@ -1,20 +1,13 @@
 ---
 - name: "Package: Install packages."
-  when: freebsd_install_method == "packages"
   register: result
   community.general.pkgng:
     name: "{{ cimage_packages }}"
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
-
-- name: "Packages: Install ports."
-  when: freebsd_install_method == "ports"
-  register: result
-  community.general.portinstall:
-    name: "{{ item }}"
-    use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ cimage_packages }}"
+    rootdir: "{{ cimage_pkgng_rootdir }}"
+    use_globs: "{{ cimage_pkgng_use_globs }}"
+    cached: "{{ cimage_pkgng_cached | d(omit) }}"
+    ignore_osver: "{{ cimage_pkgng_ignore_osver | d(omit) }}"
+    pkgsite: "{{ cimage_pkgng_pkgsite | d(omit) }}"
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
