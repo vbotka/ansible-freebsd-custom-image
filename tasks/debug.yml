@@ -1,8 +1,8 @@
 ---
-- name: "Debug bsd_cimage_debug={ bsd_cimage_debug }}"
+- name: "Debug cimage_debug={ cimage_debug }}"
   vars:
     msg: |-
-      bsd_cimage_role_version: {{ bsd_cimage_role_version }}
+      cimage_role_version: {{ cimage_role_version }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
@@ -16,62 +16,62 @@
       freebsd_use_packages: {{ freebsd_use_packages }}
       freebsd_install_retries: {{ freebsd_install_retries }}
       freebsd_install_delay: {{ freebsd_install_delay }}
-      bsd_cimage_install: {{ bsd_cimage_install }}
-      bsd_cimage_packages:
-        {{ bsd_cimage_packages | to_nice_yaml(indent=2) | indent(2) }}
-      bsd_cimage_sanity: {{ bsd_cimage_sanity }}
-      bsd_cimage_mount: {{ bsd_cimage_mount }}
-      bsd_cimage_umount: {{ bsd_cimage_umount }}
+      cimage_install: {{ cimage_install }}
+      cimage_packages:
+        {{ cimage_packages | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_sanity: {{ cimage_sanity }}
+      cimage_mount: {{ cimage_mount }}
+      cimage_umount: {{ cimage_umount }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      bsd_cimage_get_images: {{ bsd_cimage_get_images }}
-      bsd_cimage_get_checksums: {{ bsd_cimage_get_checksums }}
-      bsd_cimage_dir: {{ bsd_cimage_dir }}
-      bsd_cimage_owner: {{ bsd_cimage_owner | d('UNDEFINED') }}
-      bsd_cimage_group: {{ bsd_cimage_group | d('UNDEFINED') }}
-      bsd_cimage_mode: {{ bsd_cimage_mode | d('UNDEFINED') }}
-      bsd_cimage_download:
-        {{ bsd_cimage_download | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_get_images: {{ cimage_get_images }}
+      cimage_get_checksums: {{ cimage_get_checksums }}
+      cimage_dir: {{ cimage_dir }}
+      cimage_owner: {{ cimage_owner | d('UNDEFINED') }}
+      cimage_group: {{ cimage_group | d('UNDEFINED') }}
+      cimage_mode: {{ cimage_mode | d('UNDEFINED') }}
+      cimage_download:
+        {{ cimage_download | to_nice_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      bsd_cimage_unpack: {{ bsd_cimage_unpack }}
-      bsd_cimage_unpack_cmd:
-        {{ bsd_cimage_unpack_cmd | to_yaml(indent=2) | indent(2) }}
+      cimage_unpack: {{ cimage_unpack }}
+      cimage_unpack_cmd:
+        {{ cimage_unpack_cmd | to_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      bsd_cimage_mount_dir: {{ bsd_cimage_mount_dir }}
-      bsd_cimage_mount_file: {{ bsd_cimage_mount_file }}
-      bsd_cimage_mount_mode: {{ bsd_cimage_mount_mode }}
-      bsd_cimage_mount_points_create: {{ bsd_cimage_mount_points_create }}
-      bsd_cimage_mount_points:
-        {{ bsd_cimage_mount_points | to_yaml(indent=2) | indent(2) }}
-      bsd_cimage_mount_path: {{ bsd_cimage_mount_path }}
+      cimage_mount_dir: {{ cimage_mount_dir }}
+      cimage_mount_file: {{ cimage_mount_file }}
+      cimage_mount_mode: {{ cimage_mount_mode }}
+      cimage_mount_points_create: {{ cimage_mount_points_create }}
+      cimage_mount_points:
+        {{ cimage_mount_points | to_yaml(indent=2) | indent(2) }}
+      cimage_mount_path: {{ cimage_mount_path }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      bsd_cimage_loaderconf: {{ bsd_cimage_loaderconf }}
-      bsd_cimage_loaderconf_backup: {{ bsd_cimage_loaderconf_backup }}
-      bsd_cimage_loaderconf_modules:
-        {{ bsd_cimage_loaderconf_modules | to_yaml(indent=2) | indent(2) }}
-      bsd_cimage_loaderconf_data:
-        {{ bsd_cimage_loaderconf_data | to_nice_yaml(indent=2) | indent(2) }}
-      bsd_cimage_loaderconf_sysctl:
-        {{ bsd_cimage_loaderconf_sysctl | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_loaderconf: {{ cimage_loaderconf }}
+      cimage_loaderconf_backup: {{ cimage_loaderconf_backup }}
+      cimage_loaderconf_modules:
+        {{ cimage_loaderconf_modules | to_yaml(indent=2) | indent(2) }}
+      cimage_loaderconf_data:
+        {{ cimage_loaderconf_data | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_loaderconf_sysctl:
+        {{ cimage_loaderconf_sysctl | to_nice_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      bsd_cimage_rcconf: {{ bsd_cimage_rcconf }}
-      bsd_cimage_rcconf_backup: {{ bsd_cimage_rcconf_backup }}
-      bsd_cimage_rcconf_data:
-        {{ bsd_cimage_rcconf_data | to_yaml(indent=2) | indent(2) }}
+      cimage_rcconf: {{ cimage_rcconf }}
+      cimage_rcconf_backup: {{ cimage_rcconf_backup }}
+      cimage_rcconf_data:
+        {{ cimage_rcconf_data | to_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      bsd_cimage_wpasupconf: {{ bsd_cimage_wpasupconf }}
-      bsd_cimage_wpasupconf_backup: {{ bsd_cimage_wpasupconf_backup }}
-      bsd_cimage_wpasupconf_file: {{ bsd_cimage_wpasupconf_file }}
-      bsd_cimage_wpasupconf_owner: {{ bsd_cimage_wpasupconf_owner }}
-      bsd_cimage_wpasupconf_group: {{ bsd_cimage_wpasupconf_group }}
-      bsd_cimage_wpasupconf_mode: {{ bsd_cimage_wpasupconf_mode }}
-      bsd_cimage_wpasupconf_global:
-        {{ bsd_cimage_wpasupconf_global | to_nice_yaml(indent=2) | indent(2) }}
-      {% if bsd_cimage_debug_classified %}
-      bsd_cimage_wpasupconf_data:
-        {{ bsd_cimage_wpasupconf_data | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_wpasupconf: {{ cimage_wpasupconf }}
+      cimage_wpasupconf_backup: {{ cimage_wpasupconf_backup }}
+      cimage_wpasupconf_file: {{ cimage_wpasupconf_file }}
+      cimage_wpasupconf_owner: {{ cimage_wpasupconf_owner }}
+      cimage_wpasupconf_group: {{ cimage_wpasupconf_group }}
+      cimage_wpasupconf_mode: {{ cimage_wpasupconf_mode }}
+      cimage_wpasupconf_global:
+        {{ cimage_wpasupconf_global | to_nice_yaml(indent=2) | indent(2) }}
+      {% if cimage_debug_classified %}
+      cimage_wpasupconf_data:
+        {{ cimage_wpasupconf_data | to_nice_yaml(indent=2) | indent(2) }}
       {% endif %}
-      bsd_cimage_wpasupconf_link: {{ bsd_cimage_wpasupconf_link }}
-      bsd_cimage_wpasupconf_link_dev: {{ bsd_cimage_wpasupconf_link_dev }}
+      cimage_wpasupconf_link: {{ cimage_wpasupconf_link }}
+      cimage_wpasupconf_link_dev: {{ cimage_wpasupconf_link_dev }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   ansible.builtin.debug:

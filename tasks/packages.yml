@@ -3,7 +3,7 @@
   when: freebsd_install_method == "packages"
   register: result
   community.general.pkgng:
-    name: "{{ bsd_cimage_packages }}"
+    name: "{{ cimage_packages }}"
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
@@ -14,7 +14,7 @@
   community.general.portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ bsd_cimage_packages }}"
+  loop: "{{ cimage_packages }}"
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"

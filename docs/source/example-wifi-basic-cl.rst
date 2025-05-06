@@ -91,7 +91,7 @@ Instead of the :ref:`ug_tasks`, it's possible to use Ansible role `vbotka.config
 
 * Mount the image using the playbook prepared in :ref:`qg` ::
 
-   shell> ansible-playbook pb-wifi-basic.yml -t bsd_cimage_mount
+   shell> ansible-playbook pb-wifi-basic.yml -t cimage_mount
 
 * Test syntax ::
 
@@ -107,6 +107,6 @@ Instead of the :ref:`ug_tasks`, it's possible to use Ansible role `vbotka.config
 
 * Umount the partition and detach the memory disk ::
 
-   shell> ansible-playbook pb-wifi-basic.yml -t bsd_cimage_umount
+   shell> ansible-playbook pb-wifi-basic.yml -t cimage_umount
 
 * Write the customized image to a disk and boot the system. See details in :ref:`qg`.

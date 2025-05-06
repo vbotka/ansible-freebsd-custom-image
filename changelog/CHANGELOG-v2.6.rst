@@ -83,10 +83,10 @@ Minor Changes
 * Bump docs version.
 * Update docs.
 * Update debug.
-* Add var bsd_cimage_role_version
-* Add var bsd_cimage_get_images default true
-* Add var bsd_cimage_get_checksums default true
-* Add var bsd_cimage_unpack default true
+* Add var cimage_role_version
+* Add var cimage_get_images default true
+* Add var cimage_get_checksums default true
+* Add var cimage_unpack default true
 
 
 2.6.1

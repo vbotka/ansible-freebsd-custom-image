@@ -23,5 +23,5 @@ update of the role.
    * Don't make any changes to the files in *defaults/main*. The changes will be overwritten by the
      update of the role. Customize the default values in the files in *vars/main.yml*.
 
-   * Default value of *bsd_cimage_debug_classified* is **false**. Passwords will be displayed if this
+   * Default value of *cimage_debug_classified* is **false**. Passwords will be displayed if this
      variable is enabled.

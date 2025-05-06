@@ -1,4 +1,4 @@
 ---
-bsd_cimage_unpack_cmd:
+cimage_unpack_cmd:
   .xz: unxz --keep
-bsd_cimage_unpack_ext: "{{ bsd_cimage_unpack_cmd.keys() | list }}"
+cimage_unpack_ext: "{{ cimage_unpack_cmd.keys() | list }}"

@@ -5,5 +5,5 @@ freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
-bsd_cimage_packages: []
+cimage_packages: []
 # - shells/bash

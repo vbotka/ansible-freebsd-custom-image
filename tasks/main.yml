@@ -3,40 +3,40 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: bsd_cimage_debug | bool
-  tags: bsd_cimage_debug
+  when: cimage_debug | bool
+  tags: cimage_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: bsd_cimage_install | bool
-  tags: bsd_cimage_packages
+  when: cimage_install | bool
+  tags: cimage_packages
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
-  when: bsd_cimage_sanity | bool
-  tags: bsd_cimage_sanity
+  when: cimage_sanity | bool
+  tags: cimage_sanity
 
 - name: Import download.yml
   ansible.builtin.import_tasks: download.yml
-  tags: bsd_cimage_download
+  tags: cimage_download
 
 - name: Import unpack.yml
   ansible.builtin.import_tasks: unpack.yml
-  when: bsd_cimage_unpack | bool
-  tags: bsd_cimage_unpack
+  when: cimage_unpack | bool
+  tags: cimage_unpack
 
 - name: Import mount.yml
   ansible.builtin.import_tasks: mount.yml
-  when: bsd_cimage_mount | bool
-  tags: bsd_cimage_mount
+  when: cimage_mount | bool
+  tags: cimage_mount
 
 - name: Import customize.yml
   ansible.builtin.import_tasks: customize.yml
-  tags: bsd_cimage_customize
+  tags: cimage_customize
 
 - name: Import umount.yml
   ansible.builtin.import_tasks: umount.yml
-  when: bsd_cimage_umount | bool
-  tags: bsd_cimage_umount
+  when: cimage_umount | bool
+  tags: cimage_umount
 
 # EOF

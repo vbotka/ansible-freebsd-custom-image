@@ -1,25 +1,25 @@
 ---
 # default vars for freebsd_custom_image
-bsd_cimage_role_version: 2.7.0
+cimage_role_version: 2.7.0
 
 # Display debug output
-bsd_cimage_debug: false
+cimage_debug: false
 # Display classified debug output
-bsd_cimage_debug_classified: false
+cimage_debug_classified: false
 
 # Install packages or ports
-bsd_cimage_install: false
+cimage_install: false
 
 # Test sanity
-bsd_cimage_sanity: false
+cimage_sanity: false
 
 # Unpack image
-bsd_cimage_unpack: true
+cimage_unpack: true
 
 # Create memory disks and mount partitions. Module mount creates mountpoints.
-bsd_cimage_mount: true
+cimage_mount: true
 
 # Umount and delete mountpoints. Detach memory disk
-bsd_cimage_umount: true
+cimage_umount: true
 
 # EOF

@@ -14,15 +14,16 @@ Major release.
 
 Major Changes
 -------------
-* Update meta. Support versions 13.4, 13.5, 14.2. Ansible 2.18.
+* Updated meta. Support versions 13.4, 13.5, 14.2. Ansible 2.18.
+* Renamed all variables bsd_cimage_* to cimage_*
 * Do not run sanity always.
 
 
 Minor Changes
 -------------
-* Update docs index.rst
-* Update tasks/debug.yml
-* Update defaults/main. Move configuration into separate files.
+* Updated docs index.rst
+* Updated tasks/debug.yml
+* Updated defaults/main. Move configuration into separate files.
 
 
 Bugfixes
@@ -30,3 +31,4 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
+* Renamed all variables bsd_cimage_* to cimage_*

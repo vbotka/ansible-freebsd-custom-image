@@ -7,21 +7,21 @@
 - name: "Sanity: Stat image"
   register: st
   ansible.builtin.stat:
-    path: "{{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }}"
+    path: "{{ cimage_mount_dir }}/{{ cimage_mount_file }}"
 
 - name: "Sanity: Image exists"
   ansible.builtin.assert:
     that: st.stat.exists
-    fail_msg: "[ERR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} does not exist."
+    fail_msg: "[ERR] {{ cimage_mount_dir }}/{{ cimage_mount_file }} does not exist."
 
 - name: "Sanity: Image is regular file or link"
   ansible.builtin.assert:
     that: st.stat.isreg or st.stat.islnk
-    fail_msg: "[ERR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} is neither a file nor symbolic link."
+    fail_msg: "[ERR] {{ cimage_mount_dir }}/{{ cimage_mount_file }} is neither a file nor symbolic link."
 
 - name: "Sanity: Image is not writable"
   ansible.builtin.assert:
     that: st.stat.writeable
-    fail_msg: "[ERR] {{ bsd_cimage_mount_dir }}/{{ bsd_cimage_mount_file }} is not writable."
+    fail_msg: "[ERR] {{ cimage_mount_dir }}/{{ cimage_mount_file }} is not writable."
 
 # EOF

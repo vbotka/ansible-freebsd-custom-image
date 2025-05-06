@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-{% for gvar in bsd_cimage_wpasupconf_global %}
+{% for gvar in cimage_wpasupconf_global %}
 {{ gvar.key }}={{ gvar.value }}
 {% endfor %}
 {% for net in item.network %}

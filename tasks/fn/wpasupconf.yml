@@ -1,40 +1,40 @@
 ---
-- name: "Wpasupconf: Debug bsd_cimage_debug={{ bsd_cimage_debug }}"
-  when: bsd_cimage_debug | bool
+- name: "Wpasupconf: Debug cimage_debug={{ cimage_debug }}"
+  when: cimage_debug | bool
   vars:
     msg: |-
-      bsd_cimage_wpasupconf_backup: {{ bsd_cimage_wpasupconf_backup }}
-      bsd_cimage_wpasupconf_file: {{ bsd_cimage_wpasupconf_file }}
-      bsd_cimage_wpasupconf_owner: {{ bsd_cimage_wpasupconf_owner }}
-      bsd_cimage_wpasupconf_group: {{ bsd_cimage_wpasupconf_group }}
-      bsd_cimage_wpasupconf_mode: {{ bsd_cimage_wpasupconf_mode }}
-      bsd_cimage_wpasupconf_global:
-        {{ bsd_cimage_wpasupconf_global | to_yaml(indent=2) | indent(2) }}
-      {% if bsd_cimage_debug_classified %}
-      bsd_cimage_wpasupconf_data:
-        {{ bsd_cimage_wpasupconf_data | to_yaml(indent=2) | indent(2) }}
+      cimage_wpasupconf_backup: {{ cimage_wpasupconf_backup }}
+      cimage_wpasupconf_file: {{ cimage_wpasupconf_file }}
+      cimage_wpasupconf_owner: {{ cimage_wpasupconf_owner }}
+      cimage_wpasupconf_group: {{ cimage_wpasupconf_group }}
+      cimage_wpasupconf_mode: {{ cimage_wpasupconf_mode }}
+      cimage_wpasupconf_global:
+        {{ cimage_wpasupconf_global | to_yaml(indent=2) | indent(2) }}
+      {% if cimage_debug_classified %}
+      cimage_wpasupconf_data:
+        {{ cimage_wpasupconf_data | to_yaml(indent=2) | indent(2) }}
       {% endif %}
-      bsd_cimage_wpasupconf_link: {{ bsd_cimage_wpasupconf_link }}
-      bsd_cimage_wpasupconf_link_dev: {{ bsd_cimage_wpasupconf_link_dev }}
+      cimage_wpasupconf_link: {{ cimage_wpasupconf_link }}
+      cimage_wpasupconf_link_dev: {{ cimage_wpasupconf_link_dev }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
-- name: "Wpasupconf: Configure {{ bsd_cimage_mount_path ~ '/etc/wpasupplicant.conf' }}"
+- name: "Wpasupconf: Configure {{ cimage_mount_path ~ '/etc/wpasupplicant.conf' }}"
   ansible.builtin.template:
     src: wpa_supplicant.conf.j2
-    dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}.{{ item.dev }}"
-    owner: "{{ bsd_cimage_wpasupconf_owner }}"
-    group: "{{ bsd_cimage_wpasupconf_group }}"
-    mode: "{{ bsd_cimage_wpasupconf_mode }}"
-    backup: "{{ bsd_cimage_wpasupconf_backup }}"
-  loop: "{{ bsd_cimage_wpasupconf_data }}"
+    dest: "{{ cimage_mount_path }}/{{ cimage_wpasupconf_file }}.{{ item.dev }}"
+    owner: "{{ cimage_wpasupconf_owner }}"
+    group: "{{ cimage_wpasupconf_group }}"
+    mode: "{{ cimage_wpasupconf_mode }}"
+    backup: "{{ cimage_wpasupconf_backup }}"
+  loop: "{{ cimage_wpasupconf_data }}"
 
-- name: "Wpasupconf: Link to {{ bsd_cimage_wpasupconf_file ~ '.' ~ bsd_cimage_wpasupconf_link_dev }}"
-  when: bsd_cimage_wpasupconf_link | bool
+- name: "Wpasupconf: Link to {{ cimage_wpasupconf_file ~ '.' ~ cimage_wpasupconf_link_dev }}"
+  when: cimage_wpasupconf_link | bool
   ansible.builtin.file:
     state: link
-    src: wpa_supplicant.conf.{{ bsd_cimage_wpasupconf_link_dev }}
-    dest: "{{ bsd_cimage_mount_path }}/{{ bsd_cimage_wpasupconf_file }}"
+    src: wpa_supplicant.conf.{{ cimage_wpasupconf_link_dev }}
+    dest: "{{ cimage_mount_path }}/{{ cimage_wpasupconf_file }}"
     force: true
 
 # EOF
