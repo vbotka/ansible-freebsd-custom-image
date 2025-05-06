@@ -12,6 +12,7 @@ cimage_install: false
 
 # Test sanity
 cimage_sanity: false
+cimage_sanity_quiet: true
 
 # Unpack image
 cimage_unpack: true
