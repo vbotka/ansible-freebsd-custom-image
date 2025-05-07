@@ -16,12 +16,12 @@ Major Changes
 * Updated meta. Support versions 13.4, 13.5, 14.2. Ansible 2.18.
 * Renamed all variables bsd_cimage_* to cimage_*
 * Do not run sanity always.
-* Updated tasks/packages.yml.
+* Updated tasks/packages.yml. Add variable cimage_pkgng_chroot
 * Run tasks/packages.yml before customize.yml
 * Removed postinstall. Removed vars freebsd_install_method and
   freebsd_use_packages.
 * Added vars cimage_pkgng_rootdir and cimage_pkgng_use_globs.
-* Add optionall variables cimage_pkgng_cached,
+* Add optional variables cimage_pkgng_cached,
   cimage_pkgng_ignore_osver, and cimage_pkgng_pkgsite
 
 Minor Changes
