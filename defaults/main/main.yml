@@ -7,9 +7,6 @@ cimage_debug: false
 # Display classified debug output
 cimage_debug_classified: false
 
-# Install packages or ports
-cimage_install: false
-
 # Test sanity
 cimage_sanity: false
 cimage_sanity_quiet: true
@@ -19,6 +16,9 @@ cimage_unpack: true
 
 # Create memory disks and mount partitions. Module mount creates mountpoints.
 cimage_mount: true
+
+# Install packages or ports
+cimage_install: false
 
 # Umount and delete mountpoints. Detach memory disk
 cimage_umount: true
