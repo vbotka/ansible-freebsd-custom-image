@@ -17,6 +17,7 @@ Major Changes
 * Renamed all variables bsd_cimage_* to cimage_*
 * Do not run sanity always.
 * Updated tasks/packages.yml.
+* Run tasks/packages.yml before customize.yml
 * Removed postinstall. Removed vars freebsd_install_method and
   freebsd_use_packages.
 * Added vars cimage_pkgng_rootdir and cimage_pkgng_use_globs.
@@ -29,6 +30,7 @@ Minor Changes
 * Updated tasks/debug.yml
 * Updated defaults/main. Move configuration into separate files.
 * Updated tasks/sanity.yml. Add variable cimage_sanity_quiet (default=true)
+* Create cimage_dir if it does not exist.
 
 Bugfixes
 --------

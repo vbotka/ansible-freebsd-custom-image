@@ -14,3 +14,4 @@ cimage_dir: /export/images/FreeBSD/unsorted
 # cimage_owner:
 # cimage_group:
 # cimage_mode:
+# cimage_mode_dir:
