@@ -3,8 +3,8 @@
 Quick start guide
 *****************
 
-For the users who want to try the role quickly, this guide provides an example of how to configure
-wireless network in `already downloaded image <https://www.freebsd.org/where.html>`_. Three files
+For the users who want to try the role quickly, this guide provides an example
+of how to configure wireless network in `already downloaded image`_. Three files
 will be customized in the image
 
 1) /boot/loader.conf ::
@@ -47,23 +47,20 @@ wireless adapter should automatically connect to the network and obtain DHCP add
 possible to connect to the system ``ssh freebsd@<ip-address>`` (default passwords of FreeBSD images
 are ``freebsd: freebsd`` and ``root: root``).
 
-The wireless adapter in this example is `USB Realtek RTL8188EU <https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html>`_
-(idVendor = 0x0bda idProduct = 0x8179) ::
+The wireless adapter in this example is `USB Realtek RTL8188EU`_ (idVendor =
+0x0bda idProduct = 0x8179) ::
 
     rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
     rtwn0: MAC/BB RTL8188EU, RF 6052 1T1R
 
-
 .. seealso::
-   * `7.4. Wireless Networks - FreeBSD Handbook <https://docs.freebsd.org/en/books/handbook/network/#network-wireless>`_
-   * `34.4. Wireless Advanced Authentication - FreeBSD Handbook <https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-advanced-wireless>`_
-   * `Wiki FreeBSD Wireless <https://wiki.freebsd.org/WiFi>`_
-   * `FreeBSD Release Notes <https://www.freebsd.org/releases/index.html>`_
-   * `man pages of supported wireless devices <https://wiki.freebsd.org/DeviceDrivers>`_
-
+   * `7.4. Wireless Networks - FreeBSD Handbook`_
+   * `34.4. Wireless Advanced Authentication - FreeBSD Handbook`_
+   * `Wiki FreeBSD Wireless`_
+   * `FreeBSD Release Notes`_
+   * `man pages of supported wireless devices`_
 
 Follow the steps below
-
 
 * Install the role ``vbotka.freebsd_custom_image`` ::
 
@@ -73,9 +70,7 @@ Follow the steps below
 
     shell> ansible-galaxy role install vbotka.ansible_lib
 
-* Install the collections
-  `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_
-  and `ansible.posix <https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix/>`_  if necessary ::
+* Install the collections `community.general`_ and `ansible.posix`_ if necessary ::
 
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general
@@ -91,12 +86,11 @@ Follow the steps below
   */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51,52).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
-  :caption: [`contrib/playbook/pb-wifi-basic.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml>`_]
+  :caption: [`contrib/playbook/pb-wifi-basic.yml`_]
   :lines: 32-87
   :language: yaml
   :emphasize-lines: 2,4-8,16,17,19,21,22,26,27-34,38-40,48,49,51,52
   :linenos:
-
 
 * Create the inventory. Change the IP address (2) and fit the paths to Python (8) and Perl (9) if
   necessary
@@ -115,21 +109,17 @@ Follow the steps below
     ansible_python_interpreter=/usr/local/bin/python3.9
     ansible_perl_interpreter=/usr/local/bin/perl
 
-
 * Test syntax ::
 
     shell> ansible-playbook pb-wifi-basic.yml --syntax-check
-
 
 * See what variables will be included ::
 
     shell> ansible-playbook pb-wifi-basic.yml -t cimage_debug -e cimage_debug=true
 
-
 * Run the playbook ::
 
     shell> ansible-playbook pb-wifi-basic.yml
-
 
 .. note::
 
@@ -139,7 +129,6 @@ Follow the steps below
     * Setting ``cimage_umount=false`` will keep the memory disk attached and partitions
       mounted. This will make the role idempotent.
 
-
 .. warning::
 
   * Password of the access-point will be displayed. Set classified debug to *false*
@@ -147,18 +136,16 @@ Follow the steps below
   
   * The image has not been secured by this playbook and should be used for testing only.
 
-
 * Make sure the partition is unmounted and write the customized image to a disk. For example ::
 
     dd if=FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img of=/dev/sdX bs=1m conv=sync status=progress
 
-.. seealso:: `2.3. Pre-Installation Tasks <https://www.freebsd.org/doc/handbook/bsdinstall-pre.html>`_
+.. seealso:: `2.3. Pre-Installation Tasks`_
 
 .. warning:: Change the device of the disk. Double-check that this is the correct device and make
              sure you don't overwrite important data.
 
-
-* Boot the system. Find the IP address either from the console or from the DHCP server, if headless,
+* Boot the system. Find the IP address either from the console or from the DHCP server if headless
   and connect to the system ::
 
     shell> ssh freebsd@10.1.0.16
@@ -191,3 +178,15 @@ Follow the steps below
     ssid my_access_point channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
 
     ...
+
+.. _already downloaded image: https://www.freebsd.org/where.html
+.. _USB Realtek RTL8188EU: https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html
+.. _7.4. Wireless Networks - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/network/#network-wireless
+.. _34.4. Wireless Advanced Authentication - FreeBSD Handbook: https://docs.freebsd.org/en/books/handbook/advanced-networking/#network-advanced-wireless
+.. _Wiki FreeBSD Wireless: https://wiki.freebsd.org/WiFi
+.. _FreeBSD Release Notes: https://www.freebsd.org/releases/index.html
+.. _man pages of supported wireless devices: https://wiki.freebsd.org/DeviceDrivers
+.. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
+.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix
+.. _contrib/playbook/pb-wifi-basic.yml: https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml
+.. _2.3. Pre-Installation Tasks: https://www.freebsd.org/doc/handbook/bsdinstall-pre.html
