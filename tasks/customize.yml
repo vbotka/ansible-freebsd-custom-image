@@ -1,30 +1,14 @@
 ---
 - name: "Customize: Debug cimage_debug={{ cimage_debug }}"
   when: cimage_debug | bool
-  vars:
-    msg: |-
-      cimage_mount_path: {{ cimage_mount_path }}
-      cimage_loaderconf: {{ cimage_loaderconf }}
-      cimage_rcconf: {{ cimage_rcconf }}
-      cimage_wpasupconf: {{ cimage_wpasupconf }}
   ansible.builtin.debug:
-    msg: "{{ '{}'.format(msg) }}"
+    var:
+      cimage_customize
 
-- name: Include fn/loaderconf.yml
-  when: cimage_loaderconf | bool
-  tags: cimage_loaderconf
-  ansible.builtin.include_tasks: fn/loaderconf.yml
-
-- name: Include fn/rcconf.yml
-  when: cimage_rcconf | bool
-  tags: cimage_rcconf
-  ansible.builtin.include_tasks: fn/rcconf.yml
-
-- name: Include fn/wpasupconf.yml
-  when: cimage_wpasupconf | bool
-  tags: cimage_wpasupconf
-  ansible.builtin.include_tasks: fn/wpasupconf.yml
-
-# TODO: firstboot, wpa_cli
+- name: Customize image.
+  ansible.builtin.include_tasks: "fn/{{ customize_item }}.yml"
+  loop: "{{ cimage_customize | dict2items | selectattr('value') | map(attribute='key') }}"
+  loop_control:
+    loop_var: customize_item
 
 # EOF

@@ -12,21 +12,12 @@
       ansible_distribution_release: {{ ansible_distribution_release }}
       ansible_python_version: {{ ansible_python_version }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      freebsd_install_retries: {{ freebsd_install_retries }}
-      freebsd_install_delay: {{ freebsd_install_delay }}
-      cimage_install: {{ cimage_install }}
-      cimage_pkgng_rootdir: {{ cimage_pkgng_rootdir }}
-      cimage_pkgng_use_globs: {{ cimage_pkgng_use_globs }}
-      cimage_pkgng_chroot: {{ cimage_pkgng_chroot | d('UNDEFINED') }}
-      cimage_pkgng_cached: {{ cimage_pkgng_cached | d('UNDEFINED') }}
-      cimage_pkgng_ignore_osver: {{ cimage_pkgng_ignore_osver | d('UNDEFINED') }}
-      cimage_pkgng_pkgsite: {{ cimage_pkgng_pkgsite | d('UNDEFINED') }}
-      cimage_packages:
-        {{ cimage_packages | to_nice_yaml(indent=2) | indent(2) }}
-      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       cimage_sanity: {{ cimage_sanity }}
       cimage_sanity_quiet: {{ cimage_sanity_quiet }}
+      cimage_download: {{ cimage_download }}
+      cimage_unpack: {{ cimage_unpack }}
       cimage_mount: {{ cimage_mount }}
+      cimage_install: {{ cimage_install }}
       cimage_umount: {{ cimage_umount }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       cimage_get_images: {{ cimage_get_images }}
@@ -39,7 +30,6 @@
       cimage_download:
         {{ cimage_download | to_nice_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      cimage_unpack: {{ cimage_unpack }}
       cimage_unpack_cmd:
         {{ cimage_unpack_cmd | to_nice_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,36 +41,16 @@
       cimage_mount_points:
         {{ cimage_mount_points | to_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      cimage_loaderconf: {{ cimage_loaderconf }}
-      cimage_loaderconf_backup: {{ cimage_loaderconf_backup }}
-      cimage_loaderconf_modules:
-        {{ cimage_loaderconf_modules | to_yaml(indent=2) | indent(2) }}
-      cimage_loaderconf_data:
-        {{ cimage_loaderconf_data | to_nice_yaml(indent=2) | indent(2) }}
-      cimage_loaderconf_sysctl:
-        {{ cimage_loaderconf_sysctl | to_nice_yaml(indent=2) | indent(2) }}
-      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      cimage_rcconf: {{ cimage_rcconf }}
-      cimage_rcconf_backup: {{ cimage_rcconf_backup }}
-      cimage_rcconf_data:
-        {{ cimage_rcconf_data | to_yaml(indent=2) | indent(2) }}
-      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      cimage_wpasupconf: {{ cimage_wpasupconf }}
-      cimage_wpasupconf_backup: {{ cimage_wpasupconf_backup }}
-      cimage_wpasupconf_file: {{ cimage_wpasupconf_file }}
-      cimage_wpasupconf_owner: {{ cimage_wpasupconf_owner }}
-      cimage_wpasupconf_group: {{ cimage_wpasupconf_group }}
-      cimage_wpasupconf_mode: {{ cimage_wpasupconf_mode }}
-      cimage_wpasupconf_global:
-        {{ cimage_wpasupconf_global | to_nice_yaml(indent=2) | indent(2) }}
-      {% if cimage_debug_classified %}
-      cimage_wpasupconf_data:
-        {{ cimage_wpasupconf_data | to_nice_yaml(indent=2) | indent(2) }}
-      {% endif %}
-      cimage_wpasupconf_link: {{ cimage_wpasupconf_link }}
-      cimage_wpasupconf_link_dev: {{ cimage_wpasupconf_link_dev }}
-      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+      freebsd_install_retries: {{ freebsd_install_retries }}
+      freebsd_install_delay: {{ freebsd_install_delay }}
+      cimage_pkgng_rootdir: {{ cimage_pkgng_rootdir }}
+      cimage_pkgng_use_globs: {{ cimage_pkgng_use_globs }}
+      cimage_pkgng_chroot: {{ cimage_pkgng_chroot | d('UNDEFINED') }}
+      cimage_pkgng_cached: {{ cimage_pkgng_cached | d('UNDEFINED') }}
+      cimage_pkgng_ignore_osver: {{ cimage_pkgng_ignore_osver | d('UNDEFINED') }}
+      cimage_pkgng_pkgsite: {{ cimage_pkgng_pkgsite | d('UNDEFINED') }}
+      cimage_packages:
+        {{ cimage_packages | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 

@@ -9,13 +9,17 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 
 Release Summary
 ---------------
-Maintenance update.
+Feature update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Added variable cimage_download (default=true).
+* Updated tasks/customize.yml. Add variable cimage_customize.
+* Updated tasks/debug.yml formatting.
+* Add defaults/main/authorized_keys.yml for future use.
 
 
 2.7.0
@@ -44,7 +48,7 @@ Minor Changes
 * Updated tasks/debug.yml
 * Updated defaults/main. Move configuration into separate files.
 * Updated tasks/sanity.yml. Add variable cimage_sanity_quiet (default=true)
-* Create cimage_dir if it does not exist.
+* Created cimage_dir if it does not exist.
 
 Bugfixes
 --------
