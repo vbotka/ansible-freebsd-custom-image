@@ -1,6 +1,6 @@
 ---
 # default vars for freebsd_custom_image
-cimage_role_version: 2.7.0
+cimage_role_version: 2.7.1
 
 # Display debug output
 cimage_debug: false
@@ -11,7 +11,10 @@ cimage_debug_classified: false
 cimage_sanity: false
 cimage_sanity_quiet: true
 
-# Unpack image
+# Download images
+cimage_download: true
+
+# Unpack images
 cimage_unpack: true
 
 # Create memory disks and mount partitions. Module mount creates mountpoints.

@@ -13,6 +13,7 @@
 
 - name: Import download.yml
   ansible.builtin.import_tasks: download.yml
+  when: cimage_download | bool
   tags: cimage_download
 
 - name: Import unpack.yml
