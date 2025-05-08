@@ -39,23 +39,23 @@
   become_method: ansible.builtin.sudo
 
   vars:
-    bsd_cimage_sanity: false
-    bsd_cimage_install: false
-    bsd_cimage_debug: true
-    bsd_cimage_debug_classified: true
+    cimage_sanity: false
+    cimage_install: false
+    cimage_debug: true
+    cimage_debug_classified: true
 
-    bsd_cimage_mount_dir: /export/images/FreeBSD/live
-    bsd_cimage_mount_file: FreeBSD-13.3-RELEASE-arm-armv6-RPI-B.img
-    bsd_cimage_mount_points:
+    cimage_mount_dir: /export/images/FreeBSD/live
+    cimage_mount_file: FreeBSD-13.3-RELEASE-arm-armv6-RPI-B.img
+    cimage_mount_points:
       - partition: s2a
         fstype: ufs
         mountpoint: /mnt3
-    bsd_cimage_mount_path: /mnt3
+    cimage_mount_path: /mnt3
 
-    bsd_cimage_loaderconf: true
-    bsd_cimage_loaderconf_backup: true
-    bsd_cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
-    bsd_cimage_loaderconf_data:
+    cimage_loaderconf: true
+    cimage_loaderconf_backup: true
+    cimage_loaderconf_modules: [wlan, wlan_wep, wlan_ccmp, wlan_tkip, wlan_amrr, rtwn, if_rtwn_usb]
+    cimage_loaderconf_data:
       - hw.usb.template=3
       - umodem_load="YES"
       - boot_multicons="YES"
@@ -63,24 +63,24 @@
       - beastie_disable="YES"
       - loader_color="NO"
       - legal.realtek.license_ack=1
-    bsd_cimage_loaderconf_sysctl: []
-    bsd_cimage_rcconf: true
-    bsd_cimage_rcconf_backup: true
-    bsd_cimage_rcconf_data:
+    cimage_loaderconf_sysctl: []
+    cimage_rcconf: true
+    cimage_rcconf_backup: true
+    cimage_rcconf_data:
       - { key: wlans_rtwn0, value: '"wlan0"' }
       - { key: ifconfig_wlan0, value: '"WPA SYNCDHCP"' }
 
-    bsd_cimage_wpasupconf: true
-    bsd_cimage_wpasupconf_backup: true
-    bsd_cimage_wpasupconf_data:
+    cimage_wpasupconf: true
+    cimage_wpasupconf_backup: true
+    cimage_wpasupconf_data:
       - dev: wlan0
         network:
           - conf:
               - { key: ssid, value: '"my_access_point"' }
               - { key: psk, value: '"my_password"' }
               - { key: disabled, value: "0" }
-    bsd_cimage_wpasupconf_link: true
-    bsd_cimage_wpasupconf_link_dev: wlan0
+    cimage_wpasupconf_link: true
+    cimage_wpasupconf_link_dev: wlan0
 
   roles:
     - vbotka.freebsd_custom_image

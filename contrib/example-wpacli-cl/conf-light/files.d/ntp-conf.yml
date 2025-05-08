@@ -1,6 +1,6 @@
 ---
 ntp_conf:
-  path: "{{ bsd_cimage_mount_path }}/etc/ntp.conf"
+  path: "{{ cimage_mount_path }}/etc/ntp.conf"
   force: true
   owner: root
   group: wheel

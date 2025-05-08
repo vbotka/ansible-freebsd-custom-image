@@ -37,7 +37,7 @@ one by one.
 By default, the role is not idempotent. In the standard workflow, an image is always mounted when
 the role starts and unmounted when completes. To speedup repeating execution of a playbook, it's
 possible to disable the unmounting of the image by setting the variable
-``bsd_cimage_umount=false``. This would make the role idempotent. Unmount the image before dumping
+``cimage_umount=false``. This would make the role idempotent. Unmount the image before dumping
 it to a disk.
 
 
@@ -115,20 +115,20 @@ Below is a simple playbook that calls this role (10) for a single host images.ex
 Debug
 *****
 
-Some tasks will display additional information when the variable :index:`bsd_cimage_debug` is
+Some tasks will display additional information when the variable :index:`cimage_debug` is
 enabled. Enable debug output either in the configuration
 
 .. code-block:: yaml
    :emphasize-lines: 1
 
-   bsd_cimage_debug: true
+   cimage_debug: true
 
 , or set the extra variable in the command
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-   shell> ansible-playbook playbook.yml -e bsd_cimage_debug=true
+   shell> ansible-playbook playbook.yml -e cimage_debug=true
 
 .. note:: The debug output of this role is optimized for the **yaml** callback plugin. Set this
    plugin for example in the environment ``shell> export ANSIBLE_STDOUT_CALLBACK=yaml``.
@@ -155,54 +155,54 @@ role with the command
 Basics
 ======
 
-* Display the variables. Use the tag ``bsd_cimage_debug``. Enable :index:`debug` (``bsd_cimage_debug: true``)
+* Display the variables. Use the tag ``cimage_debug``. Enable :index:`debug` (``cimage_debug: true``)
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_debug -e bsd_cimage_debug=true
+    shell> ansible-playbook playbook.yml -t cimage_debug -e cimage_debug=true
 
 * Download images
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_download
+    shell> ansible-playbook playbook.yml -t cimage_download
 
 * Unpack images
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_unpack
+    shell> ansible-playbook playbook.yml -t cimage_unpack
 
 * Create memory disk and mount the image
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_mount
+    shell> ansible-playbook playbook.yml -t cimage_mount
 
-* Run sanity tests. Enable :index:`sanity` (``bsd_cimage_sanity: true``)
+* Run sanity tests. Enable :index:`sanity` (``cimage_sanity: true``)
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_mount
+    shell> ansible-playbook playbook.yml -t cimage_mount
 
 * Customize the image
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_customize
+    shell> ansible-playbook playbook.yml -t cimage_customize
 
 * Umount the image
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook playbook.yml -t bsd_cimage_umount
+    shell> ansible-playbook playbook.yml -t cimage_umount
 
 
 .. _ug_tasks:
@@ -265,34 +265,34 @@ Best practice
 
 * See what variables will be included ::
 
-   shell> ansible-playbook playbook.yml -t bsd_cimage_debug \
-                                        -e bsd_cimage_debug=true \
-					-e bsd_cimage_debug_classified=true
+   shell> ansible-playbook playbook.yml -t cimage_debug \
+                                        -e cimage_debug=true \
+					-e cimage_debug_classified=true
 
-* Download images. To make the task idempotent use the attribute *checksum* in the items of the list *bsd_cimage_download*. See :ref:`ug_vars_defaults` ::
+* Download images. To make the task idempotent use the attribute *checksum* in the items of the list *cimage_download*. See :ref:`ug_vars_defaults` ::
 
-   shell> ansible-playbook playbook.yml -t bsd_cimage_download
+   shell> ansible-playbook playbook.yml -t cimage_download
 
 * Unpack the images ::
 
-   shell> ansible-playbook playbook.yml -t bsd_cimage_unpack
+   shell> ansible-playbook playbook.yml -t cimage_unpack
    
 * Create memory disk and mount image ::
 
-   shell> ansible-playbook playbook.yml -t bsd_cimage_mount
+   shell> ansible-playbook playbook.yml -t cimage_mount
 
 * Dry-run the customization of the image and see what will be changed ::
 
-   shell> ansible-playbook  playbook.yml -t bsd_cimage_customize --check --diff
+   shell> ansible-playbook  playbook.yml -t cimage_customize --check --diff
    
 * Customize the image. Run the playbook and keep the image mounted. Review the changes. Repeated
   execution of the customization should be idempotent ::
 
-   shell> ansible-playbook playbook.yml -t bsd_cimage_customize
+   shell> ansible-playbook playbook.yml -t cimage_customize
 
 * Umount the image and detach the memory disk ::
 
-   shell> ansible-playbook playbook.yml -t bsd_cimage_umount
+   shell> ansible-playbook playbook.yml -t cimage_umount
 
 * Dump the customized image to a disk and boot it ::
 
@@ -301,7 +301,7 @@ Best practice
 * Keep the image mounted if you want to run the playbook periodically. In this case, repeated
   execution of the playbook should be idempotent ::
 
-    shell> ansible-playbook playbook.yml -e bsd_cimage_umount=false
+    shell> ansible-playbook playbook.yml -e cimage_umount=false
 
   However, the mountpoint is not configured in */etc/fstab* and won't survive a reboot. If this is
   a problem put the configuration of the memory disk into */etc/rc.conf* and configure the

@@ -1,17 +1,17 @@
 # {{ ansible_managed }}
 
-# bsd_cimage_loaderconf_data
-{% for item in bsd_cimage_loaderconf_data %}
+# cimage_loaderconf_data
+{% for item in cimage_loaderconf_data %}
 {{ item }}
 {% endfor %}
 
-# bsd_cimage_loaderconf_sysctl
-{% for item in bsd_cimage_loaderconf_sysctl %}
+# cimage_loaderconf_sysctl
+{% for item in cimage_loaderconf_sysctl %}
 {{ item }}
 {% endfor %}
 
-# bsd_cimage_loaderconf_modules
-{% for item in bsd_cimage_loaderconf_modules %}
+# cimage_loaderconf_modules
+{% for item in cimage_loaderconf_modules %}
 {{ item }}_load="YES"
 {% endfor %}
 

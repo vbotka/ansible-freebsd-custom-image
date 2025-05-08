@@ -32,7 +32,7 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 * By default, the role is not idempotent. At least 4 tasks will be reported changed: 1) Create
   memory disk 2) Mount mdX partitions 3) Unmount mount points 4) Detach memory disk.
 
-* Setting `bsd_cimage_umount=false` will keep the memory disk attached and partitions mounted. This
+* Setting `cimage_umount=false` will keep the memory disk attached and partitions mounted. This
   will make the role idempotent.
 
 * The role doesn’t support check and diff "--check --diff"

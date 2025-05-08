@@ -9,7 +9,7 @@ will be customized in the image
 
 1) /boot/loader.conf ::
 
-    # bsd_cimage_loaderconf_data
+    # cimage_loaderconf_data
     hw.usb.template=3
     umodem_load="YES"
     boot_multicons="YES"
@@ -18,9 +18,9 @@ will be customized in the image
     loader_color="NO"
     legal.realtek.license_ack=1
 
-    # bsd_cimage_loaderconf_sysctl
+    # cimage_loaderconf_sysctl
 
-    # bsd_cimage_loaderconf_modules
+    # cimage_loaderconf_modules
     wlan_load="YES"
     wlan_wep_load="YES"
     wlan_ccmp_load="YES"
@@ -123,7 +123,7 @@ Follow the steps below
 
 * See what variables will be included ::
 
-    shell> ansible-playbook pb-wifi-basic.yml -t bsd_cimage_debug -e bsd_cimage_debug=true
+    shell> ansible-playbook pb-wifi-basic.yml -t cimage_debug -e cimage_debug=true
 
 
 * Run the playbook ::
@@ -136,14 +136,14 @@ Follow the steps below
     * By default, the role is not idempotent. At least 4 tasks will be reported changed: 1) Create
       memory disk 2) Mount mdX partitions 3) Unmount mount points 4) Detach memory disk.
 
-    * Setting ``bsd_cimage_umount=false`` will keep the memory disk attached and partitions
+    * Setting ``cimage_umount=false`` will keep the memory disk attached and partitions
       mounted. This will make the role idempotent.
 
 
 .. warning::
 
   * Password of the access-point will be displayed. Set classified debug to *false*
-    ``bsd_cimage_debug_classified=false`` to prevent it.
+    ``cimage_debug_classified=false`` to prevent it.
   
   * The image has not been secured by this playbook and should be used for testing only.
 

@@ -1,6 +1,6 @@
 ---
 wpa_action_sh:
-  path: "{{ bsd_cimage_mount_path }}{{ wpacli_action_script_dir }}/{{ wpacli_action_script_file }}"
+  path: "{{ cimage_mount_path }}{{ wpacli_action_script_dir }}/{{ wpacli_action_script_file }}"
   force: true
   owner: root
   group: wheel
