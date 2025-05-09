@@ -11,6 +11,12 @@ Release Summary
 ---------------
 Update documentation.
 
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* In fn/rcconf.yml, use community.general.sysrc
 
 2.7.1
 =====
