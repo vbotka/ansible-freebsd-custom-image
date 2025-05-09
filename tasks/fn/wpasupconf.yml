@@ -4,6 +4,7 @@
   vars:
     msg: |-
       cimage_wpasupconf_backup: {{ cimage_wpasupconf_backup }}
+      cimage_wpasupconf_template: {{ cimage_wpasupconf_template }}
       cimage_wpasupconf_file: {{ cimage_wpasupconf_file }}
       cimage_wpasupconf_owner: {{ cimage_wpasupconf_owner }}
       cimage_wpasupconf_group: {{ cimage_wpasupconf_group }}
@@ -21,7 +22,7 @@
 
 - name: "Wpasupconf: Configure {{ cimage_mount_path ~ '/etc/wpasupplicant.conf' }}"
   ansible.builtin.template:
-    src: wpa_supplicant.conf.j2
+    src: "{{ cimage_wpasupconf_template }}"
     dest: "{{ cimage_mount_path }}/{{ cimage_wpasupconf_file }}.{{ item.dev }}"
     owner: "{{ cimage_wpasupconf_owner }}"
     group: "{{ cimage_wpasupconf_group }}"

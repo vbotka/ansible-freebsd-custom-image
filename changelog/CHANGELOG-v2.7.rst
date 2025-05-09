@@ -4,6 +4,26 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 
 .. contents:: Topics
 
+2.7.2
+=====
+
+Release Summary
+---------------
+Update documentation.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* In fn/rcconf.yml, use community.general.sysrc
+* Run tasks/download.yml when cimage_download not empty
+* Updated tasks/debug.yml
+* Updated fn/wpasupconf.yml. Added var cimage_wpasupconf_template
+  (default=wpa_supplicant.conf.j2)
+* Simplified template wpa_supplicant.conf.j2. conf is list.
+* Added template wpa_supplicant.conf.2.j2. conf is dictionary.
+
 2.7.1
 =====
 

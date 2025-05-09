@@ -3,6 +3,7 @@
 # /etc/wpa_supplicant.conf
 cimage_wpasupconf: false
 cimage_wpasupconf_backup: false
+cimage_wpasupconf_template: wpa_supplicant.conf.j2
 cimage_wpasupconf_file: /etc/wpa_supplicant.conf
 cimage_wpasupconf_owner: root
 cimage_wpasupconf_group: wheel
