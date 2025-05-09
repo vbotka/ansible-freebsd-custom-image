@@ -14,7 +14,6 @@
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       cimage_sanity: {{ cimage_sanity }}
       cimage_sanity_quiet: {{ cimage_sanity_quiet }}
-      cimage_download: {{ cimage_download }}
       cimage_unpack: {{ cimage_unpack }}
       cimage_mount: {{ cimage_mount }}
       cimage_install: {{ cimage_install }}

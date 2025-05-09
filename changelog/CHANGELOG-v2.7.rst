@@ -17,6 +17,9 @@ Major Changes
 Minor Changes
 -------------
 * In fn/rcconf.yml, use community.general.sysrc
+* Run tasks/download.yml when cimage_download not empty
+* Updated tasks/debug.yml
+
 
 2.7.1
 =====
