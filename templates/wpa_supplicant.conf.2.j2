@@ -5,8 +5,8 @@
 {% for net in item.network %}
 
 network={
-{% for nvar in net.conf %}
-        {{ nvar.key }}={{ nvar.value }}
+{% for k,v in net.conf.items() %}
+        {{ k }}={{ v }}
 {% endfor %}
 }
 {% endfor %}
