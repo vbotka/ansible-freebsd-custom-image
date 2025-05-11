@@ -14,12 +14,12 @@ Synopsis: Main task.
 Import tasks if enabled.
 
 
-[`tasks/main.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/main.yml>`_]
+[`tasks/main.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -38,12 +38,12 @@ Synopsis: Configure debug.
 Description of the task.
 
 
-[`tasks/debug.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/debug.yml>`_]
+[`tasks/debug.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/debug.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -62,12 +62,12 @@ Synopsis: Configure packages.
 Description of the task.
 
 
-[`tasks/packages.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/packages.yml>`_]
+[`tasks/packages.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/packages.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -86,12 +86,12 @@ Synopsis: Configure sanity.
 Description of the task.
 
 
-[`tasks/sanity.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/sanity.yml>`_]
+[`tasks/sanity.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/sanity.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -110,12 +110,12 @@ Synopsis: Configure download.
 Description of the task.
 
 
-[`tasks/download.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/download.yml>`_]
+[`tasks/download.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/download.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/download.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -134,12 +134,12 @@ Synopsis: Configure mount.
 Description of the task.
 
 
-[`tasks/mount.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/mount.yml>`_]
+[`tasks/mount.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/mount.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/mount.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -158,12 +158,12 @@ Synopsis: Configure umount.
 Description of the task.
 
 
-[`tasks/umount.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/umount.yml>`_]
+[`tasks/umount.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/umount.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/umount.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -182,12 +182,12 @@ Synopsis: Configure customize.
 Description of the task.
 
 
-[`tasks/customize.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/customize.yml>`_]
+[`tasks/customize.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/customize.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/customize.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -206,12 +206,12 @@ Synopsis: Configure loaderconf.
 Description of the task.
 
 
-[`tasks/fn/loaderconf.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/fn/loaderconf.yml>`_]
+[`tasks/fn/loaderconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/loaderconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/loaderconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -230,12 +230,12 @@ Synopsis: Configure rcconf.
 Description of the task.
 
 
-[`tasks/fn/rcconf.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/fn/rcconf.yml>`_]
+[`tasks/fn/rcconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/rcconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/rcconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -254,12 +254,12 @@ Synopsis: Configure wpasupconf.
 Description of the task.
 
 
-[`tasks/fn/wpasupconf.yml <https://github.com/vbotka/ansible-__PROJECT__/blob/__BRANCH__/tasks/fn/wpasupconf.yml>`_]
+[`tasks/fn/wpasupconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/wpasupconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/wpasupconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 

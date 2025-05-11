@@ -19,7 +19,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Update ocumentation.
+* Update documentation.
 
 
 2.7.2

@@ -138,7 +138,7 @@ Tags
 ****
 
 The :index:`tags` provide the user with a very useful tool to run selected tasks of the role. To see
-what tags are available list the tags of the role with the command
+what tags are available list the role's tags
 
 .. include:: tags-list.rst
 
@@ -190,7 +190,17 @@ work in progress. Feel free to `share your feedback and report issues`_.
 
 All customization tasks are disabled by default. The default variables of these tasks are stored
 under the same file-names in the directory *defaults/main*. Enable, configure and run these tasks as
-needed. Keep this arrangement when you add custom tasks.
+needed. Keep this arrangement when you add custom tasks. Add custom tasks to the dictionary
+*cimage_customize*
+
+.. literalinclude:: ../../defaults/main/customize.yml
+  :caption: [`defaults/main/customize.yml`_]
+  :language: yaml
+
+.. _ug_tasks_custom:
+
+Included customization tasks
+============================
 
 .. toctree::
 
@@ -207,8 +217,8 @@ Variables
 *********
 
 There are two categories of variables. The variables that control the workflow of the role (see
-*default/main/main.yml*) and customization tasks variables (see other files in
-*default/main*).
+*defaults/main/main.yml*) and customization tasks variables (see other files in
+*defaults/main*).
 
 .. seealso:: `Ansible variable precedence. Where should I put a variable?`_
 
@@ -301,3 +311,4 @@ Examples
 .. _Debugging modules: https://docs.ansible.com/ansible/latest/dev_guide/debugging.html#debugging-modules
 .. _Python Debugging With Pdb: https://realpython.com/python-debugging-pdb
 .. _Ansible variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
+.. _defaults/main/customize.yml: https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/defaults/main/customize.yml

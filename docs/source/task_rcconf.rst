@@ -20,6 +20,6 @@ Customize the variables to your needs.
 .. warning::
 
    * Don't make any changes to the files in *defaults/main*. The changes will be overwritten by the
-     update of the role. Customize the default values in the files in *vars/main*.
+     update of the role.
 
 .. _Ansible variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable

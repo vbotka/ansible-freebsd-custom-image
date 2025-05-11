@@ -106,7 +106,7 @@ Follow the steps below
     images.example.com
 
     [images:vars]
-    ansible_python_interpreter=/usr/local/bin/python3.9
+    ansible_python_interpreter=/usr/local/bin/python3.11
     ansible_perl_interpreter=/usr/local/bin/perl
 
 * Test syntax ::
@@ -136,9 +136,11 @@ Follow the steps below
   
   * The image has not been secured by this playbook and should be used for testing only.
 
-* Make sure the partition is unmounted and write the customized image to a disk. For example ::
+* Make sure the partition is unmounted and write the customized image to a disk. For example, ::
 
-    dd if=FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img of=/dev/sdX bs=1m conv=sync status=progress
+    dd if=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img of=/dev/sdX bs=1m conv=sync status=progress
+
+.. hint:: In Linux, use ``bs=1M``
 
 .. seealso:: `2.3. Pre-Installation Tasks`_
 
@@ -150,34 +152,38 @@ Follow the steps below
 
     shell> ssh freebsd@10.1.0.16
     Password for freebsd@rpi-b:
-      FreeBSD 13.0-CURRENT (RPI-B) #0 main-c255460-g282381aa53a: Thu Dec 31 08:07:25 UTC 2020
+    FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B
 
-      Welcome to FreeBSD!
-
+    Welcome to FreeBSD!
     ...
 
     freebsd@rpi-b:~ % dmesg
-    ---<<BOOT>>---
-    KDB: debugger backends: ddb
-    KDB: current backend: ddb
-    Copyright (c) 1992-2020 The FreeBSD Project.
+    Copyright (c) 1992-2021 The FreeBSD Project.
     Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
-    The Regents of the University of California. All rights reserved.
+            The Regents of the University of California. All rights reserved.
     FreeBSD is a registered trademark of The FreeBSD Foundation.
-    FreeBSD 13.0-CURRENT #0 main-c255460-g282381aa53a: Thu Dec 31 08:07:25 UTC 2020
-        root@releng1.nyi.freebsd.org:/usr/obj/usr/src/arm.armv6/sys/RPI-B arm
-        FreeBSD clang version 11.0.0 (git@github.com:llvm/llvm-project.git llvmorg-11.0.0-0-g176249bd673)
+    FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B arm
+    FreeBSD clang version 19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)
 
     ...
 
     freebsd@rpi-b:~ % ifconfig wlan0
     wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
-    ether <sanitized>
-    inet 10.1.0.16 netmask 0xffffff00 broadcast 10.1.0.255
-    groups: wlan
-    ssid my_access_point channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
+            ether <sanitized>
+            inet6 fe80::272:63ff:fe20:599f%wlan0 prefixlen 64 scopeid 0x2
+            inet6 fdb2:96f:84ff:0:272:63ff:fe20:599f prefixlen 64 autoconf
+            inet 10.1.0.16 netmask 0xffffff00 broadcast 10.1.0.255
+            groups: wlan
+            ssid <sanitized> channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
+            regdomain FCC country US authmode WPA2/802.11i privacy ON
+            deftxkey UNDEF AES-CCM 2:128-bit AES-CCM 3:128-bit txpower 30 bmiss 7
+            scanvalid 60 protmode CTS ht20 ampdulimit 64k ampdudensity 8 shortgi
+            -stbc -ldpc -uapsd wme roaming MANUAL
+            parent interface: rtwn0
+            media: IEEE 802.11 Wireless Ethernet MCS mode 11ng
+            status: associated
+            nd6 options=23<PERFORMNUD,ACCEPT_RTADV,AUTO_LINKLOCAL>
 
-    ...
 
 .. _already downloaded image: https://www.freebsd.org/where.html
 .. _USB Realtek RTL8188EU: https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html

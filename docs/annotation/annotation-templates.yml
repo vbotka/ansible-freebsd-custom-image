@@ -10,19 +10,64 @@ mytemplates:
       Description of the template.
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: []
+    hints: []
+    warnings: []
 
   - file: wpa_supplicant.conf.j2
     link: wpa_supplicant.conf.j2
     path: templates/wpa_supplicant.conf.j2
     synopsis: |
-      Template wpa_supplicant.conf.
+      Create wpa_supplicant.conf
+
     description: |
-      Description of the template.
+      The attribute *conf* is a list. For example,
+
+      .. code-block:: yaml
+
+         cimage_wpasupconf_data:
+           - dev: wlan0
+             network:
+               - conf:
+                   - { key: ssid, value: '"my_access_point"' }
+                   - { key: psk, value: '"my_password"' }
+                   - { key: disabled, value: 0 }
+
     lines: 1
     seealso: []
-    note: []
-    warning: []
+    notes: 
+      - "Some values must be double-quoted."
+      - "See https://wiki.archlinux.org/title/Wpa_supplicant"
+
+    hints: []
+    warnings: []
+
+  - file: wpa_supplicant.conf.2.j2
+    link: wpa_supplicant.conf.2.j2
+    path: templates/wpa_supplicant.conf.2.j2
+    synopsis: |
+      Create wpa_supplicant.conf
+
+    description: |
+      The attribute *conf* is a dictionary. For example,
+
+      .. code-block:: yaml
+
+         cimage_wpasupconf_data:
+           - dev: wlan0
+             network:
+               - conf:
+                   ssid: '"my_access_point"'
+                   psk: '"my_password"'
+                   disabled: 0
+
+    lines: 1
+    seealso: []
+    notes: 
+      - "Some values must be double-quoted."
+      - "See https://wiki.archlinux.org/title/Wpa_supplicant"
+
+    hints: []
+    warnings: []
 
 ...

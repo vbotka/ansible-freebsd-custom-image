@@ -37,10 +37,10 @@ Indices and tables
 * :ref:`search`
 
 
-.. _role: https://galaxy.ansible.com/vbotka/freebsd_custom_image/
-.. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/vbotka/freebsd_custom_image/
-.. _ansible-freebsd-custom-image: https://github.com/vbotka/ansible-freebsd-custom-image/
+.. _role: https://galaxy.ansible.com/vbotka/freebsd_custom_image
+.. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/vbotka/freebsd_custom_image
+.. _ansible-freebsd-custom-image: https://github.com/vbotka/ansible-freebsd-custom-image
 
-.. _share your feedback and report issues: https://github.com/vbotka/ansible-freebsd-postinstall/issues/
-.. _Contributions are welcome: https://github.com/firstcontributions/first-contributions/
+.. _share your feedback and report issues: https://github.com/vbotka/ansible-freebsd-postinstall/issues
+.. _Contributions are welcome: https://github.com/firstcontributions/first-contributions
 .. _BSD-2-Clause: https://spdx.org/licenses/BSD-2-Clause.html
