@@ -3,7 +3,7 @@
   when: cimage_debug | bool
   vars:
     msg: |-
-      cimage_mount_dir: {{ cimage_mount_dir }}
+      cimage_dir: {{ cimage_dir }}
       cimage_mount_file: {{ cimage_mount_file }}
       cimage_mount_mode: {{ cimage_mount_mode }}
       cimage_mount_points_create: {{ cimage_mount_points_create }}
@@ -26,16 +26,16 @@
     name: vbotka.ansible_lib
     tasks_from: al_mdconfig.yml
   vars:
-    al_mdconfig_file: "{{ cimage_mount_dir }}/{{ cimage_mount_file }}"
+    al_mdconfig_file: "{{ cimage_dir }}/{{ cimage_mount_file }}"
 
 - name: "Mount: Set variable cimage_mount_dev"
   tags: cimage_mdconfig
   ansible.builtin.set_fact:
     cimage_mount_dev: md{{ al_mdconfig_devs[my_file]['unit'] | d('UNDEFINED') }}
   vars:
-    my_file: "{{ cimage_mount_dir }}/{{ cimage_mount_file }}"
+    my_file: "{{ cimage_dir }}/{{ cimage_mount_file }}"
 
-- name: "Mount: Debug {{ cimage_mount_dir ~ '/' ~ cimage_mount_file }}"
+- name: "Mount: Debug {{ cimage_dir ~ '/' ~ cimage_mount_file }}"
   when: cimage_debug | bool
   tags: cimage_mdconfig
   ansible.builtin.debug:

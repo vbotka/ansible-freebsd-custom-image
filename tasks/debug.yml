@@ -34,7 +34,6 @@
         {{ cimage_unpack_cmd | to_nice_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       cimage_mount_path: {{ cimage_mount_path }}
-      cimage_mount_dir: {{ cimage_mount_dir }}
       cimage_mount_file: {{ cimage_mount_file }}
       cimage_mount_mode: {{ cimage_mount_mode }}
       cimage_mount_points_create: {{ cimage_mount_points_create }}

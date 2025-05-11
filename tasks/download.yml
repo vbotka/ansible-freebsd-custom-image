@@ -3,8 +3,6 @@
   when: cimage_debug | bool
   vars:
     msg: |-
-      cimage_download_images:
-        {{ cimage_download_images | to_nice_yaml(indent=2) | indent(2) }}
       cimage_dir: {{ cimage_dir }}
       cimage_owner: {{ cimage_owner | d('UNDEFINED') }}
       cimage_group: {{ cimage_group | d('UNDEFINED') }}
@@ -12,6 +10,8 @@
       cimage_mode_dir: {{ cimage_mode_dir | d('UNDEFINED') }}
       cimage_get_checksums: {{ cimage_get_checksums }}
       cimage_get_images: {{ cimage_get_images }}
+      cimage_download_images:
+        {{ cimage_download_images | to_nice_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
