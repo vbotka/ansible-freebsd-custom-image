@@ -14,6 +14,7 @@
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       cimage_sanity: {{ cimage_sanity }}
       cimage_sanity_quiet: {{ cimage_sanity_quiet }}
+      cimage_download: {{ cimage_download }}
       cimage_unpack: {{ cimage_unpack }}
       cimage_mount: {{ cimage_mount }}
       cimage_install: {{ cimage_install }}
@@ -26,8 +27,8 @@
       cimage_group: {{ cimage_group | d('UNDEFINED') }}
       cimage_mode: {{ cimage_mode | d('UNDEFINED') }}
       cimage_mode_dir: {{ cimage_mode_dir | d('UNDEFINED') }}
-      cimage_download:
-        {{ cimage_download | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_download_images:
+        {{ cimage_download_images | to_nice_yaml(indent=2) | indent(2) }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       cimage_unpack_cmd:
         {{ cimage_unpack_cmd | to_nice_yaml(indent=2) | indent(2) }}

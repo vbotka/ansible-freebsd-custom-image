@@ -9,13 +9,7 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 
 Release Summary
 ---------------
-Update documentation.
-
-Major Changes
--------------
-
-Minor Changes
--------------
+Add variable cimage_download_images. Update documentation.
 
 
 2.7.2

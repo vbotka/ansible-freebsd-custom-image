@@ -3,8 +3,8 @@
   when: cimage_debug | bool
   vars:
     msg: |-
-      cimage_download:
-        {{ cimage_download | to_nice_yaml(indent=2) | indent(2) }}
+      cimage_download_images:
+        {{ cimage_download_images | to_nice_yaml(indent=2) | indent(2) }}
       cimage_dir: {{ cimage_dir }}
       cimage_owner: {{ cimage_owner | d('UNDEFINED') }}
       cimage_group: {{ cimage_group | d('UNDEFINED') }}
@@ -36,7 +36,7 @@
         owner: "{{ cimage_owner | d(omit) }}"
         group: "{{ cimage_group | d(omit) }}"
         mode: "{{ cimage_mode | d(omit) }}"
-      loop: "{{ cimage_download }}"
+      loop: "{{ cimage_download_images }}"
       loop_control:
         label: "{{ item.checksum }}"
 
@@ -47,7 +47,7 @@
         cmd: >
           cat {{ [cimage_dir, item.checksum] | community.general.path_join }}
       register: cresult
-      loop: "{{ cimage_download }}"
+      loop: "{{ cimage_download_images }}"
       loop_control:
         label: "{{ item.checksum }}"
 
@@ -60,7 +60,7 @@
         checksum: "{{ cresult.results[ansible_loop.index0].stdout | split | last }}"
       ansible.builtin.debug:
         msg: "{{ algorithm }}:{{ checksum }}"
-      loop: "{{ cimage_download }}"
+      loop: "{{ cimage_download_images }}"
       loop_control:
         label: "{{ item.image }}"
         extended: true
@@ -84,7 +84,7 @@
         group: "{{ cimage_group | d(omit) }}"
         mode: "{{ cimage_mode | d(omit) }}"
       register: out
-      loop: "{{ cimage_download }}"
+      loop: "{{ cimage_download_images }}"
       loop_control:
         label: "{{ item.image }}"
         extended: true
