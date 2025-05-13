@@ -19,7 +19,7 @@ Major Changes
 
 Minor Changes
 -------------
-* Update documentation.
+* Updated documentation. Updated annotation templates.
 
 
 2.7.2

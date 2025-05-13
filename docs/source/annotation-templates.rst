@@ -8,10 +8,10 @@ Templates
 loader.conf.j2
 --------------
 
-Synopsis: Template loader.conf.
+Synopsis: Configure loader.conf
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/loader.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/loader.conf.j2>`_]
@@ -60,7 +60,7 @@ The attribute *conf* is a list. For example,
 
 .. note::
    * Some values must be double-quoted.
-   * See https://wiki.archlinux.org/title/Wpa_supplicant
+   * See https://wiki.archlinux.org/title/wpa_supplicant
 
 
 
@@ -97,7 +97,7 @@ The attribute *conf* is a dictionary. For example,
 
 .. note::
    * Some values must be double-quoted.
-   * See https://wiki.archlinux.org/title/Wpa_supplicant
+   * See https://wiki.archlinux.org/title/wpa_supplicant
 
 
 

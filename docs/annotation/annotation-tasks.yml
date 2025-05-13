@@ -17,130 +17,210 @@ mytasks:
     link: debug.yml
     path: tasks/debug.yml
     synopsis: |
-      Configure debug.
+      Configure debug
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: packages.yml
     link: packages.yml
     path: tasks/packages.yml
     synopsis: |
-      Configure packages.
+      Configure packages
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: sanity.yml
     link: sanity.yml
     path: tasks/sanity.yml
     synopsis: |
-      Configure sanity.
+      Configure sanity
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: download.yml
     link: download.yml
     path: tasks/download.yml
     synopsis: |
-      Configure download.
+      Configure download
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: mount.yml
     link: mount.yml
     path: tasks/mount.yml
     synopsis: |
-      Configure mount.
+      Configure mount
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: umount.yml
     link: umount.yml
     path: tasks/umount.yml
     synopsis: |
-      Configure umount.
+      Configure umount
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: customize.yml
     link: customize.yml
     path: tasks/customize.yml
     synopsis: |
-      Configure customize.
+      Configure customize
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: loaderconf.yml
     link: loaderconf.yml
     path: tasks/fn/loaderconf.yml
     synopsis: |
-      Configure loaderconf.
+      Configure loaderconf
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: rcconf.yml
     link: rcconf.yml
     path: tasks/fn/rcconf.yml
     synopsis: |
-      Configure rcconf.
+      Configure rcconf
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: wpasupconf.yml
     link: wpasupconf.yml
     path: tasks/fn/wpasupconf.yml
     synopsis: |
-      Configure wpasupconf.
+      Configure wpasupconf
     description: |
       Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    lines: 1
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
 ...

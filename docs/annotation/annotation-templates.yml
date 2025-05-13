@@ -5,14 +5,22 @@ mytemplates:
     link: loader.conf.j2
     path: templates/loader.conf.j2
     synopsis: |
-      Template loader.conf.
+      Configure loader.conf
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: wpa_supplicant.conf.j2
     link: wpa_supplicant.conf.j2
@@ -34,13 +42,19 @@ mytemplates:
                    - { key: disabled, value: 0 }
 
     lines: 1
-    seealso: []
-    notes: 
-      - "Some values must be double-quoted."
-      - "See https://wiki.archlinux.org/title/Wpa_supplicant"
+    seealso:
+      {}
 
-    hints: []
-    warnings: []
+    notes:
+      - Some values must be double-quoted.
+      - See https://wiki.archlinux.org/title/wpa_supplicant
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: wpa_supplicant.conf.2.j2
     link: wpa_supplicant.conf.2.j2
@@ -62,12 +76,18 @@ mytemplates:
                    disabled: 0
 
     lines: 1
-    seealso: []
-    notes: 
-      - "Some values must be double-quoted."
-      - "See https://wiki.archlinux.org/title/Wpa_supplicant"
+    seealso:
+      {}
 
-    hints: []
-    warnings: []
+    notes:
+      - Some values must be double-quoted.
+      - See https://wiki.archlinux.org/title/wpa_supplicant
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
 ...
