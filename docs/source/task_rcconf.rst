@@ -5,9 +5,8 @@ Configure /etc/rc.conf
 
 Customize the variables to your needs.
 
-[`defaults/main/rcconf.yml <https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/defaults/main/rcconf.yml>`_]
-
 .. literalinclude:: ../../defaults/main/rcconf.yml
+    :caption: `defaults/main/rcconf.yml`_
     :language: yaml
     :emphasize-lines: 3
     :linenos:
@@ -19,7 +18,8 @@ Customize the variables to your needs.
 
 .. warning::
 
-   * Don't make any changes to the files in *defaults/main*. The changes will be overwritten by the
-     update of the role.
+   * Don't make any changes in the files in the directory *defaults/main*. The role update will
+     overwrite the changes.
 
 .. _Ansible variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
+.. _defaults/main/rcconf.yml: https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/defaults/main/rcconf.yml

@@ -5,9 +5,7 @@ Ansible role FreeBSD Custom Image
 
 Role version 2.7.3
 
-
-This `role`_ and the documentation is work in progess.
-
+| This `role`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues`_.
 | `Contributions are welcome`_
 
@@ -28,14 +26,12 @@ This `role`_ and the documentation is work in progess.
    copyright
    legalnotice
 
-
 Indices and tables
 ------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
 
 .. _role: https://galaxy.ansible.com/vbotka/freebsd_custom_image
 .. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/vbotka/freebsd_custom_image

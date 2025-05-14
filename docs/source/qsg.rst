@@ -3,9 +3,8 @@
 Quick start guide
 *****************
 
-For the users who want to try the role quickly, this guide provides an example
-of how to configure wireless network in `already downloaded image`_. Three files
-will be customized in the image
+For the users who want to try the role quickly, this guide provides an example of how to configure
+wireless network in `already downloaded image`_. Three files will be customized in the image
 
 1) /boot/loader.conf ::
 
@@ -50,10 +49,11 @@ are ``freebsd: freebsd`` and ``root: root``).
 The wireless adapter in this example is `USB Realtek RTL8188EU`_ (idVendor =
 0x0bda idProduct = 0x8179) ::
 
-    rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
-    rtwn0: MAC/BB RTL8188EU, RF 6052 1T1R
+  rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
+  rtwn0: MAC/BB RTL8188EU, RF 6052 1T1R
 
 .. seealso::
+
    * `7.4. Wireless Networks - FreeBSD Handbook`_
    * `34.4. Wireless Advanced Authentication - FreeBSD Handbook`_
    * `Wiki FreeBSD Wireless`_
@@ -81,12 +81,12 @@ Follow the steps below
   mount-point(s) (21) and configure which partition will be customized (22). The mount-point doesn't
   have to exist and will be create (and later deleted when unmounted) by the Ansible module
   *mount*. Review the modules (26) and loader's configuration (27-34). Fit it to your needs if you
-  use a different adapter. Change also configuration of *rc.conf* (38-40) if necessary. Change
+  use a different adapter. Change also the configuration of *rc.conf* (38-40) if necessary. Change
   *SSID* (48) and *password* (49) of the access point. Enable symbolic link of
-  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51,52).
+  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51, 52).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
-  :caption: [`contrib/playbook/pb-wifi-basic.yml`_]
+  :caption: `contrib/playbook/pb-wifi-basic.yml`_
   :lines: 32-87
   :language: yaml
   :emphasize-lines: 2,4-8,16,17,19,21,22,26,27-34,38-40,48,49,51,52
@@ -109,7 +109,7 @@ Follow the steps below
     ansible_python_interpreter=/usr/local/bin/python3.11
     ansible_perl_interpreter=/usr/local/bin/perl
 
-* Test syntax ::
+* Test the syntax ::
 
     shell> ansible-playbook pb-wifi-basic.yml --syntax-check
 
@@ -166,6 +166,8 @@ Follow the steps below
     FreeBSD clang version 19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)
 
     ...
+
+  ::
 
     freebsd@rpi-b:~ % ifconfig wlan0
     wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
