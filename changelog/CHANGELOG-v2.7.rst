@@ -4,6 +4,24 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 
 .. contents:: Topics
 
+2.7.3
+=====
+
+Release Summary
+---------------
+Add variable cimage_download_images. Remove variable cimage_mount_dir. Update
+documentation.
+
+Major Changes
+-------------
+* Add variable cimage_download_images lists images.
+* Remove variable cimage_mount_dir. Use cimage_dir instead.
+
+Minor Changes
+-------------
+* Updated documentation. Updated annotation templates.
+
+
 2.7.2
 =====
 

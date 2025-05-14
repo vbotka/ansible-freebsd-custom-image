@@ -38,7 +38,7 @@
     cimage_debug: true
     cimage_debug_classified: true
 
-    cimage_mount_dir: /export/images/FreeBSD/live
+    cimage_dir: /export/images/FreeBSD/live
     cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
     cimage_mount_points:
       - partition: s2a

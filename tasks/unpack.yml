@@ -9,7 +9,7 @@
     creates: "{{ dest }}"
     chdir: "{{ cimage_dir }}"
   register: uresult
-  loop: "{{ cimage_download }}"
+  loop: "{{ cimage_download_images }}"
   loop_control:
     label: "{{ item.image }}"
 

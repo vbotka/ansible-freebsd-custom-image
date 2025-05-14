@@ -25,7 +25,7 @@
 
 - name: "Umount: Detach memory disk" # noqa: var-naming[no-role-prefix]
   vars:
-    al_mdconfig_file: "{{ cimage_mount_dir }}/{{ cimage_mount_file }}"
+    al_mdconfig_file: "{{ cimage_dir }}/{{ cimage_mount_file }}"
     al_mdconfig_state: absent
   ansible.builtin.include_role:
     name: vbotka.ansible_lib

@@ -4,7 +4,7 @@ User's guide
 ############
 .. contents:: Table of Contents
    :local:
-   :depth: 2
+   :depth: 1
 
 .. _ug_introduction:
 
@@ -13,14 +13,14 @@ Introduction
 
 The goal of this role is the customization of FreeBSD installation images. FreeBSD provides the
 users with the option of `Release Building`_. The usage of this powerful tool to make small changes,
-e.g. the configuration of wireless network (see Quick start guide), would be an overkill. Instead,
-this role provides the users with the options to mount `released images and development snapshots`_,
-and customize them. The role can be easily configured and extended. The users are expected to write
-playbooks and additional customization tasks when needed. When you decide to customize the
-functionality consider Ansible role `vbotka.config_light`_ instead of creating additional custom
-tasks. The advantage would be unified configuration data in `vbotka.config_light`_. Create custom
-tasks if the role `vbotka.config_light`_ is not able to do what you want. `Contributions are
-welcome`_. See the examples in the directory `contrib`_.
+for example the configuration of the wireless network (see Quick start guide), would be an
+overkill. Instead, this role provides the users with the options to mount `released images and
+development snapshots`_, and customize them. The role can be easily configured and extended. The
+users are expected to write playbooks and additional customization tasks when needed. When you
+decide to customize the functionality consider the Ansible role `vbotka.config_light`_ instead of
+creating additional custom tasks. The advantage would be unified configuration data in
+`vbotka.config_light`_. Create custom tasks if the role `vbotka.config_light`_ is not able to do
+what you want. `Contributions are welcome`_. See the examples in the directory `contrib`_.
 
 Many tasks are disabled by default. They can be enabled and run one by one to accomplish standalone
 tasks (see *tasks/main.yml* and *defaults/main/main.yml*). By default, *download, unpack, mount, and
@@ -138,7 +138,7 @@ Tags
 ****
 
 The :index:`tags` provide the user with a very useful tool to run selected tasks of the role. To see
-what tags are available list the tags of the role with the command
+what tags are available list the role's tags
 
 .. include:: tags-list.rst
 
@@ -190,7 +190,17 @@ work in progress. Feel free to `share your feedback and report issues`_.
 
 All customization tasks are disabled by default. The default variables of these tasks are stored
 under the same file-names in the directory *defaults/main*. Enable, configure and run these tasks as
-needed. Keep this arrangement when you add custom tasks.
+needed. Keep this arrangement when you add custom tasks. Add custom tasks to the dictionary
+*cimage_customize*
+
+.. literalinclude:: ../../defaults/main/customize.yml
+  :caption: `defaults/main/customize.yml`_
+  :language: yaml
+
+.. _ug_tasks_custom:
+
+Included customization tasks
+============================
 
 .. toctree::
 
@@ -198,8 +208,8 @@ needed. Keep this arrangement when you add custom tasks.
    task_rcconf
    task_wpasupconf
 
-.. note:: Instead of creating more custom tasks, consider Ansible role `vbotka.config_light`_. See
-          :ref:`ug_example_001`
+.. hint:: Instead of creating more custom tasks, consider Ansible role `vbotka.config_light`_. See
+          the example :ref:`ug_example_001`
 
 .. _ug_vars:
 
@@ -207,8 +217,8 @@ Variables
 *********
 
 There are two categories of variables. The variables that control the workflow of the role (see
-*default/main/main.yml*) and customization tasks variables (see other files in
-*default/main*).
+*defaults/main/main.yml*) and customization tasks variables (see other files in
+*defaults/main*).
 
 .. seealso:: `Ansible variable precedence. Where should I put a variable?`_
 
@@ -229,7 +239,7 @@ Best practice
    shell> ansible-playbook playbook.yml -t cimage_debug -e cimage_debug=true
 
 * Download images. To make the task idempotent use the attribute *checksum* in the items of the list
-  *cimage_download*. See :ref:`ug_vars_defaults` ::
+  *cimage_download_images*. See :ref:`ug_vars_defaults` ::
 
    shell> ansible-playbook playbook.yml -t cimage_download
 

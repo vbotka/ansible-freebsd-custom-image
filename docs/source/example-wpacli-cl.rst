@@ -3,16 +3,12 @@
 Configure wpa_cli by config_light
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To configure the image, we'll use Ansible role `vbotka.config_light
-<https://galaxy.ansible.com/vbotka/config_light>`_, instead of the :ref:`ug_tasks`. This example,
-using *config_light*, configures exactly the same parameters of the wireless network as the role
-`vbotka.freebsd_wpa_cli <https://galaxy.ansible.com/vbotka/freebsd_wpa_cli>`_. Review the goal of
-`Ansible role FreeBSD wpa_cli
-<https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/index.html>`_ and read at least the
-`Introduction
-<https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/guide.html#introduction>`_. The purpose of
-using the role *config_light*, instead of *freebsd_wpa_cli*, is building single source of the
-configuration in the directory ``cl_dird``.
+To configure the image, we'll use the Ansible role `vbotka.config_light`_, instead of the
+:ref:`ug_tasks`. This example, using `vbotka.config_light`_, configures exactly the same parameters
+of the wireless network as the role `vbotka.freebsd_wpa_cli`_. Look at the documentation of `Ansible
+role FreeBSD wpa_cli`_ and read at least the `Introduction`_. The purpose of using the role
+`vbotka.config_light`_, instead of `vbotka.freebsd_wpa_cli`_, is building single configuration
+source in the directory ``cl_dird``.
 
 The playbook ``pb-wifi-basic.yml`` created in the :ref:`qg` will be used to attach a memory disk and
 mount the partition.
@@ -34,13 +30,11 @@ mount the partition.
   connection (4-5) and privilege escalation (6-8). Configure the directory (13) with the
   configuration files and reuse the configuration (15-18) already prepared in :ref:`qg`
   (28-52). Configure only wlan0 (19) in wpa_supplicant. The configuration of *wpa_cli* (58-78) is
-  described in Ansible role `vbotka.freebsd_wpa_cli
-  <https://galaxy.ansible.com/vbotka/freebsd_wpa_cli>`_. The configuration of *ntp* (81-94) is
-  described in Ansible role `vbotka.freebsd_postinstall
-  <https://galaxy.ansible.com/vbotka/freebsd_postinstall>`_.
+  described in Ansible role `vbotka.freebsd_wpa_cli`_. The configuration of *ntp* (81-94) is
+  described in Ansible role `vbotka.freebsd_postinstall`_.
 
 .. literalinclude:: ../../contrib/example-wpacli-cl/pb-wpacli-cl.yml
-  :caption: [`contrib/example-wpacli-cl/pb-wpacli-cl.yml <https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/example-wpacli-cl/pb-wpacli-cl.yml>`_]
+  :caption: `contrib/example-wpacli-cl/pb-wpacli-cl.yml`_
   :lines: 27-123
   :language: yaml
   :emphasize-lines: 2,4-8,13,15-18,19,58-78,81-94
@@ -67,7 +61,7 @@ mount the partition.
         └── wpasup-conf.yml
 
 
-* Create the directory wiht the patches ::
+* Create the directory with the patches ::
 
     shell> tree files/
     files/
@@ -76,11 +70,9 @@ mount the partition.
 
 <TODO: Details in ``contrib/example-wpacli-cl``>
 
+.. seealso:: How to configure `Files in vbotka.config_light`_
 
-.. seealso:: How to configure `Files in vbotka.config_light <https://ansible-config-light.readthedocs.io/en/latest/guide.html#files>`_
-
-
-* Create the inventory. Change the IP adress (2) and fit the paths to Python (8) and Perl (9) if
+* Create the inventory. Change the IP address (2) and fit the paths to Python (8) and Perl (9) if
   necessary
 
 .. code-block:: sh
@@ -94,14 +86,14 @@ mount the partition.
     images.example.com
 
     [images:vars]
-    ansible_python_interpreter=/usr/local/bin/python3.7
+    ansible_python_interpreter=/usr/local/bin/python3.11
     ansible_perl_interpreter=/usr/local/bin/perl
 
 * Mount the image using the playbook prepared in :ref:`qg` ::
 
    shell> ansible-playbook pb-wifi-basic.yml -t cimage_mount
 
-* Test syntax ::
+* Test the syntax ::
 
     shell> ansible-playbook pb-wpacli-cl.yml --syntax-check
 
@@ -118,7 +110,7 @@ mount the partition.
    shell> ansible-playbook pb-wifi-basic.yml -t cimage_umount
 
 * Write the customized image to a disk and boot the system. Connect to the system and review the
-  log. For example ::
+  log. For example, ::
 
    shell> cat /tmp/wpa_action.wlan0
 
@@ -148,3 +140,13 @@ mount the partition.
    Jan 21 06:30:04 wlan0: /etc/rc.d/ntpd stop: ntpd not running? (check /var/db/ntp/ntpd.pid).
    Jan 21 06:31:05 wlan0: /usr/sbin/ntpdate -b 0.pool.ntp.org: 21 Jan 06:31:05 ntpdate[999]: step time server 62.168.94.161 offset +54.261588 sec
    Jan 21 06:31:08 wlan0: /etc/rc.d/ntpd start: Starting ntpd.
+
+.. _vbotka.config_light: https://galaxy.ansible.com/vbotka/config_light
+.. _vbotka.freebsd_wpa_cli: https://galaxy.ansible.com/vbotka/freebsd_wpa_cli
+.. _vbotka.freebsd_postinstall: https://galaxy.ansible.com/vbotka/freebsd_postinstall
+
+.. _Ansible role FreeBSD wpa_cli: https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/index.html
+.. _Introduction: https://ansible-freebsd-wpa-cli.readthedocs.io/en/latest/guide.html#introduction
+.. _Files in vbotka.config_light: https://ansible-config-light.readthedocs.io/en/latest/guide.html#files
+
+.. _contrib/example-wpacli-cl/pb-wpacli-cl.yml: https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/example-wpacli-cl/pb-wpacli-cl.yml

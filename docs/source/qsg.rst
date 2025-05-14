@@ -3,9 +3,8 @@
 Quick start guide
 *****************
 
-For the users who want to try the role quickly, this guide provides an example
-of how to configure wireless network in `already downloaded image`_. Three files
-will be customized in the image
+For the users who want to try the role quickly, this guide provides an example of how to configure
+wireless network in `already downloaded image`_. Three files will be customized in the image
 
 1) /boot/loader.conf ::
 
@@ -50,10 +49,11 @@ are ``freebsd: freebsd`` and ``root: root``).
 The wireless adapter in this example is `USB Realtek RTL8188EU`_ (idVendor =
 0x0bda idProduct = 0x8179) ::
 
-    rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
-    rtwn0: MAC/BB RTL8188EU, RF 6052 1T1R
+  rtwn0: <Realtek 802.11n NIC, class 0/0, rev 2.00/0.00, addr 4> on usbus1
+  rtwn0: MAC/BB RTL8188EU, RF 6052 1T1R
 
 .. seealso::
+
    * `7.4. Wireless Networks - FreeBSD Handbook`_
    * `34.4. Wireless Advanced Authentication - FreeBSD Handbook`_
    * `Wiki FreeBSD Wireless`_
@@ -81,12 +81,12 @@ Follow the steps below
   mount-point(s) (21) and configure which partition will be customized (22). The mount-point doesn't
   have to exist and will be create (and later deleted when unmounted) by the Ansible module
   *mount*. Review the modules (26) and loader's configuration (27-34). Fit it to your needs if you
-  use a different adapter. Change also configuration of *rc.conf* (38-40) if necessary. Change
+  use a different adapter. Change also the configuration of *rc.conf* (38-40) if necessary. Change
   *SSID* (48) and *password* (49) of the access point. Enable symbolic link of
-  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51,52).
+  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51, 52).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
-  :caption: [`contrib/playbook/pb-wifi-basic.yml`_]
+  :caption: `contrib/playbook/pb-wifi-basic.yml`_
   :lines: 32-87
   :language: yaml
   :emphasize-lines: 2,4-8,16,17,19,21,22,26,27-34,38-40,48,49,51,52
@@ -106,10 +106,10 @@ Follow the steps below
     images.example.com
 
     [images:vars]
-    ansible_python_interpreter=/usr/local/bin/python3.9
+    ansible_python_interpreter=/usr/local/bin/python3.11
     ansible_perl_interpreter=/usr/local/bin/perl
 
-* Test syntax ::
+* Test the syntax ::
 
     shell> ansible-playbook pb-wifi-basic.yml --syntax-check
 
@@ -136,9 +136,11 @@ Follow the steps below
   
   * The image has not been secured by this playbook and should be used for testing only.
 
-* Make sure the partition is unmounted and write the customized image to a disk. For example ::
+* Make sure the partition is unmounted and write the customized image to a disk. For example, ::
 
-    dd if=FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img of=/dev/sdX bs=1m conv=sync status=progress
+    dd if=FreeBSD-13.5-RELEASE-arm-armv6-RPI-B.img of=/dev/sdX bs=1m conv=sync status=progress
+
+.. hint:: In Linux, use ``bs=1M``
 
 .. seealso:: `2.3. Pre-Installation Tasks`_
 
@@ -150,34 +152,40 @@ Follow the steps below
 
     shell> ssh freebsd@10.1.0.16
     Password for freebsd@rpi-b:
-      FreeBSD 13.0-CURRENT (RPI-B) #0 main-c255460-g282381aa53a: Thu Dec 31 08:07:25 UTC 2020
+    FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B
 
-      Welcome to FreeBSD!
-
+    Welcome to FreeBSD!
     ...
 
     freebsd@rpi-b:~ % dmesg
-    ---<<BOOT>>---
-    KDB: debugger backends: ddb
-    KDB: current backend: ddb
-    Copyright (c) 1992-2020 The FreeBSD Project.
+    Copyright (c) 1992-2021 The FreeBSD Project.
     Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
-    The Regents of the University of California. All rights reserved.
+            The Regents of the University of California. All rights reserved.
     FreeBSD is a registered trademark of The FreeBSD Foundation.
-    FreeBSD 13.0-CURRENT #0 main-c255460-g282381aa53a: Thu Dec 31 08:07:25 UTC 2020
-        root@releng1.nyi.freebsd.org:/usr/obj/usr/src/arm.armv6/sys/RPI-B arm
-        FreeBSD clang version 11.0.0 (git@github.com:llvm/llvm-project.git llvmorg-11.0.0-0-g176249bd673)
+    FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B arm
+    FreeBSD clang version 19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)
 
     ...
+
+  ::
 
     freebsd@rpi-b:~ % ifconfig wlan0
     wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
-    ether <sanitized>
-    inet 10.1.0.16 netmask 0xffffff00 broadcast 10.1.0.255
-    groups: wlan
-    ssid my_access_point channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
+            ether <sanitized>
+            inet6 fe80::272:63ff:fe20:599f%wlan0 prefixlen 64 scopeid 0x2
+            inet6 fdb2:96f:84ff:0:272:63ff:fe20:599f prefixlen 64 autoconf
+            inet 10.1.0.16 netmask 0xffffff00 broadcast 10.1.0.255
+            groups: wlan
+            ssid <sanitized> channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
+            regdomain FCC country US authmode WPA2/802.11i privacy ON
+            deftxkey UNDEF AES-CCM 2:128-bit AES-CCM 3:128-bit txpower 30 bmiss 7
+            scanvalid 60 protmode CTS ht20 ampdulimit 64k ampdudensity 8 shortgi
+            -stbc -ldpc -uapsd wme roaming MANUAL
+            parent interface: rtwn0
+            media: IEEE 802.11 Wireless Ethernet MCS mode 11ng
+            status: associated
+            nd6 options=23<PERFORMNUD,ACCEPT_RTADV,AUTO_LINKLOCAL>
 
-    ...
 
 .. _already downloaded image: https://www.freebsd.org/where.html
 .. _USB Realtek RTL8188EU: https://man.freebsd.org/cgi/man.cgi?query=rtwn&sektion=4&format=html

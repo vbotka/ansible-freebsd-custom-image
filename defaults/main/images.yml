@@ -1,8 +1,8 @@
 ---
 cimage_get_images: true
 cimage_get_checksums: true
-cimage_download: []
-# cimage_download:
+cimage_download_images: []
+# cimage_download_images:
 #   - site: https://download.freebsd.org/ftp/snapshots/ISO-IMAGES/13.0
 #     image: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20210107-f2b794e1e90-255641.img.xz
 #     checksum: CHECKSUM.SHA512-FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20210107-f2b794e1e90-255641
