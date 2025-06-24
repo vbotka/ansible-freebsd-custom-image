@@ -18,7 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Supported FreeBSD 13.4, 13.5, 14.2, 14.3
-* Updated docs.
+* Updated docs. Updated annotation templates.
 
 
 2.7.3
