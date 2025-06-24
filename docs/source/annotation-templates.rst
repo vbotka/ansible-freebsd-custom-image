@@ -14,7 +14,7 @@ Synopsis: Configure loader.conf
 Description of the task.
 
 
-[`templates/loader.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/loader.conf.j2>`_]
+[`templates/loader.conf.j2 <https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/templates/loader.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -48,7 +48,7 @@ The attribute *conf* is a list. For example,
              - { key: disabled, value: 0 }
 
 
-[`templates/wpa_supplicant.conf.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/wpa_supplicant.conf.j2>`_]
+[`templates/wpa_supplicant.conf.j2 <https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/templates/wpa_supplicant.conf.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -85,7 +85,7 @@ The attribute *conf* is a dictionary. For example,
              disabled: 0
 
 
-[`templates/wpa_supplicant.conf.2.j2 <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/templates/wpa_supplicant.conf.2.j2>`_]
+[`templates/wpa_supplicant.conf.2.j2 <https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/templates/wpa_supplicant.conf.2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5

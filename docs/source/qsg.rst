@@ -144,11 +144,11 @@ Follow the steps below
 
 .. seealso:: `2.3. Pre-Installation Tasks`_
 
-.. warning:: Change the device of the disk. Double-check that this is the correct device and make
-             sure you don't overwrite important data.
+.. warning:: Change the device. Double-check that this is the correct device and make sure you don't
+             overwrite important data.
 
-* Boot the system. Find the IP address either from the console or from the DHCP server if headless
-  and connect to the system ::
+* Boot the system. Find the IP address from the console or from the DHCP server if headless. Connect
+  to the system ::
 
     shell> ssh freebsd@10.1.0.16
     Password for freebsd@rpi-b:
