@@ -194,8 +194,8 @@ Follow the steps below
 .. _man pages of supported wireless devices: https://wiki.freebsd.org/DeviceDrivers
 
 .. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
-.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix
-.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
+.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix
+.. _vbotka.freebsd: https://ansible-collection-freebsd.readthedocs.io/en/latest/
 
 .. _contrib/playbook/pb-wifi-basic.yml: https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml
 .. _2.3. Pre-Installation Tasks: https://www.freebsd.org/doc/handbook/bsdinstall-pre.html
