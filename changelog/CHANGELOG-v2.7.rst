@@ -5,6 +5,23 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.5
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Use the role vbotka.freebsd.lib instead of vbotka.ansible_lib
+* Update docs.
+* Update README
+
+
 2.7.4
 =====
 

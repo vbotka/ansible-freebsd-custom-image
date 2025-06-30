@@ -22,3 +22,4 @@ dependencies: []
 collections:
   - ansible.posix
   - community.general
+  - vbotka.freebsd

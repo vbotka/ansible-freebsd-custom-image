@@ -28,7 +28,7 @@
     al_mdconfig_file: "{{ cimage_dir }}/{{ cimage_mount_file }}"
     al_mdconfig_state: absent
   ansible.builtin.include_role:
-    name: vbotka.ansible_lib
+    name: vbotka.freebsd.lib
     tasks_from: al_mdconfig.yml
 
 - name: "Umount: Debug detach memory disk cimage_debug={{ cimage_debug }}"

@@ -36,7 +36,6 @@ a disk.
 
 * Ansible role: `vbotka.freebsd_custom_image`_
 * Supported systems: `FreeBSD`_
-* Requirements: `vbotka.ansible_lib`_
 
 .. _ug_installation:
 
@@ -54,14 +53,11 @@ and install it ::
 
     shell> ansible-galaxy role install vbotka.freebsd_custom_image
 
-* Install the library ``vbotka.ansible_lib`` ::
-
-    shell> ansible-galaxy role install vbotka.ansible_lib
-
-* Install the collections `community.general`_ and `ansible.posix`_  ::
+* Install the collections `community.general`_, `ansible.posix`_, and `vbotka.freebsd`_ ::
 
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general
+    shell> ansible-galaxy collection install vbotka.freebsd
 
 .. seealso::
    * To install specific versions from various sources see `Installing content`_.
@@ -293,17 +289,21 @@ Examples
 
 
 .. _role: https://galaxy.ansible.com/vbotka/freebsd_custom_image
+.. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/vbotka/freebsd_custom_image
+.. _vbotka.config_light: https://galaxy.ansible.com/vbotka/config_light
+
+.. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
+.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix
+.. _vbotka.freebsd: https://ansible-collection-freebsd.readthedocs.io/en/latest/
+
 .. _Release Building: https://www.freebsd.org/doc/en/articles/releng/release-build.html
 .. _released images and development snapshots: https://www.freebsd.org/where.html
-.. _vbotka.config_light: https://galaxy.ansible.com/vbotka/config_light
+
 .. _Contributions are welcome: https://github.com/firstcontributions/first-contributions
 .. _share your feedback and report issues: https://github.com/vbotka/ansible-freebsd-custom-image/issues
 .. _contrib: https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/contrib
-.. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/vbotka/freebsd_custom_image
+
 .. _FreeBSD: https://www.freebsd.org/releases
-.. _vbotka.ansible_lib: https://galaxy.ansible.com/vbotka/ansible_lib
-.. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
-.. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix
 .. _Installing content: https://galaxy.ansible.com/docs/using/installing.html
 .. _Connection Plugins: https://docs.ansible.com/ansible/latest/plugins/connection.html
 .. _Understanding Privilege Escalation: https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation

@@ -6,6 +6,8 @@
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-custom-image)](https://github.com/vbotka/ansible-freebsd-custom-image/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_custom_image/) FreeBSD. Download, mount, and customize system images.
 
 [Documentation at readthedocs.io](https://ansible-freebsd-custom-image.readthedocs.io)
@@ -17,14 +19,31 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
-### Roles
-
-* [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
-
 ### Collections
 
 * ansible.posix
 * community.general
+* vbotka.freebsd
+
+### Optionally, use the role vbotka.ansible_lib
+
+This role requires the collection vbotka.freebsd to include tasks from the role
+vbotka.freebsd.lib. See in the tasks:
+
+```yaml
+  ansible.builtin.include_role:
+    name: vbotka.freebsd.lib
+```
+
+Instead of the collection vbotka.freebsd, you can install and use the role
+vbotka.ansible_lib. Edit the tasks:
+
+```yaml
+  ansible.builtin.include_role:
+    name: vbotka.ansible_lib
+```
+
+Remove vbotka.freebsd from the collections in meta/main.yml
 
 
 ## Notes
