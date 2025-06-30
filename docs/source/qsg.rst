@@ -66,14 +66,12 @@ Follow the steps below
 
     shell> ansible-galaxy role install vbotka.freebsd_custom_image
 
-* Install the library ``vbotka.ansible_lib`` ::
-
-    shell> ansible-galaxy role install vbotka.ansible_lib
-
-* Install the collections `community.general`_ and `ansible.posix`_ if necessary ::
+* Install the collections `community.general`_, `ansible.posix`_, and `vbotka.freebsd`_ if necessary
+  ::
 
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general
+    shell> ansible-galaxy collection install vbotka.freebsd
 
 * Create the playbook ``pb-wifi-basic.yml`` for single host images.example.com (2). Configure
   connection (4-5) and privilege escalation (6-8). Configure the path (16) to the image (17) and
@@ -92,14 +90,12 @@ Follow the steps below
   :emphasize-lines: 2,4-8,16,17,19,21,22,26,27-34,38-40,48,49,51,52
   :linenos:
 
-* Create the inventory. Change the IP address (2) and fit the paths to Python (8) and Perl (9) if
-  necessary
+* Create the inventory ``hosts``. Change the IP address (1) and fit the paths to Python (7) and
+  Perl (8) if necessary
 
-.. code-block:: sh
-   :emphasize-lines: 2,8-9
+.. code-block:: ini
    :linenos:
 
-    shell> cat hosts
     images.example.com ansible_host=<ip-address>
 
     [images]
@@ -148,43 +144,45 @@ Follow the steps below
              overwrite important data.
 
 * Boot the system. Find the IP address from the console or from the DHCP server if headless. Connect
-  to the system ::
+  to the system
 
-    shell> ssh freebsd@10.1.0.16
-    Password for freebsd@rpi-b:
-    FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B
+  .. code-block:: console
 
-    Welcome to FreeBSD!
-    ...
+     shell> ssh freebsd@10.1.0.16
+     Password for freebsd@rpi-b:
+     FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B
 
-    freebsd@rpi-b:~ % dmesg
-    Copyright (c) 1992-2021 The FreeBSD Project.
-    Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
-            The Regents of the University of California. All rights reserved.
-    FreeBSD is a registered trademark of The FreeBSD Foundation.
-    FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B arm
-    FreeBSD clang version 19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)
+     Welcome to FreeBSD!
+     ...
 
-    ...
+     freebsd@rpi-b:~ % dmesg
+     Copyright (c) 1992-2021 The FreeBSD Project.
+     Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+             The Regents of the University of California. All rights reserved.
+     FreeBSD is a registered trademark of The FreeBSD Foundation.
+     FreeBSD 13.5-RELEASE releng/13.5-n259162-882b9f3f2218 RPI-B arm
+     FreeBSD clang version 19.1.7 (https://github.com/llvm/llvm-project.git llvmorg-19.1.7-0-gcd708029e0b2)
 
-  ::
+     ...
 
-    freebsd@rpi-b:~ % ifconfig wlan0
-    wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
-            ether <sanitized>
-            inet6 fe80::272:63ff:fe20:599f%wlan0 prefixlen 64 scopeid 0x2
-            inet6 fdb2:96f:84ff:0:272:63ff:fe20:599f prefixlen 64 autoconf
-            inet 10.1.0.16 netmask 0xffffff00 broadcast 10.1.0.255
-            groups: wlan
-            ssid <sanitized> channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
-            regdomain FCC country US authmode WPA2/802.11i privacy ON
-            deftxkey UNDEF AES-CCM 2:128-bit AES-CCM 3:128-bit txpower 30 bmiss 7
-            scanvalid 60 protmode CTS ht20 ampdulimit 64k ampdudensity 8 shortgi
-            -stbc -ldpc -uapsd wme roaming MANUAL
-            parent interface: rtwn0
-            media: IEEE 802.11 Wireless Ethernet MCS mode 11ng
-            status: associated
-            nd6 options=23<PERFORMNUD,ACCEPT_RTADV,AUTO_LINKLOCAL>
+  .. code-block:: console
+
+     freebsd@rpi-b:~ % ifconfig wlan0
+     wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+             ether <sanitized>
+             inet6 fe80::272:63ff:fe20:599f%wlan0 prefixlen 64 scopeid 0x2
+             inet6 fdb2:96f:84ff:0:272:63ff:fe20:599f prefixlen 64 autoconf
+             inet 10.1.0.16 netmask 0xffffff00 broadcast 10.1.0.255
+             groups: wlan
+             ssid <sanitized> channel 6 (2437 MHz 11g ht/20) bssid <sanitized>
+             regdomain FCC country US authmode WPA2/802.11i privacy ON
+             deftxkey UNDEF AES-CCM 2:128-bit AES-CCM 3:128-bit txpower 30 bmiss 7
+             scanvalid 60 protmode CTS ht20 ampdulimit 64k ampdudensity 8 shortgi
+             -stbc -ldpc -uapsd wme roaming MANUAL
+             parent interface: rtwn0
+             media: IEEE 802.11 Wireless Ethernet MCS mode 11ng
+             status: associated
+             nd6 options=23<PERFORMNUD,ACCEPT_RTADV,AUTO_LINKLOCAL>
 
 
 .. _already downloaded image: https://www.freebsd.org/where.html
@@ -194,7 +192,10 @@ Follow the steps below
 .. _Wiki FreeBSD Wireless: https://wiki.freebsd.org/WiFi
 .. _FreeBSD Release Notes: https://www.freebsd.org/releases/index.html
 .. _man pages of supported wireless devices: https://wiki.freebsd.org/DeviceDrivers
+
 .. _community.general: https://docs.ansible.com/ansible/latest/collections/community/general
 .. _ansible.posix: https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html#plugins-in-ansible-posix
+.. _vbotka.freebsd: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/
+
 .. _contrib/playbook/pb-wifi-basic.yml: https://raw.githubusercontent.com/vbotka/ansible-freebsd-custom-image/master/contrib/playbook/pb-wifi-basic.yml
 .. _2.3. Pre-Installation Tasks: https://www.freebsd.org/doc/handbook/bsdinstall-pre.html
