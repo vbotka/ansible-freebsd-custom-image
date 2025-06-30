@@ -17,6 +17,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Use the role vbotka.freebsd.lib instead of vbotka.ansible_lib
+* Update docs.
+* Update README
 
 
 2.7.4

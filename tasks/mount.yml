@@ -23,7 +23,7 @@
 
 - name: "Mount: Attach memory disk" # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
-    name: vbotka.ansible_lib
+    name: vbotka.freebsd.lib
     tasks_from: al_mdconfig.yml
   vars:
     al_mdconfig_file: "{{ cimage_dir }}/{{ cimage_mount_file }}"
