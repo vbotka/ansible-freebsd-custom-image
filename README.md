@@ -6,7 +6,7 @@
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-custom-image)](https://github.com/vbotka/ansible-freebsd-custom-image/tags)
 
-This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/)
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.custom_image](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_custom_image/) FreeBSD. Download, mount, and customize system images.
 
