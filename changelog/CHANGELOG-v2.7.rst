@@ -5,6 +5,22 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.6
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+Add the collection vbotka.freebsd to the test's requirements.
+Update README.
+
+
 2.7.5
 =====
 
