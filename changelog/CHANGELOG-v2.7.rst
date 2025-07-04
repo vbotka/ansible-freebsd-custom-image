@@ -10,7 +10,7 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 
 Release Summary
 ---------------
-Update README.
+Maintenance update.
 
 
 2.7.6
