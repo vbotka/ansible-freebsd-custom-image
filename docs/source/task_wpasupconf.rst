@@ -18,7 +18,7 @@ Customize the variables to your needs.
 
 .. warning::
 
-   * Don't make any changes in the files in the directory *defaults/main*. The role update will
+   * Don't make any changes in the files in the directory ``defaults/main``. The role update will
      overwrite the changes.
 
 .. _Ansible variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable

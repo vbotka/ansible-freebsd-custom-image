@@ -20,9 +20,9 @@ to attach a memory disk and mount the partition.
 
     shell> ansible-galaxy install vbotka.config_light
 
-* Create the playbook ``pb-wifi-basic-cl.yml`` for single host images.example.com (2). Configure connection
-  (4-5) and privilege escalation (6-8). Configure the directory (11) with the configuration files
-  and reuse the configuration (13-17) already prepared in :ref:`qg` (19-48).
+* Create the playbook ``pb-wifi-basic-cl.yml`` for single host images.example.com (2). Configure
+  connection (4-5) and privilege escalation (6-8). Configure the directory (11) with the
+  configuration files and reuse the configuration (13-17) already prepared in :ref:`qg` (19-48).
 
 .. literalinclude:: ../../contrib/example-wifi-basic-cl/pb-wifi-basic-cl.yml
   :caption: `contrib/example-wifi-basic-cl/pb-wifi-basic-cl.yml`_
