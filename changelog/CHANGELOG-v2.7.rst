@@ -10,12 +10,7 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 
 Release Summary
 ---------------
-
-Major Changes
--------------
-
-Minor Changes
--------------
+Fix loop_var in fn/postinstall.yml
 
 
 2.7.7
