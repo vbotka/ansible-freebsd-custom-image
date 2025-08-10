@@ -11,6 +11,7 @@ version |release|
 
 | GitHub: `ansible-freebsd-custom-image`_
 | Ansible Galaxy: `vbotka.freebsd_custom_image`_
+| Ansible collection: `vbotka.freebsd.custom_image`_
 
 | This role is licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
@@ -35,6 +36,7 @@ Indices and tables
 
 .. _role: https://galaxy.ansible.com/vbotka/freebsd_custom_image
 .. _vbotka.freebsd_custom_image: https://galaxy.ansible.com/vbotka/freebsd_custom_image
+.. _vbotka.freebsd.custom_image: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/custom_image
 .. _ansible-freebsd-custom-image: https://github.com/vbotka/ansible-freebsd-custom-image
 
 .. _share your feedback and report issues: https://github.com/vbotka/ansible-freebsd-postinstall/issues
