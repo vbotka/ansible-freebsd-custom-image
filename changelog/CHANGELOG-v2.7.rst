@@ -5,6 +5,24 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.7
+=====
+
+Release Summary
+---------------
+Add fn/postinstall.yml
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add postinstall to dictionary cimage_customize
+* Add variable cimage_postinstall (default=[])
+* Update debug.yml
+* Update docs.
+
+
 2.7.6
 =====
 

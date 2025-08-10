@@ -75,13 +75,13 @@ Follow the steps below
 
 * Create the playbook ``pb-wifi-basic.yml`` for single host images.example.com (2). Configure
   connection (4-5) and privilege escalation (6-8). Configure the path (16) to the image (17) and
-  make sure the image is writable by root. The default system partition is *s2a* (19). Configure the
-  mount-point(s) (21) and configure which partition will be customized (22). The mount-point doesn't
-  have to exist and will be create (and later deleted when unmounted) by the Ansible module
-  *mount*. Review the modules (26) and loader's configuration (27-34). Fit it to your needs if you
-  use a different adapter. Change also the configuration of *rc.conf* (38-40) if necessary. Change
-  *SSID* (48) and *password* (49) of the access point. Enable symbolic link of
-  */etc/wpa_supplicant.conf* to */etc/wpa_supplicant.conf.wlan0* (51, 52).
+  make sure the image is writable by root. The default system partition is ``s2a`` (19). Configure
+  the mount-point(s) (21) and configure which partition will be customized (22). The mount-point
+  doesn't have to exist and will be create (and later deleted when unmounted) by the Ansible module
+  ``ansible.posix.mount``. Review the modules (26) and loader's configuration (27-34). Fit it to
+  your needs if you use a different adapter. Change also the configuration of ``/etc/rc.conf``
+  (38-40) if necessary. Change ``SSID`` (48) and ``password`` (49) of the access point. Enable
+  symbolic link of ``/etc/wpa_supplicant.conf`` to ``/etc/wpa_supplicant.conf.wlan0`` (51, 52).
 
 .. literalinclude:: ../../contrib/playbook/pb-wifi-basic.yml
   :caption: `contrib/playbook/pb-wifi-basic.yml`_
@@ -127,7 +127,7 @@ Follow the steps below
 
 .. warning::
 
-  * Password of the access-point will be displayed. Set classified debug to *false*
+  * Password of the access-point will be displayed. Set classified debug to false
     ``cimage_debug_classified=false`` to prevent it.
   
   * The image has not been secured by this playbook and should be used for testing only.

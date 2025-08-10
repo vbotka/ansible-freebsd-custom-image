@@ -29,8 +29,8 @@ mount the partition.
 * Create the playbook ``pb-wpacli-cl.yml`` for single host images.example.com (2). Configure
   connection (4-5) and privilege escalation (6-8). Configure the directory (13) with the
   configuration files and reuse the configuration (15-18) already prepared in :ref:`qg`
-  (28-52). Configure only wlan0 (19) in wpa_supplicant. The configuration of *wpa_cli* (58-78) is
-  described in Ansible role `vbotka.freebsd_wpa_cli`_. The configuration of *ntp* (81-94) is
+  (28-52). Configure only wlan0 (19) in wpa_supplicant. The configuration of ``wpa_cli`` (58-78) is
+  described in Ansible role `vbotka.freebsd_wpa_cli`_. The configuration of ``ntp`` (81-94) is
   described in Ansible role `vbotka.freebsd_postinstall`_.
 
 .. literalinclude:: ../../contrib/example-wpacli-cl/pb-wpacli-cl.yml

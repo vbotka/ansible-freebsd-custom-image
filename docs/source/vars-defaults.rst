@@ -36,10 +36,10 @@ Review the default variables in the directory ``defaults/main``. For example,
 
 .. warning::
 
-   * Don't make any changes in the files in the directory defaults/main*. The role update will
+   * Don't make any changes in the files in the directory ``defaults/main``. The role update will
      overwrite the changes.
 
-   * The default value of *cimage_debug_classified* is *false**. Passwords will be displayed if this
+   * The default value of ``cimage_debug_classified`` is false. Passwords will be displayed if this
      variable is enabled.
 
 .. _defaults/main/main.yml: https://github.com/vbotka/ansible-freebsd-custom-image/blob/master/defaults/main/main.yml

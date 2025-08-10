@@ -1,5 +1,4 @@
 ---
-
 # /etc/wpa_supplicant.conf
 cimage_wpasupconf: false
 cimage_wpasupconf_backup: false

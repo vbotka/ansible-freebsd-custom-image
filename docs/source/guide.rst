@@ -23,9 +23,9 @@ creating additional custom tasks. The advantage would be unified configuration d
 what you want. `Contributions are welcome`_. See the examples in the directory `contrib`_.
 
 Many tasks are disabled by default. They can be enabled and run one by one to accomplish standalone
-tasks (see *tasks/main.yml* and *defaults/main/main.yml*). By default, *download, unpack, mount, and
-umount* are enabled. All included customization tasks are disabled by default (see
-*tasks/customize.yml* and *default/main/customize.yml*). See :ref:`ug_tags` Examples and
+tasks (see ``tasks/main.yml`` and ``defaults/main/main.yml``). By default, ``download, unpack,
+mount, and umount`` are enabled. All included customization tasks are disabled by default (see
+``tasks/customize.yml`` and ``default/main/customize.yml``). See :ref:`ug_tags` Examples and
 :ref:`ug_bp` on how to enable and run tasks one by one.
 
 By default, the role is not idempotent. In the standard workflow, an image is always mounted when
@@ -42,18 +42,27 @@ a disk.
 Installation
 ************
 
-The most convenient way how to install an Ansible role is to use :index:`Ansible Galaxy` CLI
+.. index:: single: Ansible Galaxy; Installation
+.. index:: single: ansible-galaxy; Installation
+
+The most convenient way how to install an Ansible role is to use Ansible Galaxy CLI
 ``ansible-galaxy``. The utility comes with the standard Ansible package and provides the user with a
-simple interface to the Ansible Galaxy's services. For example, take a look at the current status of
-the role ::
+simple interface to the Ansible Galaxy's services. For example, look at the current status of the
+role
+
+.. code-block:: console
 
    shell> ansible-galaxy role info vbotka.freebsd_custom_image
 
-and install it ::
+and install it
+
+.. code-block:: console
 
     shell> ansible-galaxy role install vbotka.freebsd_custom_image
 
-* Install the collections `community.general`_, `ansible.posix`_, and `vbotka.freebsd`_ ::
+Install the collections `community.general`_, `ansible.posix`_, and `vbotka.freebsd`_
+
+.. code-block:: console
 
     shell> ansible-galaxy collection install ansible.posix
     shell> ansible-galaxy collection install community.general
@@ -68,13 +77,13 @@ and install it ::
 Playbook
 ********
 
-Below is a simple playbook that calls this role (10) for a single host images.example.com (2)
+Below is a simple playbook ``playbook.yml`` that calls this role (9) for a single managed node
+``images.example.com`` (1)
 
-.. code-block:: bash
-   :emphasize-lines: 1,2,10
+.. code-block:: yaml
+   :emphasize-lines: 1,9
    :linenos:
 
-   shell> cat playbook.yml
    - hosts: images.example.com
      gather_facts: true
      connection: ssh
@@ -88,16 +97,18 @@ Below is a simple playbook that calls this role (10) for a single host images.ex
 .. note:: ``gather_facts: true`` (3) must be set to test sanity ``ansible_os_family``
 
 .. seealso::
-   * For details see `Connection Plugins`_ (4-5)
-   * See also `Understanding Privilege Escalation`_ (6-8)
+   * For details see `Connection Plugins`_ (3-4)
+   * See also `Understanding Privilege Escalation`_ (5-7)
 
 .. _ug_debug:
 
 Debug
 *****
 
-Some tasks will display additional information when the variable :index:`cimage_debug` is
-enabled. Enable debug output either in the configuration
+.. index:: single: cimage_debug; Debug
+
+Some tasks will display additional information when the variable ``cimage_debug`` is enabled. Enable
+debug output either in the configuration
 
 .. code-block:: yaml
    :emphasize-lines: 1
@@ -106,7 +117,7 @@ enabled. Enable debug output either in the configuration
 
 , or set the extra variable in the command
 
-.. code-block:: sh
+.. code-block:: console
    :emphasize-lines: 1
 
    shell> ansible-playbook playbook.yml -e cimage_debug=true
@@ -133,15 +144,20 @@ enabled. Enable debug output either in the configuration
 Tags
 ****
 
-The :index:`tags` provide the user with a very useful tool to run selected tasks of the role. To see
-what tags are available list the role's tags
+.. index:: single: tags; Tags
+
+The ``tags`` provide the user with a very useful tool to run selected tasks of the role. To see what
+tags are available list the role's tags
 
 .. include:: tags-list.rst
 
 Basics
 ======
 
-* Display the variables. Use the tag ``cimage_debug``. Enable :index:`debug` ``cimage_debug: true``
+.. index:: single: cimage_debug; Basics
+.. index:: single: cimage_sanity; Basics
+
+* Display the variables. Use the tag ``cimage_debug`` and set ``cimage_debug: true``
   ::
 
     shell> ansible-playbook playbook.yml -t cimage_debug -e cimage_debug=true
@@ -158,7 +174,7 @@ Basics
 
     shell> ansible-playbook playbook.yml -t cimage_mount
 
-* Run sanity tests. Enable :index:`sanity` ``cimage_sanity: true`` ::
+* Run sanity tests. Enable sanity ``cimage_sanity: true`` ::
 
     shell> ansible-playbook playbook.yml -t cimage_sanity -e cimage_sanity=true
 
@@ -176,6 +192,8 @@ Basics
 Customization tasks
 *******************
 
+.. index:: single: cimage_customize; Customization tasks
+
 The description of the customization's tasks is not complete. The `role`_ and the documentation is
 work in progress. Feel free to `share your feedback and report issues`_.
 
@@ -185,9 +203,9 @@ work in progress. Feel free to `share your feedback and report issues`_.
    * Source code :ref:`as_customize.yml`
 
 All customization tasks are disabled by default. The default variables of these tasks are stored
-under the same file-names in the directory *defaults/main*. Enable, configure and run these tasks as
+under the same filenames in the directory ``defaults/main``. Enable, configure, and run these tasks as
 needed. Keep this arrangement when you add custom tasks. Add custom tasks to the dictionary
-*cimage_customize*
+``cimage_customize``
 
 .. literalinclude:: ../../defaults/main/customize.yml
   :caption: `defaults/main/customize.yml`_
@@ -213,8 +231,8 @@ Variables
 *********
 
 There are two categories of variables. The variables that control the workflow of the role (see
-*defaults/main/main.yml*) and customization tasks variables (see other files in
-*defaults/main*).
+``defaults/main/main.yml``) and customization tasks variables (see other files in
+``defaults/main``).
 
 .. seealso:: `Ansible variable precedence. Where should I put a variable?`_
 
@@ -271,9 +289,9 @@ Best practice
 
     shell> ansible-playbook playbook.yml -e cimage_umount=false
 
-  However, the mountpoint is not configured in */etc/fstab* and won't survive a reboot. If this is
-  a problem put the configuration of the memory disk into */etc/rc.conf* and configure the
-  mountpoint in */etc/fstab*.
+  However, the mountpoint is not configured in ``/etc/fstab`` and won't survive a reboot. If this is
+  a problem, put the configuration of the memory disk into ``/etc/rc.conf`` and configure the
+  mountpoint in ``/etc/fstab``.
 
 .. _ug_examples:
 

@@ -1,8 +1,9 @@
 ---
-- name: "Debug cimage_debug={ cimage_debug }}"
+- name: "Debug cimage_debug={{ cimage_debug }}"
   vars:
     msg: |-
       cimage_role_version: {{ cimage_role_version }}
+      ansible_role_name: {{ ansible_role_name }}
       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
@@ -50,6 +51,9 @@
       cimage_pkgng_pkgsite: {{ cimage_pkgng_pkgsite | d('UNDEFINED') }}
       cimage_packages:
         {{ cimage_packages | to_nice_yaml(indent=2) | indent(2) }}
+      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      cimage_customize:
+        {{ cimage_packages | to_yaml(indent=2) | indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
