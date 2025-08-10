@@ -1,5 +1,4 @@
 ---
-
 # /boot/loader.conf
 cimage_loaderconf: false
 cimage_loaderconf_backup: false

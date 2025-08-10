@@ -1,5 +1,4 @@
 ---
-
 # /etc/rc.conf
 cimage_rcconf: false
 cimage_rcconf_backup: false

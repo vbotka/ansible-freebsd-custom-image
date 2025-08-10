@@ -3,3 +3,5 @@ cimage_customize:
   loaderconf: "{{ cimage_loaderconf }}"
   wpasupconf: "{{ cimage_wpasupconf }}"
   rcconf: "{{ cimage_rcconf }}"
+
+# EOF

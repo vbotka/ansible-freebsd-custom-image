@@ -2,3 +2,5 @@
 cimage_unpack_cmd:
   .xz: unxz --keep
 cimage_unpack_ext: "{{ cimage_unpack_cmd.keys() | list }}"
+
+# EOF
