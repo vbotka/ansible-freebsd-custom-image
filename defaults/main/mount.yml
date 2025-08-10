@@ -1,5 +1,5 @@
 ---
-# Create mountpoints by module file
+# Create mountpoints by module file.
 cimage_mount_points_create: false
 
 # cimage_mount_file: FreeBSD-13.0-CURRENT-arm-armv6-RPI-B-20201231-282381aa53a-255460.img
