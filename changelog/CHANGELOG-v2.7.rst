@@ -5,6 +5,23 @@ vbotka.freebsd_custom_image 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.9
+=====
+
+Release Summary
+---------------
+In the collection vbotka.freebsd use vbotka.freebsd.lib
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add dictionary cimage_ansible_lib; In the collection
+  vbotka.freebsd use vbotka.freebsd.lib
+* Update README.
+
+
 2.7.8
 =====
 

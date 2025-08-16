@@ -1,6 +1,6 @@
 ---
 # default vars for freebsd_custom_image
-cimage_role_version: 2.7.8
+cimage_role_version: 2.7.9
 
 # Display debug output.
 cimage_debug: false
@@ -25,5 +25,10 @@ cimage_install: false
 
 # Umount and delete mountpoints. Detach memory disk.
 cimage_umount: true
+
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+cimage_ansible_lib:
+  vbotka.freebsd_custom_image: vbotka.ansible_lib
+  vbotka.freebsd.custom_image: vbotka.ansible.lib
 
 # EOF
