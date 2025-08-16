@@ -26,4 +26,9 @@ cimage_install: false
 # Umount and delete mountpoints. Detach memory disk.
 cimage_umount: true
 
+# Use vbotka.freebsd.lib in collection vbotka.freebsd
+cimage_ansible_lib:
+  vbotka.freebsd_custom_image: vbotka.ansible_lib
+  vbotka.freebsd.custom_image: vbotka.ansible.lib
+
 # EOF

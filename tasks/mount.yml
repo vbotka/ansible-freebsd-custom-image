@@ -22,11 +22,11 @@
   loop: "{{ cimage_mount_points }}"
 
 - name: "Mount: Attach memory disk" # noqa: var-naming[no-role-prefix]
-  ansible.builtin.include_role:
-    name: vbotka.freebsd.lib
-    tasks_from: al_mdconfig.yml
   vars:
     al_mdconfig_file: "{{ cimage_dir }}/{{ cimage_mount_file }}"
+  ansible.builtin.include_role:
+    name: "{{ cimage_ansible_lib[ansible_role_name] }}"
+    tasks_from: al_mdconfig.yml
 
 - name: "Mount: Set variable cimage_mount_dev"
   tags: cimage_mdconfig
