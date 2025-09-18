@@ -1,6 +1,6 @@
 ---
 # default vars for freebsd_custom_image
-cimage_role_version: 2.7.9
+cimage_role_version: 2.8.0
 
 # Display debug output.
 cimage_debug: false
@@ -29,6 +29,6 @@ cimage_umount: true
 # Use vbotka.freebsd.lib in collection vbotka.freebsd
 cimage_ansible_lib:
   vbotka.freebsd_custom_image: vbotka.ansible_lib
-  vbotka.freebsd.custom_image: vbotka.ansible.lib
+  vbotka.freebsd.custom_image: vbotka.freebsd.lib
 
 # EOF
