@@ -280,7 +280,7 @@ Best practice
 
 * Dump the customized image to a disk and boot it ::
 
-    shell> dd image.img of=/dev/mmcsd0 bs=1m conv=sync status=progress
+    shell> dd if=image.img of=/dev/mmcsd0 bs=1m conv=sync status=progress
 
 .. hint:: In Linux, use ``bs=1M``
 
