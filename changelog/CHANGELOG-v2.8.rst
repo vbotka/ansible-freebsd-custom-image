@@ -16,7 +16,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Fix docs ug dd example.
+* Fix docs guide dd example.
+* Update docs guide.
 
 
 2.8.0
