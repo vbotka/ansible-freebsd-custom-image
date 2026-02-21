@@ -10,12 +10,14 @@ vbotka.freebsd_custom_image 2.8 Release Notes
 
 Release Summary
 ---------------
+Ansible 2.20 upgrade.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
+* Supported versions 13.5, 14.3, and 15.0
 * Fix docs guide dd example.
 * Update docs guide.
 
