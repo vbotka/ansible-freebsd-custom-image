@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 * Supported versions 13.5, 14.3, and 15.0
+* Variables ansible_* moved to the dictionary ansible_facts
 * Fix docs guide dd example.
 * Update docs guide.
 
